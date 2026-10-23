@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "codigo": "efectivo",
+    "nombre": "Efectivo",
+    "descripcion": "Cobro presencial en efectivo en ventanilla de administración y caja de UMSA Centro Médico.",
+    "icono": "💵",
+    "activo": true,
+    "instrucciones": "Presentarse en la administración central de UMSA Centro Médico de lunes a viernes de 08:00 a 20:00 hs para abonar y retirar el recibo oficial.",
+    "observaciones": "Se emite recibo fiscal manual o electrónico en el momento de la cobranza.",
+    "datos_bancarios": {},
+    "online_config": {},
+    "created_at": "2026-10-13T23:02:19.192995+00:00",
+    "updated_at": "2026-10-13T23:02:19.193050+00:00"
+  },
+  {
+    "id": 2,
+    "codigo": "tarjeta",
+    "nombre": "Tarjeta de débito/crédito",
+    "descripcion": "Cobro presencial mediante tarjeta de débito o crédito a través de terminal POS institucional.",
+    "icono": "💳",
+    "activo": true,
+    "instrucciones": "Abono presencial en terminal POS en ventanilla de UMSA Centro Médico con tarjeta Visa, Mastercard o Cabal.",
+    "observaciones": "El cupón POS debe anexarse como respaldo del comprobante de cobro.",
+    "datos_bancarios": {},
+    "online_config": {},
+    "created_at": "2026-10-13T23:02:19.211529+00:00",
+    "updated_at": "2026-10-22T14:47:26.756268+00:00"
+  },
+  {
+    "id": 3,
+    "codigo": "transferencia",
+    "nombre": "Transferencia bancaria",
+    "descripcion": "Transferencia electrónica directa a la cuenta bancaria institucional de UMSA Centro Médico.",
+    "icono": "🏛️",
+    "activo": true,
+    "instrucciones": "Realizar la transferencia bancaria y presentar o enviar el comprobante con número de operación para su verificación administrativa.",
+    "observaciones": "La acreditación se confirma una vez visualizados los fondos en el extracto bancario oficial.",
+    "datos_bancarios": {
+      "titular": "",
+      "banco": "",
+      "tipo_cuenta": "",
+      "numero_cuenta": "",
+      "cbu": "",
+      "alias": "",
+      "cuit": "",
+      "configurado": false
+    },
+    "online_config": {},
+    "created_at": "2026-10-13T23:02:19.221968+00:00",
+    "updated_at": "2026-10-13T23:02:19.222029+00:00"
+  },
+  {
+    "id": 4,
+    "codigo": "mercadopago",
+    "nombre": "Mercado Pago",
+    "descripcion": "Cobro electrónico mediante link de pago oficial, QR o transferencia vía Mercado Pago.",
+    "icono": "📱",
+    "activo": true,
+    "instrucciones": "Escanee el código QR o acceda al enlace de pago oficial provisto por UMSA.",
+    "observaciones": "Integración con pasarela online en modo configuración. Requiere credenciales institucionales en variables de entorno.",
+    "datos_bancarios": {},
+    "online_config": {
+      "alias_mp": "",
+      "cvu_mp": "",
+      "link_pago_oficial": "",
+      "gateway_status": "Pendiente de configuración",
+      "provider_configured": false
+    },
+    "created_at": "2026-10-13T23:02:19.235329+00:00",
+    "updated_at": "2026-10-13T23:02:19.235390+00:00"
+  }
+]

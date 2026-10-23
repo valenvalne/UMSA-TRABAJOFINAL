@@ -27,6 +27,12 @@ EOF
 echo "Aplicando migraciones de base de datos..."
 python manage.py migrate --noinput
 
+# Recopilar archivos estáticos si no están presentes (por ejemplo, al montar volúmenes en local)
+if [ ! -d "/app/staticfiles" ] || [ -z "$(ls -A /app/staticfiles 2>/dev/null)" ]; then
+    echo "Recopilando archivos estáticos..."
+    python manage.py collectstatic --noinput
+fi
+
 # Iniciar el proceso principal
 echo "Iniciando servidor..."
 exec "$@"

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect width="160" height="50" rx="8" fill="#00875A"/>
+  <!-- DNI ID Badge icon -->
+  <g transform="translate(14, 12)">
+    <rect x="0" y="2" width="26" height="20" rx="4" fill="#FFFFFF"/>
+    <circle cx="7" cy="10" r="3" fill="#00875A"/>
+    <rect x="13" y="8" width="9" height="2" rx="1" fill="#00875A"/>
+    <rect x="13" y="12" width="9" height="2" rx="1" fill="#00875A"/>
+    <rect x="5" y="16" width="16" height="2" rx="1" fill="#00875A"/>
+  </g>
+  <text x="46" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#DCFCE7">cuenta</text>
+  <text x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="0.5">DNI</text>
+</svg>

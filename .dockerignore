@@ -10,5 +10,9 @@ venv/
 .git
 .gitignore
 *.log
+.vscode
+.idea
+*.sqlite3
+umsa_db
 .antigravity-ide
 .gemini

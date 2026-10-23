@@ -13,9 +13,13 @@
       <span aria-hidden="true">☎</span>
       <span><small>Teléfono</small><strong>2325 442727</strong></span>
     </a>
-    <button type="button" class="kiosk-nav-btn" id="btn-kiosk-trigger" aria-label="Acceso Kiosco de atención">
-      <span aria-hidden="true">🔑</span>
-      <span>Acceso Kiosco</span>
-    </button>
+    <a class="kiosk-nav-btn" href="/panel/" target="_blank" rel="noopener noreferrer" id="btn-panel-admin-trigger" aria-label="Abrir Panel Administrativo e IA en nueva pestaña" title="Panel Administrativo e IA">
+      <span aria-hidden="true">✚</span>
+      <span>Panel IA</span>
+    </a>
+    <a class="kiosk-nav-btn" href="{% url 'logout' %}" id="btn-logout" aria-label="Cerrar sesión" title="Cerrar sesión (valentinagalo12@gmail.com)">
+      <span aria-hidden="true">🚪</span>
+      <span>Cerrar sesión</span>
+    </a>
   </div>
 </header>

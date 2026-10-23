@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect width="160" height="50" rx="8" fill="#15803D"/>
+  <!-- Cash banknote icon -->
+  <g transform="translate(14, 12)">
+    <rect x="0" y="3" width="26" height="18" rx="3" fill="#FFFFFF"/>
+    <circle cx="13" cy="12" r="5" fill="#15803D"/>
+    <text x="13" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" font-weight="900" fill="#FFFFFF" text-anchor="middle">$</text>
+  </g>
+  <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#BBF7D0">VENTANILLA</text>
+  <text x="46" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="900" fill="#FFFFFF" letter-spacing="-0.3">Efectivo 10% OFF</text>
+</svg>

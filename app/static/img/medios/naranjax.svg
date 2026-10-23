@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect width="160" height="50" rx="8" fill="#FF6700"/>
+  <!-- Naranja Box -->
+  <rect x="14" y="11" width="28" height="28" rx="6" fill="#FFFFFF"/>
+  <text x="28" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="900" fill="#FF6700" text-anchor="middle">Nx</text>
+  <!-- Text Naranja X -->
+  <text x="50" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">naranja<tspan fill="#FFE500" font-weight="900"> x</tspan></text>
+</svg>

@@ -1,0 +1,1585 @@
+[
+  {
+    "numero": "UMSA-P-2026-0062",
+    "fecha": "22/10/2026",
+    "fecha_iso": "2026-10-22",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0062.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0062.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0062.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0061",
+    "fecha": "22/10/2026",
+    "fecha_iso": "2026-10-22",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0061.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0061.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0061.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 241500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0060",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 14500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 14500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 2,
+        "precio_unitario": 3500.0,
+        "subtotal": 7000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0060.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0060.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0060.pdf",
+    "total_pagado": 1500.0,
+    "saldo_pendiente": 13000.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0059",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 2,
+        "precio_unitario": 3500.0,
+        "subtotal": 7000.0
+      },
+      {
+        "idx": 3,
+        "descripcion": "Paquete algodón",
+        "cantidad": 4,
+        "precio_unitario": 1000.0,
+        "subtotal": 4000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0059.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0059.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0059.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0058",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 3,
+        "precio_unitario": 3500.0,
+        "subtotal": 10500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0058.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0058.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0058.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0057",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 3,
+        "precio_unitario": 3500.0,
+        "subtotal": 10500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0057.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0057.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0057.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0056",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 3,
+        "precio_unitario": 3500.0,
+        "subtotal": 10500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0056.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0056.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0056.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0055",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0055.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0055.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0055.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0054",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0054.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0054.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0054.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0053",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 14500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 14500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 2,
+        "precio_unitario": 3500.0,
+        "subtotal": 7000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0053.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0053.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0053.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0052",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Jeringas descartables",
+        "cantidad": 2,
+        "precio_unitario": 3500.0,
+        "subtotal": 7000.0
+      },
+      {
+        "idx": 3,
+        "descripcion": "Paquete algodón",
+        "cantidad": 4,
+        "precio_unitario": 1000.0,
+        "subtotal": 4000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0052.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0052.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0052.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0051",
+    "fecha": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0051.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0051.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0051.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0050",
+    "fecha": "17/10/2026",
+    "fecha_iso": "2026-10-17",
+    "cliente": "Gallo Valentina",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 7500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 7500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0050.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0050.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0050.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0049",
+    "fecha": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "cliente": "Gallo Valentina",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 7500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 7500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 3,
+        "precio_unitario": 2500.0,
+        "subtotal": 7500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0049.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0049.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0049.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 7000.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0048",
+    "fecha": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0048.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0048.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0048.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0047",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0047.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0047.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0047.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 241500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0046",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Gómez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 5000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 5000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0046.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0046.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0046.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 4500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0045",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Gómez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 5000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 5000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0045.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0045.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0045.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 4500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0044",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Hospital Central",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 65000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 65000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Barbijos descartables",
+        "cantidad": 10,
+        "precio_unitario": 2500.0,
+        "subtotal": 25000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Camisolines descartables",
+        "cantidad": 5,
+        "precio_unitario": 8000.0,
+        "subtotal": 40000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0044.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0044.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0044.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0043",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0043.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0043.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0043.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0042",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Gómez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 5000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 5000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0042.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0042.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0042.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 4500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0041",
+    "fecha": "14/10/2026",
+    "fecha_iso": "2026-10-14",
+    "cliente": "Dr. Gómez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 5000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 5000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 2,
+        "precio_unitario": 2500.0,
+        "subtotal": 5000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0041.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0041.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0041.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0040",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Hospital Central",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 65000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 65000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Barbijos descartables",
+        "cantidad": 10,
+        "precio_unitario": 2500.0,
+        "subtotal": 25000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Camisolines descartables",
+        "cantidad": 5,
+        "precio_unitario": 8000.0,
+        "subtotal": 40000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0040.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0040.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0040.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0039",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0039.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0039.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0039.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0038",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Hospital Central",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 65000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 65000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Barbijos descartables",
+        "cantidad": 10,
+        "precio_unitario": 2500.0,
+        "subtotal": 25000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Camisolines descartables",
+        "cantidad": 5,
+        "precio_unitario": 8000.0,
+        "subtotal": 40000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0038.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0038.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0038.pdf",
+    "total_pagado": 500.0,
+    "saldo_pendiente": 64500.0,
+    "estado_pago": "Parcial"
+  },
+  {
+    "numero": "UMSA-P-2026-0037",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0037.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0037.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0037.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0036",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0036.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0036.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0036.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0035",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Hospital Central",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 65000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 65000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Barbijos descartables",
+        "cantidad": 10,
+        "precio_unitario": 2500.0,
+        "subtotal": 25000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Camisolines descartables",
+        "cantidad": 5,
+        "precio_unitario": 8000.0,
+        "subtotal": 40000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0035.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0035.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0035.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0034",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Hospital Central",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 65000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 65000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Barbijos descartables",
+        "cantidad": 10,
+        "precio_unitario": 2500.0,
+        "subtotal": 25000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Camisolines descartables",
+        "cantidad": 5,
+        "precio_unitario": 8000.0,
+        "subtotal": 40000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0034.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0034.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0034.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0033",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0033.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0033.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0033.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0032",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Gallo",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 4800.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 4800.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Rollo de gasa",
+        "cantidad": 4,
+        "precio_unitario": 1200.0,
+        "subtotal": 4800.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0032.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0032.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0032.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0031",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0031.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0031.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0031.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0030",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Gomez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 21500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 21500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Alcohol antiséptico",
+        "cantidad": 3,
+        "precio_unitario": 3000.0,
+        "subtotal": 9000.0
+      },
+      {
+        "idx": 2,
+        "descripcion": "Guantes látex descartables",
+        "cantidad": 5,
+        "precio_unitario": 2500.0,
+        "subtotal": 12500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0030.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0030.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0030.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0029",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0029.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0029.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0029.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0028",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Dr. Juan Perez",
+    "institucion": "UMSA San Andres de Giles",
+    "subtotal": 200000.0,
+    "iva_monto": 42000.0,
+    "iva_porcentaje": 21.0,
+    "total": 242000.0,
+    "estado": "Confirmado",
+    "validez": "15 dias corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Guantes descartables (caja x 100)",
+        "cantidad": 20,
+        "precio_unitario": 10000.0,
+        "subtotal": 200000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0028.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0028.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0028.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0007",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7750.0,
+        "subtotal": 15500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0007.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0007.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0007.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0008",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7750.0,
+        "subtotal": 15500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0008.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0008.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0008.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0009",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7750.0,
+        "subtotal": 15500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0009.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0009.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0009.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0011",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "gallo valentina",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 50000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 50000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (1 ítem)",
+        "cantidad": 1,
+        "precio_unitario": 50000.0,
+        "subtotal": 50000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0011.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0011.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0011.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0013",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 15500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 15500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7750.0,
+        "subtotal": 15500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0013.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0013.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0013.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0016",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0016.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0016.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0016.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0017",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0017.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0017.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0017.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0018",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0018.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0018.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0018.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0019",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0019.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0019.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0019.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0020",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0020.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0020.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0020.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0021",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0021.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0021.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0021.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0022",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 14500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 14500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7250.0,
+        "subtotal": 14500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0022.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0022.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0022.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0023",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Dos Solamente",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 17000.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 17000.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 8500.0,
+        "subtotal": 17000.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0023.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0023.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0023.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0026",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "María González",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 18500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 18500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (3 ítems)",
+        "cantidad": 3,
+        "precio_unitario": 6166.666666666667,
+        "subtotal": 18500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0026.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0026.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0026.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0027",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Juan Pérez",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 14500.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 14500.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [
+      {
+        "idx": 1,
+        "descripcion": "Insumos médicos cotizados (2 ítems)",
+        "cantidad": 2,
+        "precio_unitario": 7250.0,
+        "subtotal": 14500.0
+      }
+    ],
+    "filename": "UMSA-P-2026-0027.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0027.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0027.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0025",
+    "fecha": "13/10/2026",
+    "fecha_iso": "2026-10-13",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0025.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0025.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0025.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0024",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0024.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0024.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0024.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0015",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0015.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0015.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0015.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0014",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0014.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0014.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0014.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0012",
+    "fecha": "07/10/2026",
+    "fecha_iso": "2026-10-07",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0012.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0012.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0012.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0010",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0010.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0010.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0010.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0006",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0006.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0006.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0006.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0005",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0005.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0005.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0005.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0004",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0004.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0004.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0004.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0003",
+    "fecha": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0003.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0003.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0003.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0002",
+    "fecha": "05/10/2026",
+    "fecha_iso": "2026-10-05",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0002.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0002.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0002.pdf"
+  },
+  {
+    "numero": "UMSA-P-2026-0001",
+    "fecha": "05/10/2026",
+    "fecha_iso": "2026-10-05",
+    "cliente": "Cliente Profesional",
+    "institucion": "Centro Médico UMSA",
+    "subtotal": 0.0,
+    "iva_monto": 0.0,
+    "iva_porcentaje": 0.0,
+    "total": 0.0,
+    "estado": "Confirmado",
+    "validez": "15 días corridos",
+    "items": [],
+    "filename": "UMSA-P-2026-0001.pdf",
+    "rel_path": "presupuestos/UMSA-P-2026-0001.pdf",
+    "download_url": "/api/files/download/?path=presupuestos/UMSA-P-2026-0001.pdf"
+  }
+]

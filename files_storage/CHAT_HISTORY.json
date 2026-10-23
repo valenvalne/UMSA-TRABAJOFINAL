@@ -1,0 +1,122 @@
+[
+  {
+    "role": "user",
+    "content": "Dejá el presupuesto en pausa. ¿Qué medios de pago aceptan?"
+  },
+  {
+    "role": "assistant",
+    "content": "💳 **Medios de Pago Oficiales de UMSA Centro Médico:**\n\nEn UMSA aceptamos cuatro medios de pago oficiales, con control administrativo y vinculación directa a presupuestos:\n\n• **💵 Efectivo** (✅ Habilitado)\n  Cobro presencial en efectivo en ventanilla de administración y caja de UMSA Centro Médico.\n  *Instrucciones:* Presentarse en la administración central de UMSA Centro Médico de lunes a viernes de 08:00 a 20:00 hs para abonar y retirar el recibo oficial.\n\n• **💳 Tarjeta de débito/crédito** (✅ Habilitado)\n  Cobro presencial mediante tarjeta de débito o crédito a través de terminal POS institucional.\n  *Instrucciones:* Abono presencial en terminal POS en ventanilla de UMSA Centro Médico con tarjeta Visa, Mastercard o Cabal.\n\n• **🏛️ Transferencia bancaria** (✅ Habilitado)\n  Transferencia electrónica directa a la cuenta bancaria institucional de UMSA Centro Médico.\n  *Instrucciones:* Realizar la transferencia bancaria y presentar o enviar el comprobante con número de operación para su verificación administrativa.\n  *Datos bancarios:* Banco: A configurar | Titular: Centro Médico UMSA | CBU: Pendiente de configuración | Alias: Pendiente de configuración\n\n• **📱 Mercado Pago** (✅ Habilitado)\n  Cobro electrónico mediante link de pago oficial, QR o transferencia vía Mercado Pago.\n  *Instrucciones:* Escanee el código QR o acceda al enlace de pago oficial provisto por UMSA.\n\n📌 **Gestión de Cobranzas y Presupuestos:**\nCada pago se registra de forma manual o verificada vinculándolo al número de presupuesto oficial, lo que permite calcular automáticamente el importe pagado, el saldo pendiente y los estados (Pendiente, Parcial, Pagado o Cancelado) en la sección **Medios de pago** del panel.\n\n*(Tu borrador de presupuesto sigue pausado en segundo plano. Cuando quieras retomarlo, solo decime 'volver al presupuesto')*."
+  },
+  {
+    "role": "user",
+    "content": "Volvamos al presupuesto de antes"
+  },
+  {
+    "role": "assistant",
+    "content": "Retomamos el presupuesto en curso:\n\n• 6 unidad(es) de Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U) a $2500 c/u: $15000\n\nTotal: **$15000**.\n\n¿A nombre de qué cliente o profesional lo preparamos?"
+  },
+  {
+    "role": "user",
+    "content": "Quiero cuatro cajas de guantes"
+  },
+  {
+    "role": "assistant",
+    "content": "Agregué 4 caja(s) de Guantes látex descartables al borrador, a $2500 cada una, con un subtotal de **$10000**. ¿A nombre de qué cliente o profesional lo preparo?"
+  },
+  {
+    "role": "user",
+    "content": "Quiero saber cuánto cuestan cuatro cajas de guantes, pero todavía no hagas un presupuesto"
+  },
+  {
+    "role": "assistant",
+    "content": "• **Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U)**: **$10000** por las 4 unidades ($2500 c/u). Stock: **ILIMITADO**.\n\nQueda registrado como consulta informativa sin generar presupuesto."
+  },
+  {
+    "role": "user",
+    "content": "¿Cuánto cuesta un tensiómetro digital?"
+  },
+  {
+    "role": "assistant",
+    "content": "El producto 'tensiometro' no se encuentra disponible en nuestro catálogo oficial de insumos descartables de UMSA Centro Médico.\n\nActualmente disponemos de **Stock ILIMITADO** con disponibilidad permanente para los siguientes 10 insumos médicos oficiales:\n\n• **Guantes látex descartables** (Caja x 100 U): **$2500**\n• **Jeringas descartables** (Caja x 50 U): **$3500**\n• **Rollo de gasa** (90 cm x 100 m): **$1200**\n• **Paquete algodón** (200 g): **$1000**\n• **Alcohol antiséptico** (100 ml): **$3000**\n• **Agua oxigenada** (100 ml): **$3000**\n• **Barbijos descartables** (Caja x 50 unidades): **$2500.0**\n• **Cinta adhesiva hipoalergénica** (Rollo x 1 unidad): **$1500**\n• **Cofias descartables** (Paquete x 100 unidades): **$3000**\n• **Camisolines descartables** (Paquete x 10 unidades): **$8000**\n\n¿Deseás realizar una consulta de precios o preparar un presupuesto sobre alguno de estos insumos?"
+  },
+  {
+    "role": "user",
+    "content": "hola tienen batas?"
+  },
+  {
+    "role": "assistant",
+    "content": "Comprendo lo que me planteás. En este momento el servicio externo de conocimiento general no está disponible o la consulta excede el marco del sistema; sin embargo, como asistente administrativo del Centro Médico UMSA puedo orientarte con precisión sobre insumos descartables con stock permanente, armar presupuestos en PDF, consultar medios de pago habilitados o gestionar archivos del centro médico. ¿Sobre cuál de estos temas preferís que avancemos?"
+  },
+  {
+    "role": "user",
+    "content": "hola necesito guantes"
+  },
+  {
+    "role": "assistant",
+    "content": "¡Hola! Claro, preparemos el presupuesto. Agregué 1 caja(s) de Guantes látex descartables al borrador, a $2500 cada una, con un subtotal de **$2500**. ¿A nombre de qué cliente o profesional lo preparo?"
+  },
+  {
+    "role": "user",
+    "content": "tienen ademas jeirngas?"
+  },
+  {
+    "role": "assistant",
+    "content": "Comprendo lo que me planteás. En este momento el servicio externo de conocimiento general no está disponible o la consulta excede el marco del sistema; sin embargo, como asistente administrativo del Centro Médico UMSA puedo orientarte con precisión sobre insumos descartables con stock permanente, armar presupuestos en PDF, consultar medios de pago habilitados o gestionar archivos del centro médico. ¿Sobre cuál de estos temas preferís que avancemos?"
+  },
+  {
+    "role": "user",
+    "content": "tienen jeringas?"
+  },
+  {
+    "role": "assistant",
+    "content": "Sí, contamos con **Jeringas descartables (JERINGAS DESCARTABLES - Caja x 50 U)** a **$3500** con disponibilidad permanente y **Stock ILIMITADO**."
+  },
+  {
+    "role": "user",
+    "content": "hola"
+  },
+  {
+    "role": "assistant",
+    "content": "¡Hola! Te doy la bienvenida al Panel Administrativo de UMSA Centro Médico. Estoy a tu disposición para ayudarte a consultar insumos con stock ilimitado, preparar presupuestos oficiales en PDF, gestionar los medios de pago y cobranzas, o consultar archivos del sistema. ¿En qué puedo colaborar hoy?"
+  },
+  {
+    "role": "user",
+    "content": "tienen jeringas?"
+  },
+  {
+    "role": "assistant",
+    "content": "Sí, contamos con **Jeringas descartables (JERINGAS DESCARTABLES - Caja x 50 U)** a **$3500** con disponibilidad permanente y **Stock ILIMITADO**."
+  },
+  {
+    "role": "user",
+    "content": "y tienen barbijos de algodon?"
+  },
+  {
+    "role": "assistant",
+    "content": "Sí, contamos con **Paquete algodón (PAQUETE ALGODON - 200 g)** a **$1000** con disponibilidad permanente y **Stock ILIMITADO**."
+  },
+  {
+    "role": "user",
+    "content": "tienen saturadoras?"
+  },
+  {
+    "role": "assistant",
+    "content": "Comprendo lo que me planteás. En este momento el servicio externo de conocimiento general no está disponible o la consulta excede el marco del sistema; sin embargo, como asistente administrativo del Centro Médico UMSA puedo orientarte con precisión sobre insumos descartables con stock permanente, armar presupuestos en PDF, consultar medios de pago habilitados o gestionar archivos del centro médico. ¿Sobre cuál de estos temas preferís que avancemos?"
+  },
+  {
+    "role": "user",
+    "content": "quiero un presupuesto"
+  },
+  {
+    "role": "assistant",
+    "content": "¡Con gusto! Para armar el presupuesto oficial, indicame el nombre y apellido del profesional o cliente y los insumos que necesitás cotizar."
+  },
+  {
+    "role": "user",
+    "content": "Necesito un presupuesto"
+  },
+  {
+    "role": "assistant",
+    "content": "¡Con gusto! Para armar el presupuesto oficial, indicame el nombre y apellido del profesional o cliente y los insumos que necesitás cotizar."
+  }
+]

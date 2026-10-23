@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect width="160" height="50" rx="8" fill="#004481"/>
+  <!-- BBVA Bold Angled Typography -->
+  <text x="80" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="1" text-anchor="middle">BBVA</text>
+</svg>

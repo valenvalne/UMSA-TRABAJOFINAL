@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect width="160" height="50" rx="8" fill="#FF3366"/>
+  <!-- Stylized U with star/sparkle -->
+  <g transform="translate(18, 12)">
+    <circle cx="13" cy="13" r="13" fill="#FFFFFF"/>
+    <text x="13" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="900" fill="#FF3366" text-anchor="middle">u</text>
+  </g>
+  <text x="52" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">ualá</text>
+</svg>

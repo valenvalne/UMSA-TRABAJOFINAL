@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="500" height="500" fill="url(#bgGrad)"/>
+  
+  <g filter="url(#shadow)">
+    <!-- Surgical Gown / Camisolín descartable -->
+    <!-- Collar & Gown body -->
+    <path d="M 215 95 Q 250 115 285 95 L 350 135 L 320 220 L 290 200 L 305 345 L 195 345 L 210 200 L 180 220 L 150 135 Z" fill="#E0F2FE" stroke="#7DD3FC" stroke-width="2"/>
+    
+    <!-- Sleeves and cuffs -->
+    <ellipse cx="335" cy="210" rx="15" ry="12" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+    <ellipse cx="165" cy="210" rx="15" ry="12" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+    
+    <!-- Central seam / tie straps -->
+    <line x1="250" y1="110" x2="250" y2="345" stroke="#BAE6FD" stroke-width="2" stroke-dasharray="4 4"/>
+    
+    <!-- Waist belt / ties -->
+    <path d="M 200 230 Q 250 240 300 230" fill="none" stroke="#0284C7" stroke-width="3"/>
+    <path d="M 300 230 Q 325 250 330 280" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 300 230 Q 315 260 310 290" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Medical Badge -->
+  <rect x="130" y="385" width="240" height="42" rx="21" fill="#0284C7" filter="url(#shadow)"/>
+  <text x="250" y="411" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">CAMISOLINES DESCARTABLES</text>
+  <text x="250" y="450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#64748B" text-anchor="middle">Paquete x 10 U · Quirúrgico Estéril</text>
+</svg>

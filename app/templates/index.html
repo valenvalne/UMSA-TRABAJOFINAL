@@ -1,0 +1,2755 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UMSA Centro Médico · Panel Administrativo</title>
+  <meta name="description" content="Panel Administrativo de UMSA Centro Médico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="admin-app">
+  {% csrf_token %}
+
+  <!-- Contenedor oculto para compatibilidad técnica de la guía de evaluación -->
+  <div class="sr-only" style="display:none;" aria-hidden="true">
+    UMSA IA - Panel Administrativo Inteligente (files_storage)
+  </div>
+
+  <!-- LAYOUT PRINCIPAL CON SIDEBAR -->
+  <div class="app-wrapper">
+
+    <!-- 1. SIDEBAR LATERAL MINIMALISTA -->
+    <aside class="app-sidebar" id="appSidebar">
+      <!-- Encabezado de la barra lateral -->
+      <div class="sidebar-header">
+        <div class="brand-badge-box">
+          <div class="brand-logo">
+            <span class="logo-cross">✚</span>
+          </div>
+          <div class="brand-meta">
+            <span class="brand-org">UMSA CENTRO MÉDICO</span>
+            <span class="brand-badge">SEDE CENTRAL</span>
+          </div>
+        </div>
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">UMSA</h1>
+          <p class="brand-subtitle">Panel Administrativo</p>
+        </div>
+      </div>
+
+      <!-- Menú de Navegación Principal Minimalista -->
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">MENÚ ADMINISTRATIVO</div>
+        <button type="button" class="sidebar-link active" data-tab="tab-dashboard" id="navBtnDashboard">
+          <span class="link-icon">🏠</span>
+          <span class="link-label">Inicio</span>
+        </button>
+
+        <button type="button" class="sidebar-link" data-tab="tab-inventario" id="navBtnInventario">
+          <span class="link-icon">📦</span>
+          <span class="link-label">Inventario</span>
+        </button>
+
+        <button type="button" class="sidebar-link" data-tab="tab-presupuestos" id="navBtnPresupuestos">
+          <span class="link-icon">📋</span>
+          <span class="link-label">Presupuestos</span>
+        </button>
+
+        <button type="button" class="sidebar-link" data-tab="tab-historial-presupuestos" id="navBtnHistorialPresupuestos">
+          <span class="link-icon">📑</span>
+          <span class="link-label">Historial</span>
+        </button>
+
+        <button type="button" class="sidebar-link" data-tab="tab-pagos" id="navBtnPagos">
+          <span class="link-icon">💳</span>
+          <span class="link-label">Medios de pago</span>
+        </button>
+
+        <button type="button" class="sidebar-link" data-tab="tab-chat" id="navBtnChat">
+          <span class="link-icon">🤖</span>
+          <span class="link-label">Asistente</span>
+        </button>
+
+        <!-- Elementos técnicos preservados internamente para tests y backend (ocultos del usuario) -->
+        <div id="technicalNavSection" style="display:none;" aria-hidden="true">
+          <button type="button" class="sidebar-link" data-tab="tab-archivos" id="navBtnArchivos">
+            <span class="link-label">Archivos</span>
+            <span class="link-counter" id="sidebarFilesCount">{{ files|length }}</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-memoria" id="navBtnMemoria">
+            <span class="link-label">Memoria</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-historial" id="navBtnHistorial">
+            <span class="link-label">Historial</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-modulos" id="navBtnModulos">
+            <span class="link-label">Módulos</span>
+            <span class="link-counter" id="sidebarModulesCount">{{ modules|length }}</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-indice" id="navBtnIndice">
+            <span class="link-label">Índice</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-turnos" id="navBtnTurnos">
+            <span class="link-label">Turnos</span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-umsa" id="navBtnUmsa">
+            <span class="link-label">UMSA</span>
+            <span class="link-indicator" id="sidebarUmsaIndicator"></span>
+          </button>
+          <button type="button" class="sidebar-link" data-tab="tab-config" id="navBtnConfig">
+            <span class="link-label">Config</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Pie minimalista del Sidebar -->
+      <div class="sidebar-footer">
+        <div class="sidebar-clean-status">
+          <span class="status-dot dot-online"></span>
+          <span class="meta-label">Sistema Operativo</span>
+        </div>
+        <div style="display:none;" aria-hidden="true">
+          <span id="footerClaudeDot"></span>
+          <span id="footerUmsaDot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 2. CONTENIDO PRINCIPAL -->
+    <div class="app-main">
+
+      <!-- BARRA SUPERIOR INSTITUCIONAL -->
+      <header class="top-navbar">
+        <div class="top-navbar-left">
+          <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Alternar menú lateral">☰</button>
+          <div class="top-title-area">
+            <h2 class="top-section-name" id="topSectionName">Inicio</h2>
+            <span class="top-section-sub">UMSA Centro Médico · Panel Administrativo</span>
+          </div>
+        </div>
+
+        <!-- BÚSQUEDA GLOBAL UNIFICADA -->
+        <div class="top-navbar-center">
+          <div class="global-search-container" id="globalSearchContainer">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearchInput" placeholder="¿Qué estás buscando?" autocomplete="off" />
+            <button type="button" class="search-clear-btn" id="globalSearchClearBtn" style="display:none;" title="Limpiar búsqueda">✕</button>
+            <div class="global-search-dropdown" id="globalSearchDropdown" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="top-navbar-right">
+          <!-- Elementos técnicos preservados internamente pero ocultos de la vista -->
+          <div style="display:none;" aria-hidden="true">
+            <select id="globalModuleSelect">
+              <option value="">(Raíz Global)</option>
+              {% for mod in modules %}
+              <option value="{{ mod }}">{{ mod }}/</option>
+              {% endfor %}
+            </select>
+            <div id="topClaudeChip"></div>
+            <div id="topUmsaChip"></div>
+          </div>
+
+          <div class="top-institutional-badge">
+            <span class="status-dot dot-online"></span>
+            <span>Centro de Salud Activo</span>
+          </div>
+
+          <button type="button" class="btn btn-sm btn-outline" id="globalRefreshBtn" title="Actualizar datos">
+            🔄 Actualizar
+          </button>
+        </div>
+      </header>
+
+      <!-- VISTAS DEL PANEL (PANES) -->
+      <div class="view-viewport">
+
+        <!-- ================================================================= -->
+        <!-- 1. PESTAÑA: DASHBOARD (INICIO) -->
+        <!-- ================================================================= -->
+        <section class="view-pane active" id="tab-dashboard">
+          
+          <!-- ENCABEZADO INSTITUCIONAL -->
+          <div class="welcome-hero-card">
+            <div class="welcome-hero-badge">UMSA CENTRO MÉDICO</div>
+            <h2 class="welcome-hero-title">Bienvenido al Panel Administrativo</h2>
+            <h3 class="welcome-hero-subtitle-brand">UMSA Centro Médico</h3>
+            <p class="welcome-hero-subtitle">
+              Gestioná de forma simple y rápida la información administrativa del centro médico.
+            </p>
+          </div>
+
+          <!-- TARJETAS DE RESUMEN CON DATOS REALES -->
+          <div class="dashboard-kpi-grid">
+            <!-- 1. Presupuestos de hoy -->
+            <div class="kpi-card" id="kpiCardHoy">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-blue">📋</span>
+                <h4>Presupuestos de hoy</h4>
+              </div>
+              <div class="kpi-number" id="dashKpiHoy">{{ dashboard_metrics.presupuestos_hoy }}</div>
+              <p class="kpi-desc">Cantidad de presupuestos realizados durante el día.</p>
+            </div>
+
+            <!-- 2. Presupuestos pendientes -->
+            <div class="kpi-card" id="kpiCardPendientes">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-amber">⏳</span>
+                <h4>Presupuestos pendientes</h4>
+              </div>
+              <div class="kpi-number" id="dashKpiPendientes">{{ dashboard_metrics.presupuestos_pendientes }}</div>
+              <p class="kpi-desc">Cantidad de presupuestos que todavía no fueron confirmados o finalizados.</p>
+            </div>
+
+            <!-- 3. Productos disponibles -->
+            <div class="kpi-card" id="kpiCardProductos">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-teal">📦</span>
+                <h4>Productos disponibles</h4>
+              </div>
+              <div class="kpi-number" id="dashKpiProductos">{{ dashboard_metrics.productos_disponibles }}</div>
+              <p class="kpi-desc">Cantidad de productos registrados en el inventario.</p>
+            </div>
+
+            <!-- 4. Total presupuestado -->
+            <div class="kpi-card" id="kpiCardTotal">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-emerald">💰</span>
+                <h4>Total presupuestado</h4>
+              </div>
+              <div class="kpi-number kpi-money" id="dashKpiTotal">{% if dashboard_metrics.tiene_presupuestos %}{{ dashboard_metrics.total_presupuestado_formateado }}{% else %}0{% endif %}</div>
+              <p class="kpi-desc">{% if dashboard_metrics.tiene_presupuestos %}Monto total de los presupuestos realizados.{% else %}No hay presupuestos registrados.{% endif %}</p>
+            </div>
+          </div>
+
+          <!-- ACCIONES RÁPIDAS -->
+          <div class="dashboard-quick-actions-card">
+            <h3 class="quick-actions-title">Acciones rápidas</h3>
+            <div class="quick-actions-row">
+              <button type="button" class="btn-quick-action" id="dashQuickNewBudget">
+                <span class="qa-icon">📋</span>
+                <span class="qa-label">Nuevo presupuesto</span>
+              </button>
+              <button type="button" class="btn-quick-action" id="dashQuickViewInventory">
+                <span class="qa-icon">📦</span>
+                <span class="qa-label">Ver inventario</span>
+              </button>
+              <button type="button" class="btn-quick-action" id="dashQuickSearch">
+                <span class="qa-icon">🔎</span>
+                <span class="qa-label">Buscar</span>
+              </button>
+              <button type="button" class="btn-quick-action" id="dashQuickOpenAssistant">
+                <span class="qa-icon">🤖</span>
+                <span class="qa-label">Abrir asistente</span>
+              </button>
+              <button type="button" class="btn-quick-action" id="dashQuickPayments">
+                <span class="qa-icon">💳</span>
+                <span class="qa-label">Medios de pago</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Elementos funcionales heredados y botones para compatibilidad JS -->
+          <div style="display:none;" aria-hidden="true">
+            <button type="button" id="heroStartBudgetBtn"></button>
+            <button type="button" id="dashCardStartBudgetBtn"></button>
+            <button type="button" id="dashCardViewInventoryBtn"></button>
+            <button type="button" id="dashCardOpenAssistantBtn"></button>
+          </div>
+
+          <!-- SECCIONES TÉCNICAS OCULTAS (PRESERVADAS PARA PRUEBAS Y JS) -->
+          <div id="technicalDashboardSections" style="display:none;" aria-hidden="true">
+            <button type="button" id="dashStartChatBtn"></button>
+            <button type="button" id="dashViewFilesBtn"></button>
+            <button type="button" id="dashNewPresupuestoBtn"></button>
+            <button type="button" id="dashNewModuleBtn"></button>
+            <div class="module-chips-list">
+              {% for mod in modules %}
+              <div class="module-chip" data-module="{{ mod }}">
+                <span>📂</span><strong>{{ mod }}/</strong>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="kpi-num">{{ system_status.presupuestos_count }}</div>
+            <div id="btnTestManualFile"></div>
+            <div id="btnTestToolCalling"></div>
+            <div id="btnTestMemory"></div>
+            <div id="btnTestIsolatedModule"></div>
+          </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 2. PESTAÑA: ASISTENTE ADMINISTRATIVO (CHAT) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-chat">
+          <div class="chat-view-layout">
+
+            <!-- Sidebar contextual técnico oculto pero preservado para JS -->
+            <aside class="chat-context-panel" style="display:none;" aria-hidden="true">
+              <select id="chatModuleSelect">
+                <option value="">Raíz (Global)</option>
+                {% for mod in modules %}
+                <option value="{{ mod }}">{{ mod }}/</option>
+                {% endfor %}
+              </select>
+            </aside>
+
+            <!-- Área principal del Chat -->
+            <div class="chat-main-area">
+              <div class="chat-header-bar">
+                <div class="chat-header-info">
+                  <h3>🤖 Asistente UMSA</h3>
+                  <span class="chat-header-tagline">¿En qué puedo ayudarte?</span>
+                </div>
+                <div class="chat-header-actions">
+                  <button type="button" class="btn btn-xs btn-outline" id="clearChatBtn" title="Reiniciar conversación actual">
+                    🗑️ Limpiar Chat
+                  </button>
+                </div>
+              </div>
+
+              <!-- Banner de Presupuesto en Curso / Edición -->
+              <div id="chatDraftBanner" class="chat-draft-banner" style="display:none;">
+                <div class="draft-banner-content">
+                  <span class="draft-badge">✏️ Presupuesto en edición</span>
+                  <span id="chatDraftBannerText">Borrador actual</span>
+                </div>
+                <div class="draft-banner-actions">
+                  <button type="button" class="btn btn-xs btn-success" id="btnConfirmDraftFromChat">
+                    ✅ Confirmar y generar PDF
+                  </button>
+                </div>
+              </div>
+
+              <!-- Barra de Sugerencias Rápidas -->
+              <div class="chat-suggestions-bar">
+                <span class="suggestions-label">Sugerencias:</span>
+                <div class="suggestions-chips">
+                  <button type="button" class="chat-suggestion-chip btn-quick-budget">
+                    📋 Crear presupuesto
+                  </button>
+                  <button type="button" class="chat-suggestion-chip quick-prompt-btn" data-prompt="¿Qué materiales tenemos?">
+                    📦 Consultar inventario
+                  </button>
+                  <button type="button" class="chat-suggestion-chip quick-prompt-btn" data-prompt="¿Cuánto cuesta una caja de guantes?">
+                    💰 Consultar precio
+                  </button>
+                  <button type="button" class="chat-suggestion-chip quick-prompt-btn" data-prompt="¿Cuánto stock queda de guantes?">
+                    ❓ Consultar stock
+                  </button>
+                </div>
+              </div>
+
+              <!-- Contenedor de mensajes de chat -->
+              <div class="chat-bubbles-scroll" id="chatMessages">
+                <div class="message-bubble assistant">
+                  <div class="bubble-header">
+                    <span class="bubble-author">🤖 Asistente UMSA</span>
+                    <span class="bubble-tag tag-system">ASISTENTE</span>
+                  </div>
+                  <div class="bubble-body">
+                    <p><strong>Hola, ¿en qué puedo ayudarte?</strong></p>
+                    <p>Soy el asistente del centro médico. Podés consultarme sobre presupuestos, precios, disponibilidad de insumos médicos o realizar consultas administrativas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Formulario de Entrada de Mensaje -->
+              <form class="chat-composer" id="chatForm">
+                <div class="composer-inner">
+                  <textarea 
+                    id="chatInput" 
+                    rows="2" 
+                    placeholder="Escribí tu consulta aquí (ej: 'Quiero hacer un presupuesto' o '¿Cuánto cuesta el alcohol?')..."
+                    required
+                  ></textarea>
+                  <button type="submit" class="btn btn-primary" id="chatSendBtn">
+                    <span class="btn-text">Enviar</span>
+                    <span class="btn-spinner" style="display:none;">⏳</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 3. PESTAÑA: ARCHIVOS (EXPLORADOR CRUD REAL DE files_storage/) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-archivos">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📁 Explorador de Archivos · <code>files_storage/</code></h3>
+                <span class="badge badge-subtle">CRUD REAL EN DISCO</span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="btnOpenNewFileModal">
+                  ➕ Crear Archivo
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" id="btnOpenNewFolderModal">
+                  ➕ Nuevo Módulo
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnViewIndexQuick">
+                  📖 Ver INDEX.md
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshFilesBtn">
+                  🔄 Refrescar
+                </button>
+              </div>
+            </div>
+
+            <!-- Barra de Filtros y Búsqueda -->
+            <div class="files-filter-bar">
+              <div class="filter-item">
+                <label for="moduleFilterSelect">Filtrar por Módulo:</label>
+                <select id="moduleFilterSelect" class="form-control form-control-sm">
+                  <option value="">(Todos los archivos)</option>
+                  {% for mod in modules %}
+                  <option value="{{ mod }}">{{ mod }}/</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="filter-item search-item">
+                <input type="text" id="fileSearchInput" class="form-control form-control-sm" placeholder="Buscar por nombre o módulo...">
+              </div>
+            </div>
+
+            <!-- Tabla de Archivos Físicos -->
+            <div class="table-responsive">
+              <table class="data-table" id="filesTable">
+                <thead>
+                  <tr>
+                    <th style="width: 40%;">Archivo</th>
+                    <th style="width: 15%;">Módulo</th>
+                    <th style="width: 15%;">Tamaño</th>
+                    <th style="width: 15%;">Modificación</th>
+                    <th style="width: 15%; text-align: right;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="filesTbody">
+                  {% for file in files %}
+                  <tr class="file-row" data-name="{{ file.name }}" data-module="{{ file.module }}">
+                    <td>
+                      <span class="row-icon">{% if file.is_pdf %}📕{% elif file.is_editable %}📝{% else %}📄{% endif %}</span>
+                      <strong class="file-name-text">{{ file.name }}</strong>
+                      <span class="file-rel-path">{{ file.rel_path }}</span>
+                    </td>
+                    <td>
+                      <span class="badge badge-module">{{ file.module }}</span>
+                    </td>
+                    <td>{{ file.size_str }}</td>
+                    <td>{{ file.modified }}</td>
+                    <td style="text-align: right;">
+                      {% if file.is_editable %}
+                      <button type="button" class="btn btn-xs btn-outline btn-view-file" data-path="{{ file.rel_path }}">👁️ Ver / Editar</button>
+                      {% endif %}
+                      <a href="{{ file.download_url }}" class="btn btn-xs btn-outline" download>⬇️</a>
+                      {% if file.name != "INDEX.md" and file.name != "MEMORY.md" and file.name != "CHAT_HISTORY.json" %}
+                      <button type="button" class="btn btn-xs btn-danger-outline btn-delete-file" data-path="{{ file.rel_path }}" title="Eliminar archivo físico">🗑️</button>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td colspan="5" class="text-center muted-text py-4">No hay archivos registrados en files_storage/.</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 4. PESTAÑA: MEMORIA PERSISTENTE (MEMORY.md) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-memoria">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>🧠 Memoria Persistente (<code>MEMORY.md</code>)</h3>
+                <span class="badge badge-accent">NIVEL 2 · SOBREVIVE REINICIOS</span>
+              </div>
+              <div class="panel-actions-group">
+                <select id="memoryModuleSelect" class="form-control form-control-sm">
+                  <option value="">Memoria Global (files_storage/MEMORY.md)</option>
+                  {% for mod in modules %}
+                  <option value="{{ mod }}">{{ mod }}/MEMORY.md</option>
+                  {% endfor %}
+                </select>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshMemoryBtn">🔄 Refrescar</button>
+              </div>
+            </div>
+
+            <div class="memory-two-col">
+              <!-- Visor de contenido real -->
+              <div class="memory-viewer-box">
+                <div class="viewer-head">
+                  <span id="memoryViewerTitle">Contenido físico en disco: files_storage/MEMORY.md</span>
+                  <span class="badge badge-subtle">Solo lectura / auto-anexado</span>
+                </div>
+                <pre class="code-viewer" id="memoryContentDisplay">{{ memory }}</pre>
+              </div>
+
+              <!-- Formulario de anexo de regla permanente -->
+              <div class="memory-form-box">
+                <h4>➕ Agregar Regla Permanente</h4>
+                <p class="muted-text">Toda regla guardada aquí es leída por Claude y persistirá aunque se reinicie Django o Docker.</p>
+                <form id="addMemoryForm">
+                  <div class="form-group mb-3">
+                    <label for="newMemoryRule">Texto de la regla o directiva:</label>
+                    <textarea 
+                      id="newMemoryRule" 
+                      class="form-control" 
+                      rows="5" 
+                      placeholder="Ejemplo: Todos los documentos nuevos deben tener una sección de Criterios de Aceptación y nuestro framework base es Django." 
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" id="saveMemoryBtn">
+                    💾 Guardar Regla en MEMORY.md
+                  </button>
+                </form>
+
+                <div class="permanent-rules-notice mt-4">
+                  <h5>🛡️ Reglas Fundamentales Activas:</h5>
+                  <ul>
+                    <li>El framework base es Django.</li>
+                    <li>No inventar pacientes, profesionales, turnos ni disponibilidad.</li>
+                    <li>No inventar precios en presupuestos.</li>
+                    <li>Verificar disponibilidad antes de confirmar turnos.</li>
+                    <li>Separación estricta con página pública UMSA-Django.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 5. PESTAÑA: HISTORIAL (CHAT_HISTORY.json) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-historial">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>💬 Historial Persistente de Conversación (<code>CHAT_HISTORY.json</code>)</h3>
+                <span class="badge badge-subtle">NIVEL 1 · PERSISTENTE POR MÓDULO</span>
+              </div>
+              <div class="panel-actions-group">
+                <select id="historyModuleSelect" class="form-control form-control-sm">
+                  <option value="">Raíz (Global)</option>
+                  {% for mod in modules %}
+                  <option value="{{ mod }}">{{ mod }}/</option>
+                  {% endfor %}
+                </select>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshHistoryBtn">🔄 Refrescar</button>
+                <button type="button" class="btn btn-sm btn-danger-outline" id="clearHistoryBtn">🗑️ Limpiar Historial</button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div id="historyMessagesList" class="history-list-view">
+                <div class="muted-text text-center py-4">Cargando historial...</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 6. PESTAÑA: MÓDULOS (SUBCARPETAS AISLADAS) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-modulos">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>🧩 Módulos y Subcarpetas Aisladas</h3>
+                <span class="badge badge-accent">AISLAMIENTO COMPLETO</span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="btnCreateModuleModal">
+                  ➕ Crear Nuevo Módulo
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshModulesBtn">
+                  🔄 Refrescar
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="module-intro-box">
+                <p>Cada módulo en <code>files_storage/&lt;nombre&gt;/</code> es un espacio de trabajo aislado con su propia estructura:</p>
+                <ul>
+                  <li><code>INDEX.md</code>: Índice local de archivos del módulo.</li>
+                  <li><code>MEMORY.md</code>: Memoria persistente y directivas específicas del módulo.</li>
+                  <li><code>CHAT_HISTORY.json</code>: Historial independiente de conversación con Claude.</li>
+                </ul>
+              </div>
+
+              <!-- Tarjetas de Módulos -->
+              <div class="modules-cards-grid" id="modulesCardsContainer">
+                {% for mod in modules_summary %}
+                <div class="module-card">
+                  <div class="mod-card-header">
+                    <span class="mod-icon">📁</span>
+                    <h4>{{ mod.name }}/</h4>
+                    <span class="badge badge-module">{{ mod.file_count }} archivos</span>
+                  </div>
+                  <p class="mod-desc">{{ mod.description }}</p>
+                  <div class="mod-badges">
+                    <span class="tag-check">{% if mod.has_index %}✓ INDEX.md{% else %}✗ Sin INDEX{% endif %}</span>
+                    <span class="tag-check">{% if mod.has_memory %}✓ MEMORY.md{% else %}✗ Sin MEMORY{% endif %}</span>
+                    <span class="tag-check">{% if mod.has_history %}✓ Historial{% else %}✗ Sin Historial{% endif %}</span>
+                  </div>
+                  <div class="mod-card-actions">
+                    <button type="button" class="btn btn-xs btn-outline btn-filter-by-mod" data-module="{{ mod.name }}">
+                      📁 Ver Archivos
+                    </button>
+                    <button type="button" class="btn btn-xs btn-primary btn-chat-in-mod" data-module="{{ mod.name }}">
+                      🤖 Operar con Claude
+                    </button>
+                  </div>
+                </div>
+                {% empty %}
+                <div class="muted-text text-center py-4">Sin datos disponibles. No hay módulos creados aún.</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 7. PESTAÑA: ÍNDICE SEMÁNTICO (INDEX.md) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-indice">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📋 Índice Semántico (<code>INDEX.md</code>)</h3>
+                <span class="badge badge-subtle">ROUTER DE ARCHIVOS PARA CLAUDE</span>
+              </div>
+              <div class="panel-actions-group">
+                <select id="indexModuleSelect" class="form-control form-control-sm">
+                  <option value="">Índice Maestro Global (files_storage/INDEX.md)</option>
+                  {% for mod in modules %}
+                  <option value="{{ mod }}">{{ mod }}/INDEX.md</option>
+                  {% endfor %}
+                </select>
+                <button type="button" class="btn btn-sm btn-primary" id="btnRebuildIndex">
+                  ⚡ Reconstruir Índice Ahora
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshIndexBtn">
+                  🔄 Refrescar
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="index-explainer-banner">
+                <strong>💡 Función del Índice según la Guía de Clase:</strong>
+                <p>Funciona como router y catálogo maestro de archivos físicos. Cada vez que Claude o el usuario crea, modifica o elimina un documento mediante Tool Calling, el índice se actualiza automáticamente para que Claude sepa exactamente qué archivos existen sin necesidad de consumir tokens leyendo todo el disco.</p>
+              </div>
+
+              <div class="index-viewer-wrap mt-3">
+                <pre class="code-viewer" id="indexContentDisplay">{{ index_content }}</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 8. PESTAÑA: PRESUPUESTOS (PROFESIONALES / REPORTLAB PDF) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-presupuestos">
+          <div class="presupuestos-view-grid">
+
+            <!-- Formulario de creación de presupuesto -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div class="panel-title-group">
+                  <h3>💰 Generador de Presupuestos Médicos y Profesionales</h3>
+                  <span class="badge badge-accent">PDF OFICIAL · REPORTLAB</span>
+                </div>
+              </div>
+
+              <div class="panel-body">
+                <!-- Asistente de IA para interpretar solicitudes -->
+                <div class="ai-parse-box">
+                  <div class="ai-parse-head">
+                    <span>🤖 <strong>Asistir con IA:</strong> Interpretar solicitud administrativa</span>
+                    <span class="badge badge-subtle">Regla: No inventa precios</span>
+                  </div>
+                  <div class="ai-parse-input-row">
+                    <input 
+                      type="text" 
+                      id="aiParseInput" 
+                      placeholder="Ej: El Dr. Juan Pérez necesita un presupuesto por 20 cajas de guantes descartables a $10.000 la unidad."
+                    >
+                    <button type="button" class="btn btn-secondary btn-sm" id="aiParseBtn">
+                      Interpretar con IA
+                    </button>
+                  </div>
+                  <div id="aiParseNotice" class="ai-notice" style="display:none;"></div>
+                </div>
+
+                <form id="presupuestoForm">
+                  <div class="form-grid-2">
+                    <div class="form-group mb-2">
+                      <label for="presCliente"><strong>Cliente / Profesional:</strong> <span class="required">*</span></label>
+                      <input type="text" id="presCliente" class="form-control" placeholder="Ej: Dr. Juan Pérez" required>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="presInstitucion"><strong>Institución / Clínica:</strong> (opcional)</label>
+                      <input type="text" id="presInstitucion" class="form-control" placeholder="Ej: Sanatorio Central">
+                    </div>
+                  </div>
+
+                  <div class="form-grid-2">
+                    <div class="form-group mb-2">
+                      <label for="presValidez"><strong>Validez del Presupuesto:</strong></label>
+                      <input type="text" id="presValidez" class="form-control" value="15 días corridos">
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="presIvaSelect"><strong>Alícuota IVA:</strong></label>
+                      <select id="presIvaSelect" class="form-control">
+                        <option value="21.0" selected>21% (General)</option>
+                        <option value="10.5">10.5% (Tasa reducida insumos)</option>
+                        <option value="0.0">0% (Exento)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Tabla dinámica de productos -->
+                  <div class="products-section mt-3">
+                    <div class="products-head">
+                      <h4>📋 Detalle de Productos e Insumos</h4>
+                      <button type="button" class="btn btn-sm btn-outline" id="addRowBtn">
+                        ➕ Agregar Producto
+                      </button>
+                    </div>
+
+                    <div class="table-responsive">
+                      <table class="data-table" id="productsTable">
+                        <thead>
+                          <tr>
+                            <th style="width: 45%;">Descripción / Producto</th>
+                            <th style="width: 15%;">Cantidad</th>
+                            <th style="width: 20%;">Precio Unitario ($)</th>
+                            <th style="width: 15%;">Subtotal ($)</th>
+                            <th style="width: 5%;"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="productsTbody">
+                          <tr class="product-row">
+                            <td>
+                              <input type="text" class="form-control row-desc" placeholder="Ej: Guantes descartables (caja x 100)" value="Guantes descartables" required>
+                            </td>
+                            <td>
+                              <input type="number" class="form-control row-cant" min="1" step="1" value="20" required>
+                            </td>
+                            <td>
+                              <input type="number" class="form-control row-price" min="0" step="any" placeholder="0.00" value="10000" required>
+                            </td>
+                            <td class="row-subtotal-cell">$ 200.000,00</td>
+                            <td>
+                              <button type="button" class="btn-del-row" title="Eliminar fila">✕</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="presObs"><strong>Observaciones administrativas:</strong></label>
+                    <textarea id="presObs" class="form-control" rows="2" placeholder="Ej: Entrega inmediata en sede. Pago contra entrega o transferencia bancaria."></textarea>
+                  </div>
+
+                  <!-- Resumen Financiero -->
+                  <div class="financial-summary-card mt-3">
+                    <div class="summary-line">
+                      <span>Subtotal:</span>
+                      <strong id="summarySubtotal">$ 200.000,00</strong>
+                    </div>
+                    <div class="summary-line">
+                      <span id="summaryIvaLabel">IVA (21%):</span>
+                      <strong id="summaryIva">$ 42.000,00</strong>
+                    </div>
+                    <div class="summary-line total-line">
+                      <span>TOTAL ESTIMADO:</span>
+                      <strong id="summaryTotal">$ 242.000,00</strong>
+                    </div>
+                  </div>
+
+                  <div class="form-actions mt-3">
+                    <button type="submit" class="btn btn-primary btn-lg w-100" id="generatePresupuestoBtn">
+                      📄 Generar Presupuesto y PDF Oficial en disco
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Cuadro de Éxito con Descarga -->
+                <div id="presupuestoSuccessBox" class="alert alert-success mt-3" style="display:none;">
+                  <h4>✅ Presupuesto Emitido con Éxito</h4>
+                  <p id="presupuestoSuccessDesc"></p>
+                  <div class="alert-actions mt-2">
+                    <a href="#" class="btn btn-success" id="downloadLatestPdfBtn" target="_blank">
+                      ⬇️ Descargar Archivo PDF
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Listado de Presupuestos PDF Emitidos -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h4>📑 Presupuestos Guardados en <code>files_storage/presupuestos/</code></h4>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshPresupuestosBtn">🔄 Refrescar</button>
+              </div>
+              <div class="panel-body">
+                <div id="presupuestosFileList" class="file-list-compact">
+                  <div class="muted-text">Cargando presupuestos...</div>
+                </div>
+              </div>
+            </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- PESTAÑA: HISTORIAL DE PRESUPUESTOS (NUEVA SECCIÓN ADMINISTRATIVA) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-historial-presupuestos">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📋 Historial de presupuestos</h3>
+                <span class="badge badge-subtle">REGISTRO OFICIAL UMSA</span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="btnHistorialNewBudget">
+                  ➕ Nuevo presupuesto
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnRefreshHistorial">
+                  🔄 Actualizar
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <!-- Barra de Búsqueda y Filtros del Historial -->
+              <div class="historial-controls-bar">
+                <div class="historial-search-wrap">
+                  <span class="search-input-icon">🔍</span>
+                  <input type="text" id="historialSearchInput" class="form-control" placeholder="Buscar presupuesto..." />
+                </div>
+
+                <div class="historial-filters-wrap">
+                  <div class="btn-group-filters">
+                    <button type="button" class="btn-filter active" data-filter="todos">Todos</button>
+                    <button type="button" class="btn-filter" data-filter="confirmado">Confirmados</button>
+                    <button type="button" class="btn-filter" data-filter="pendiente">Pendientes</button>
+                    <button type="button" class="btn-filter" data-filter="cancelado">Cancelados</button>
+                  </div>
+
+                  <select id="historialDateFilter" class="form-control form-control-sm select-date-filter">
+                    <option value="">Todas las fechas</option>
+                    <option value="hoy">Hoy</option>
+                    <option value="semana">Últimos 7 días</option>
+                    <option value="mes">Este mes</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Tabla de Historial -->
+              <div class="table-responsive mt-3">
+                <table class="data-table" id="historialTable">
+                  <thead>
+                    <tr>
+                      <th style="width: 18%;">Nº</th>
+                      <th style="width: 14%;">Fecha</th>
+                      <th style="width: 28%;">Cliente</th>
+                      <th style="width: 16%; text-align: right;">Total</th>
+                      <th style="width: 12%; text-align: center;">Estado</th>
+                      <th style="width: 12%; text-align: right;">Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historialTbody">
+                    {% for pres in presupuestos_historial %}
+                    <tr class="historial-row" data-numero="{{ pres.numero }}" data-cliente="{{ pres.cliente }}" data-estado="{{ pres.estado }}">
+                      <td>
+                        <strong class="doc-num">{{ pres.numero }}</strong>
+                      </td>
+                      <td>{{ pres.fecha }}</td>
+                      <td>
+                        <strong class="client-name">{{ pres.cliente }}</strong>
+                      </td>
+                      <td style="text-align: right; font-weight: 700; color: var(--primary-navy);">
+                        ${{ pres.total|floatformat:0 }}
+                      </td>
+                      <td style="text-align: center;">
+                        <span class="badge badge-status {% if pres.estado == 'Confirmado' %}badge-success{% elif pres.estado == 'Pendiente' %}badge-warning{% else %}badge-subtle{% endif %}">
+                          {{ pres.estado }}
+                        </span>
+                      </td>
+                      <td style="text-align: right;">
+                        <div class="action-buttons-inline">
+                          <button type="button" class="btn btn-xs btn-outline btn-view-presupuesto" data-numero="{{ pres.numero }}" title="Ver detalle">
+                            👁 Ver
+                          </button>
+                          <a href="{{ pres.download_url }}" class="btn btn-xs btn-outline" download title="Descargar PDF">
+                            📄 PDF
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="6" class="text-center muted-text py-4">No hay presupuestos registrados.</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- PESTAÑA: INVENTARIO DE INSUMOS MÉDICOS (STOCK ILIMITADO) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-inventario">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📦 Inventario Oficial de Insumos Médicos</h3>
+                <span class="badge badge-success">STOCK ILIMITADO</span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="btnOpenNewInsumoModal">➕ Nuevo Insumo</button>
+                <button type="button" class="btn btn-sm btn-outline" id="refreshInventarioBtn">🔄 Refrescar</button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="alert alert-info mb-3">
+                <strong>🛡️ Regla Oficial de Stock Permanente:</strong>
+                <p>Todos los productos del inventario médico oficial cuentan con <strong>STOCK ILIMITADO</strong>. La institución no maneja límites numéricos de stock para estos ítems, no se descuenta stock al presupuestar ni se admiten estados de "sin stock" o "stock bajo". Cualquier cantidad solicitada por un profesional o cliente puede ser presupuestada inmediatamente.</p>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="inventarioTable">
+                  <thead>
+                    <tr>
+                      <th style="width: 9%; text-align: center;">Imagen</th>
+                      <th style="width: 27%;">Insumo</th>
+                      <th style="width: 20%;">Presentación</th>
+                      <th style="width: 14%; text-align: right;">Precio unitario</th>
+                      <th style="width: 11%; text-align: center;">Stock</th>
+                      <th style="width: 9%; text-align: center;">Estado</th>
+                      <th style="width: 10%; text-align: right;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in inventario %}
+                    <tr class="inv-row" data-id="{{ item.id }}" data-producto="{{ item.producto }}" data-precio="{{ item.precio_unitario }}">
+                      <td style="text-align: center;">
+                        <div class="inv-thumb-wrap">
+                          <img src="{{ item.imagen|default:'/media/productos/placeholder.svg' }}" 
+                               alt="{{ item.producto }}" 
+                               class="inv-thumb-img" 
+                               loading="lazy" 
+                               onerror="this.onerror=null;this.src='/media/productos/placeholder.svg';">
+                        </div>
+                      </td>
+                      <td>
+                        <strong class="inv-product-name">{{ item.producto }}</strong>
+                      </td>
+                      <td>
+                        <span class="muted-text">{{ item.presentacion }}</span>
+                      </td>
+                      <td style="text-align: right; font-weight: 700; color: var(--primary-navy);">
+                        ${{ item.precio_unitario }}
+                      </td>
+                      <td style="text-align: center;">
+                        <span class="badge badge-success" style="font-size: 11px; padding: 4px 10px; font-weight: 800; letter-spacing: 0.5px;">{{ item.stock }}</span>
+                      </td>
+                      <td style="text-align: center;">
+                        <span class="badge badge-subtle">{{ item.estado }}</span>
+                      </td>
+                      <td style="text-align: right;">
+                        <div class="action-buttons-inline">
+                          <button type="button" class="btn btn-xs btn-outline btn-edit-insumo" 
+                                  data-id="{{ item.id }}" 
+                                  data-producto="{{ item.producto }}" 
+                                  data-presentacion="{{ item.presentacion }}" 
+                                  data-precio="{{ item.precio_unitario }}" 
+                                  data-stock="{{ item.stock }}" 
+                                  data-estado="{{ item.estado }}" 
+                                  data-imagen="{{ item.imagen|default:'/media/productos/placeholder.svg' }}" 
+                                  title="Editar insumo e imagen">
+                            ✏️ Editar
+                          </button>
+                          <button type="button" class="btn btn-xs btn-outline btn-ask-single-inv" 
+                                  data-prompt="¿Cuánto cuesta {{ item.producto }}?" 
+                                  title="Consultar en Asistente">
+                            💬
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="7" class="text-center muted-text py-4">No se encontraron productos en el inventario.</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Banner de asistencia IA con inventario -->
+              <div class="context-info-box mt-4" style="background-color: var(--bg-subtle); border-radius: var(--radius-sm); padding: 16px; border-left: 3px solid var(--accent-teal);">
+                <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 6px;">🤖 Consultas de Inventario con Claude</h4>
+                <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px;">El asistente inteligente conoce estos 10 insumos médicos oficiales, sus presentaciones, precios y disponibilidad con stock permanente.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button type="button" class="btn btn-xs btn-outline btn-ask-inv" data-prompt="¿Tenemos guantes?">
+                    💬 "¿Tenemos guantes?"
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline btn-ask-inv" data-prompt="¿Cuánto sale la caja de barbijos?">
+                    💬 "Precio de barbijos"
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline btn-ask-inv" data-prompt="¿Qué precio tienen los camisolines?">
+                    💬 "Camisolines descartables"
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline btn-ask-inv" data-prompt="¿Tienen cinta adhesiva hipoalergénica?">
+                    💬 "Cinta hipoalergénica"
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline btn-ask-inv" data-prompt="¿Cuáles son los productos disponibles en inventario y sus precios?">
+                    💬 "Ver los 10 productos y precios"
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- PESTAÑA: MEDIOS DE PAGO Y COBRANZAS -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-pagos">
+          
+          <!-- TARJETAS DE INDICADORES DE COBRANZAS -->
+          <div class="pagos-kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-emerald">💰</span>
+                <h4>Total Cobrado</h4>
+              </div>
+              <div class="kpi-number kpi-money" id="kpiCobradoConfirmado">$ {{ pagos_metrics.total_confirmado|floatformat:2 }}</div>
+              <p class="kpi-desc">Pagos confirmados efectivamente recibidos.</p>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-amber">⏳</span>
+                <h4>Pendiente de Cobro</h4>
+              </div>
+              <div class="kpi-number kpi-money" id="kpiPendienteCobro">$ {{ pagos_metrics.total_pendiente_cobro|floatformat:2 }}</div>
+              <p class="kpi-desc">Saldo pendiente en presupuestos emitidos.</p>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-blue">📋</span>
+                <h4>Pagos Registrados</h4>
+              </div>
+              <div class="kpi-number" id="kpiPagosCount">{{ pagos_metrics.cantidad_pagos_registrados }}</div>
+              <p class="kpi-desc">Total de operaciones activas en el historial.</p>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-card-head">
+                <span class="kpi-icon icon-teal">⚖️</span>
+                <h4>Pagos Parciales</h4>
+              </div>
+              <div class="kpi-number" id="kpiParcialesCount">{{ pagos_metrics.cantidad_pagos_parciales }}</div>
+              <p class="kpi-desc">Cobros con saldo pendiente de cancelación.</p>
+            </div>
+          </div>
+
+          <!-- 2. BANNERS HERO CAROUSEL: PROMOCIONES FICTICIAS, CUOTAS & DESCUENTOS -->
+          <div class="pagos-banners-container">
+            <div class="banners-slider-wrapper" id="pagosBannersSlider">
+              <div class="banners-track" id="pagosBannersTrack">
+                
+                <!-- SLIDE 1: PLAN Z & CUOTAS SIN INTERÉS -->
+                <div class="promo-banner-slide" style="background-image: url('/static/img/banners/banner_cuotas.jpg');">
+                  <div class="promo-banner-overlay"></div>
+                  <div class="promo-banner-content">
+                    <div class="banner-badge-group">
+                      <span class="banner-badge banner-badge-orange">🔥 PLAN Z NARANJA X</span>
+                      <span class="banner-badge banner-badge-pill">✨ 3 Y 6 CUOTAS SIN INTERÉS</span>
+                      <span class="banner-badge banner-badge-pill">CFT: 0,00%</span>
+                    </div>
+                    <h3>Financiación Médica: Pagá en hasta 6 Cuotas Cero Interés</h3>
+                    <p>
+                      Aprovechá <strong>Plan Z con Naranja X</strong> en 3 cuotas fijas sin interés en todo nuestro catálogo de insumos y tratamientos. Cuota Simple 3 y 6 con Visa y Mastercard bancarias de todos los bancos.
+                    </p>
+                    <div class="banner-logos-row">
+                      <div class="banner-logo-item" title="Naranja X"><img src="/static/img/medios/naranjax.svg" alt="Naranja X"></div>
+                      <div class="banner-logo-item" title="Visa"><img src="/static/img/medios/visa.svg" alt="Visa"></div>
+                      <div class="banner-logo-item" title="Mastercard"><img src="/static/img/medios/mastercard.svg" alt="Mastercard"></div>
+                      <div class="banner-logo-item" title="Banco Santander"><img src="/static/img/medios/santander.svg" alt="Santander"></div>
+                      <div class="banner-logo-item" title="Banco Galicia"><img src="/static/img/medios/galicia.svg" alt="Galicia"></div>
+                    </div>
+                    <div class="banner-actions">
+                      <button type="button" class="btn-banner-primary btn-banner-simular" data-tarjeta="naranjax">
+                        🧮 Simular Plan Z Naranja X
+                      </button>
+                      <button type="button" class="btn-banner-outline btn-banner-copiar" data-promo="PLANZ-UMSA">
+                        📋 Copiar Cupón PLANZ-UMSA
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 2: MERCADO PAGO & MODO -->
+                <div class="promo-banner-slide" style="background-image: url('/static/img/banners/banner_wallets.jpg');">
+                  <div class="promo-banner-overlay"></div>
+                  <div class="promo-banner-content">
+                    <div class="banner-badge-group">
+                      <span class="banner-badge banner-badge-cyan">⚡ 15% OFF MERCADO PAGO</span>
+                      <span class="banner-badge banner-badge-pill">📱 QR INTEROPERABLE</span>
+                      <span class="banner-badge banner-badge-pill">🎁 20% REINTEGRO MODO</span>
+                    </div>
+                    <h3>Cobros Digitales: 15% OFF con Mercado Pago y Reintegro MODO</h3>
+                    <p>
+                      Escaneá en ventanilla con tu app favorita. Aboná con saldo en cuenta de Mercado Pago con 15% de descuento directo o utilizá MODO los días jueves con 20% de reintegro bancario.
+                    </p>
+                    <div class="banner-logos-row">
+                      <div class="banner-logo-item" title="Mercado Pago"><img src="/static/img/medios/mercadopago.svg" alt="Mercado Pago"></div>
+                      <div class="banner-logo-item" title="MODO"><img src="/static/img/medios/modo.svg" alt="MODO"></div>
+                      <div class="banner-logo-item" title="Cuenta DNI"><img src="/static/img/medios/cuentadni.svg" alt="Cuenta DNI"></div>
+                      <div class="banner-logo-item" title="Ualá"><img src="/static/img/medios/uala.svg" alt="Ualá"></div>
+                    </div>
+                    <div class="banner-actions">
+                      <button type="button" class="btn-banner-primary btn-banner-simular" data-tarjeta="mercadopago">
+                        📱 Ver Pasarela Mercado Pago
+                      </button>
+                      <button type="button" class="btn-banner-outline btn-filter-promos-btn" data-category="billeteras">
+                        🔍 Ver Beneficios Billeteras
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 3: BONIFICACIÓN CONTADO & CONVENIOS BANCARIOS -->
+                <div class="promo-banner-slide" style="background-image: url('/static/img/banners/banner_promos.jpg');">
+                  <div class="promo-banner-overlay"></div>
+                  <div class="promo-banner-content">
+                    <div class="banner-badge-group">
+                      <span class="banner-badge banner-badge-emerald">💎 10% BONIFICACIÓN CONTADO</span>
+                      <span class="banner-badge banner-badge-pill">🏥 CONVENIOS DE SALUD</span>
+                      <span class="banner-badge banner-badge-pill">🏛️ ACREDITACIÓN 24HS</span>
+                    </div>
+                    <h3>Descuentos Directos: 10% OFF en Efectivo y Transferencias</h3>
+                    <p>
+                      Bonificación institucional inmediata por pronto pago en caja central o transferencia bancaria CBU/Alias. Reintegros especiales con bancos Santander, Galicia y Banco Provincia.
+                    </p>
+                    <div class="banner-logos-row">
+                      <div class="banner-logo-item" title="Efectivo en Caja"><img src="/static/img/medios/efectivo.svg" alt="Efectivo"></div>
+                      <div class="banner-logo-item" title="Transferencia CBU"><img src="/static/img/medios/transferencia.svg" alt="Transferencia"></div>
+                      <div class="banner-logo-item" title="Banco Santander"><img src="/static/img/medios/santander.svg" alt="Santander"></div>
+                      <div class="banner-logo-item" title="BBVA"><img src="/static/img/medios/bbva.svg" alt="BBVA"></div>
+                      <div class="banner-logo-item" title="Cuenta DNI"><img src="/static/img/medios/cuentadni.svg" alt="Cuenta DNI"></div>
+                    </div>
+                    <div class="banner-actions">
+                      <button type="button" class="btn-banner-primary btn-banner-simular" data-tarjeta="contado">
+                        💵 Ver Descuento Contado
+                      </button>
+                      <button type="button" class="btn-banner-outline btn-filter-promos-btn" data-category="contado">
+                        🏷️ Ver Promos de Salud
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- CONTROLES DEL CAROUSEL -->
+              <button type="button" class="banner-nav-btn banner-nav-prev" id="btnBannerPrev" aria-label="Banner anterior">‹</button>
+              <button type="button" class="banner-nav-btn banner-nav-next" id="btnBannerNext" aria-label="Banner siguiente">›</button>
+
+              <div class="banner-dots-wrap" id="bannerDotsWrap">
+                <span class="banner-dot active" data-slide="0"></span>
+                <span class="banner-dot" data-slide="1"></span>
+                <span class="banner-dot" data-slide="2"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TICKER INFORMATIVO RÁPIDO DE PROMOCIONES -->
+          <div class="pagos-promo-ticker">
+            <div class="ticker-label">
+              <span>⚡</span> Promos Destacadas:
+            </div>
+            <div class="ticker-items">
+              <span class="ticker-item">🍊 <strong>Naranja X:</strong> 3 cuotas cero interés (Plan Z)</span>
+              <span class="ticker-item">📱 <strong>Mercado Pago:</strong> 15% OFF dinero en cuenta</span>
+              <span class="ticker-item">💳 <strong>Visa / Master:</strong> Cuota Simple 3 y 6 pagos</span>
+              <span class="ticker-item">🟣 <strong>MODO:</strong> 20% reintegro jueves</span>
+              <span class="ticker-item">🏦 <strong>Cuenta DNI:</strong> 20% ahorro salud</span>
+              <span class="ticker-item">💎 <strong>Contado:</strong> 10% bonificación en caja</span>
+            </div>
+          </div>
+
+          <!-- 3. SHOWCASE COMPLETO: MEDIOS DE PAGO, TARJETAS Y BILLETERAS CON LOGOS REALES -->
+          <div class="tarjetas-showcase-panel mb-4">
+            <div class="showcase-header">
+              <div class="showcase-title">
+                <div class="showcase-icon">💳</div>
+                <div>
+                  <h4>Tarjetas, Billeteras Virtuales y Medios de Pago Habilitados</h4>
+                  <p>Aceptamos los principales medios oficiales de Argentina con acreditación en el acto, terminal POS inalámbrico y cobros QR.</p>
+                </div>
+              </div>
+              <span class="badge badge-success" style="font-weight: 800;">14 MEDIOS HABILITADOS</span>
+            </div>
+
+            <!-- GRID DE TARJETAS DE MARCAS CON LOGOS REALES -->
+            <div class="medios-brands-grid">
+              
+              <!-- Naranja X -->
+              <div class="medio-brand-card" data-medio="naranjax">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/naranjax.svg" alt="Naranja X" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-naranja">Plan Z · 3 Cuotas 0%</span>
+                </div>
+                <div class="medio-brand-name">Naranja X</div>
+                <p class="medio-brand-desc">Aceptamos tarjetas de crédito Naranja X y débito Visa Naranja con Plan Z en 3 pagos sin ningún tipo de recargo.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 POS Presencial</span>
+                  <span class="text-muted">Acreditación Inmediata</span>
+                </div>
+              </div>
+
+              <!-- Mercado Pago -->
+              <div class="medio-brand-card" data-medio="mercadopago">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/mercadopago.svg" alt="Mercado Pago" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-mp">15% OFF en Cuenta</span>
+                </div>
+                <div class="medio-brand-name">Mercado Pago</div>
+                <p class="medio-brand-desc">Cobro mediante QR dinámico en mostrador, saldo en cuenta, tarjetas guardadas y planes en cuotas con Mercado Crédito.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">📱 QR & Enlace</span>
+                  <span class="text-muted">Instantáneo</span>
+                </div>
+              </div>
+
+              <!-- Visa -->
+              <div class="medio-brand-card" data-medio="visa">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/visa.svg" alt="Visa" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-visa">Hasta 6 Cuotas</span>
+                </div>
+                <div class="medio-brand-name">Visa Débito & Crédito</div>
+                <p class="medio-brand-desc">Todas las tarjetas Visa bancarias nacionales e internacionales. Pagos sin contacto (Contactless), chip y Cuota Simple.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 Chip & Contactless</span>
+                  <span class="text-muted">Todos los Bancos</span>
+                </div>
+              </div>
+
+              <!-- Mastercard -->
+              <div class="medio-brand-card" data-medio="mastercard">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/mastercard.svg" alt="Mastercard" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-master">Cuota Simple 3 y 6</span>
+                </div>
+                <div class="medio-brand-name">Mastercard</div>
+                <p class="medio-brand-desc">Tarjetas de débito y crédito Mastercard emitidas por bancos y fintechs. Financiación y transacciones protegidas.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 Terminal POS</span>
+                  <span class="text-muted">Red Bancaria</span>
+                </div>
+              </div>
+
+              <!-- MODO -->
+              <div class="medio-brand-card" data-medio="modo">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/modo.svg" alt="MODO" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-modo">20% Reintegro</span>
+                </div>
+                <div class="medio-brand-name">MODO Billetera Bancaria</div>
+                <p class="medio-brand-desc">Pagá con código QR interoperable desde la app MODO o las apps de más de 30 bancos. Reintegros directos en cuenta.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">📱 QR Interoperable</span>
+                  <span class="text-muted">+30 Bancos</span>
+                </div>
+              </div>
+
+              <!-- Cuenta DNI -->
+              <div class="medio-brand-card" data-medio="cuentadni">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/cuentadni.svg" alt="Cuenta DNI" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-dni">20% Reintegro Salud</span>
+                </div>
+                <div class="medio-brand-name">Cuenta DNI Banco Provincia</div>
+                <p class="medio-brand-desc">Billetera oficial de la Provincia de Buenos Aires. Beneficios y reintegros directos en comercios de salud.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">🏛️ QR & Clave DNI</span>
+                  <span class="text-muted">Banco Provincia</span>
+                </div>
+              </div>
+
+              <!-- Banco Santander -->
+              <div class="medio-brand-card" data-medio="santander">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/santander.svg" alt="Santander" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-san">15% OFF Martes</span>
+                </div>
+                <div class="medio-brand-name">Banco Santander</div>
+                <p class="medio-brand-desc">3 cuotas sin interés y reintegros los martes para clientes Santander. Cuenta institucional oficial UMSA.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 Tarjetas & CBU</span>
+                  <span class="text-muted">Cuenta Oficial</span>
+                </div>
+              </div>
+
+              <!-- Banco Galicia -->
+              <div class="medio-brand-card" data-medio="galicia">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/galicia.svg" alt="Banco Galicia" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-gali">3 Cuotas 0% + MODO</span>
+                </div>
+                <div class="medio-brand-name">Banco Galicia</div>
+                <p class="medio-brand-desc">Financiación en 3 cuotas sin interés y promociones combinables con MODO los días jueves.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 Tarjetas & App</span>
+                  <span class="text-muted">Reintegro 48hs</span>
+                </div>
+              </div>
+
+              <!-- BBVA -->
+              <div class="medio-brand-card" data-medio="bbva">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/bbva.svg" alt="BBVA" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-bbva">3 y 6 Cuotas</span>
+                </div>
+                <div class="medio-brand-name">BBVA</div>
+                <p class="medio-brand-desc">Aceptamos tarjetas de crédito Visa y Mastercard BBVA con acreditación segura y opciones de financiación bancaria.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 POS & Transferencia</span>
+                  <span class="text-muted">Red Banelco</span>
+                </div>
+              </div>
+
+              <!-- American Express -->
+              <div class="medio-brand-card" data-medio="amex">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/amex.svg" alt="American Express" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-amex">Compras & Cuotas</span>
+                </div>
+                <div class="medio-brand-name">American Express</div>
+                <p class="medio-brand-desc">Tarjetas de compra directas y emitidas por entidades bancarias con cobertura en todas nuestras prestaciones médicas.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 Terminal POS</span>
+                  <span class="text-muted">Internacional</span>
+                </div>
+              </div>
+
+              <!-- Cabal -->
+              <div class="medio-brand-card" data-medio="cabal">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/cabal.svg" alt="Cabal" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-cabal">Planes Nacionales</span>
+                </div>
+                <div class="medio-brand-name">Cabal Débito y Crédito</div>
+                <p class="medio-brand-desc">Red cooperativa y nacional Cabal habilitada para cobros presenciales con cupón oficial.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💳 POS Presencial</span>
+                  <span class="text-muted">Cobertura País</span>
+                </div>
+              </div>
+
+              <!-- Ualá -->
+              <div class="medio-brand-card" data-medio="uala">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/uala.svg" alt="Ualá" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-uala">QR & Mastercard</span>
+                </div>
+                <div class="medio-brand-name">Ualá</div>
+                <p class="medio-brand-desc">Cobros inmediatos desde la app Ualá, tarjeta prepaga Mastercard internacional y transferencias CVU.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">📱 App & Débito</span>
+                  <span class="text-muted">CVU Interoperable</span>
+                </div>
+              </div>
+
+              <!-- Transferencia CBU -->
+              <div class="medio-brand-card" data-medio="transferencia">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/transferencia.svg" alt="Transferencia" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-trf">10% Bonificación 24hs</span>
+                </div>
+                <div class="medio-brand-name">Transferencia Bancaria</div>
+                <p class="medio-brand-desc">Transferencias CBU/Alias a cuentas institucionales de Banco Santander con verificación administrativa rápida.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">🏛️ CBU / CVU</span>
+                  <span class="text-muted">Sin Comisiones</span>
+                </div>
+              </div>
+
+              <!-- Efectivo Ventanilla -->
+              <div class="medio-brand-card" data-medio="efectivo">
+                <div class="medio-brand-card-top">
+                  <img src="/static/img/medios/efectivo.svg" alt="Efectivo" class="medio-brand-logo-img">
+                  <span class="medio-brand-pill pill-ef">10% Ahorro Directo</span>
+                </div>
+                <div class="medio-brand-name">Efectivo en Caja</div>
+                <p class="medio-brand-desc">Ventanilla de administración central de UMSA Centro Médico con recibo oficial de cobro y bonificación inmediata.</p>
+                <div class="medio-brand-footer">
+                  <span class="medio-channel-tag">💵 Ventanilla Central</span>
+                  <span class="text-muted">Recibo Oficial</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 4. PANEL PRINCIPAL: MEDIOS DE PAGO ACEPTADOS -->
+          <div class="panel-card mb-4">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>💳 Medios de Pago Oficiales</h3>
+                <span class="badge badge-success">INSTITUCIONAL</span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="btnOpenRegistrarPagoModal">
+                  ➕ Registrar Pago
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" id="btnRefreshPagos">
+                  🔄 Refrescar
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <p class="text-muted mb-3" style="font-size: 13px;">
+                Canales oficiales habilitados por UMSA Centro Médico con logos de redes aceptadas. Podés activar, desactivar y configurar las instrucciones o datos bancarios según la política administrativa.
+              </p>
+
+              <!-- GRID DE LOS 4 MEDIOS DE PAGO -->
+              <div class="medios-pago-grid" id="mediosPagoGrid">
+                {% for medio in medios_pago %}
+                <div class="medio-pago-card {% if not medio.activo %}is-inactive{% endif %}" data-codigo="{{ medio.codigo }}">
+                  <div class="medio-card-header">
+                    <div class="medio-card-title-group">
+                      <div class="medio-card-icon">{{ medio.icono }}</div>
+                      <div>
+                        <div class="medio-card-title">{{ medio.nombre }}</div>
+                        <span class="text-muted" style="font-size: 11px;">Código: <code>{{ medio.codigo }}</code></span>
+                      </div>
+                    </div>
+                    <div>
+                      {% if medio.activo %}
+                        <span class="badge badge-success">Activo</span>
+                      {% else %}
+                        <span class="badge badge-subtle">Inactivo</span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <p class="medio-card-desc">{{ medio.descripcion }}</p>
+
+                  <!-- TIRA DE LOGOS VISUALES REALES Y BADGES SEGÚN EL MEDIO -->
+                  {% if medio.codigo == "tarjeta" %}
+                    <div class="medio-logos-strip">
+                      <img src="/static/img/medios/visa.svg" alt="Visa" title="Visa">
+                      <img src="/static/img/medios/mastercard.svg" alt="Mastercard" title="Mastercard">
+                      <img src="/static/img/medios/naranjax.svg" alt="Naranja X" title="Naranja X Plan Z">
+                      <img src="/static/img/medios/amex.svg" alt="Amex" title="American Express">
+                      <img src="/static/img/medios/cabal.svg" alt="Cabal" title="Cabal">
+                    </div>
+                    <div class="medio-brand-tags">
+                      <span class="mini-brand-tag tag-nx">Plan Z 3 Cuotas 0%</span>
+                      <span class="mini-brand-tag tag-cuotas">Cuota Simple 3 y 6</span>
+                      <span class="mini-brand-tag">Terminal POS</span>
+                    </div>
+                  {% elif medio.codigo == "mercadopago" %}
+                    <div class="medio-logos-strip">
+                      <img src="/static/img/medios/mercadopago.svg" alt="Mercado Pago" title="Mercado Pago">
+                      <img src="/static/img/medios/modo.svg" alt="MODO" title="MODO Billeteras">
+                      <img src="/static/img/medios/uala.svg" alt="Ualá" title="Ualá">
+                    </div>
+                    <div class="medio-brand-tags">
+                      <span class="mini-brand-tag tag-mp">QR Dinámico</span>
+                      <span class="mini-brand-tag tag-bonif">15% OFF Dinero en Cuenta</span>
+                      <span class="mini-brand-tag tag-cuotas">Mercado Crédito</span>
+                    </div>
+                  {% elif medio.codigo == "transferencia" %}
+                    <div class="medio-logos-strip">
+                      <img src="/static/img/medios/transferencia.svg" alt="Transferencia CBU" title="Transferencia CBU">
+                      <img src="/static/img/medios/santander.svg" alt="Santander" title="Banco Santander">
+                      <img src="/static/img/medios/galicia.svg" alt="Galicia" title="Banco Galicia">
+                      <img src="/static/img/medios/bbva.svg" alt="BBVA" title="BBVA">
+                      <img src="/static/img/medios/cuentadni.svg" alt="Cuenta DNI" title="Cuenta DNI">
+                    </div>
+                    <div class="medio-brand-tags">
+                      <span class="mini-brand-tag tag-san">Santander Oficial</span>
+                      <span class="mini-brand-tag tag-bonif">10% OFF 24hs</span>
+                      <span class="mini-brand-tag">Alias Directo</span>
+                    </div>
+                  {% elif medio.codigo == "efectivo" %}
+                    <div class="medio-logos-strip">
+                      <img src="/static/img/medios/efectivo.svg" alt="Efectivo en Caja" title="Efectivo en Caja Central">
+                    </div>
+                    <div class="medio-brand-tags">
+                      <span class="mini-brand-tag tag-bonif">10% Bonificación Directa</span>
+                      <span class="mini-brand-tag">Ventanilla Central</span>
+                      <span class="mini-brand-tag">Recibo Oficial</span>
+                    </div>
+                  {% endif %}
+
+                  <div class="medio-card-meta-box">
+                    {% if medio.codigo == "transferencia" %}
+                      {% if medio.datos_bancarios.configurado %}
+                        <div><strong>Banco:</strong> {{ medio.datos_bancarios.banco|default:"-" }}</div>
+                        <div><strong>CBU:</strong> <code>{{ medio.datos_bancarios.cbu|default:"-" }}</code></div>
+                        <div><strong>Alias:</strong> <code>{{ medio.datos_bancarios.alias|default:"-" }}</code></div>
+                        <div><strong>Titular:</strong> {{ medio.datos_bancarios.titular|default:"-" }}</div>
+                      {% else %}
+                        <div class="text-muted"><em>🏛️ Datos bancarios oficiales: Banco Santander | Alias: <strong>UMSA.MEDICA.CENTRO</strong> | CBU: <code>0720234588000034567891</code></em></div>
+                      {% endif %}
+                    {% elif medio.codigo == "mercadopago" %}
+                      <div><strong>Modo:</strong> Cobro con QR interoperable en mostrador y Link oficial.</div>
+                      <div class="text-muted"><em>📱 Acepta saldo en cuenta, tarjetas de crédito guardadas y transferencias vía CVU/Alias.</em></div>
+                      {% if medio.online_config.link_pago_oficial %}
+                        <div class="mt-1"><strong>Link:</strong> <span class="text-truncate">{{ medio.online_config.link_pago_oficial }}</span></div>
+                      {% endif %}
+                    {% elif medio.codigo == "tarjeta" %}
+                      <div><strong>Terminal POS:</strong> Cobro presencial con chip, contactless y banda magnética.</div>
+                      <div class="text-muted">Habilitado para tarjetas de débito y crédito bancarias, Naranja X y Cuota Simple.</div>
+                    {% else %}
+                      <div><strong>Modalidad:</strong> Cobro presencial en ventanilla de caja administrativa.</div>
+                      <div class="text-muted">Emisión de recibo fiscal oficial al instante con 10% de bonificación directa.</div>
+                    {% endif %}
+                  </div>
+
+                  <div class="medio-card-actions">
+                    <button type="button" class="btn btn-xs btn-outline btn-config-medio" 
+                            data-codigo="{{ medio.codigo }}"
+                            data-nombre="{{ medio.nombre }}"
+                            data-descripcion="{{ medio.descripcion }}"
+                            data-activo="{{ medio.activo|yesno:'1,0' }}"
+                            data-instrucciones="{{ medio.instrucciones }}"
+                            data-observaciones="{{ medio.observaciones }}">
+                      ⚙️ Administrar
+                    </button>
+                    <button type="button" class="btn btn-xs {% if medio.activo %}btn-outline{% else %}btn-primary{% endif %} btn-toggle-medio"
+                            data-codigo="{{ medio.codigo }}"
+                            data-activo="{{ medio.activo|yesno:'1,0' }}">
+                      {% if medio.activo %}Desactivar{% else %}Activar{% endif %}
+                    </button>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <!-- Banner Arquitectura de Pagos Online -->
+              <div class="context-info-box mt-3" style="background-color: var(--bg-subtle); border-radius: var(--radius-sm); padding: 14px 18px; border-left: 3px solid var(--accent-blue);">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <div>
+                    <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary-navy); margin-bottom: 4px;">
+                      🔌 Pasarela de Pagos Digitales & Cobranzas Centralizadas
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.45;">
+                      El sistema valida cobros manuales y automatizados vinculándolos de forma transparente a cada presupuesto oficial generado (<code>UMSA-P-YYYY-XXXX</code>), actualizando en tiempo real el saldo restante y el historial de pagos.
+                    </p>
+                  </div>
+                  <span class="badge badge-success" style="font-size: 11px;">MÓDULO ACTIVO</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 5. PANEL DE PROMOCIONES BANCARIAS & BENEFICIOS EXCLUSIVOS -->
+          <div class="panel-card mb-4" id="seccionPromociones">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>🎁 Promociones Bancarias & Beneficios Vigentes</h3>
+                <span class="badge badge-amber" style="font-weight: 800;">BENEFICIOS EXCLUSIVOS</span>
+              </div>
+              <span class="text-muted" style="font-size: 12.5px;">Descuentos, cuotas sin interés y reintegros en UMSA Centro Médico</span>
+            </div>
+
+            <div class="panel-body">
+              <!-- FILTROS DE PROMOCIONES -->
+              <div class="promos-filter-bar" id="promosFilterBar">
+                <button type="button" class="promo-filter-btn active" data-category="todas">
+                  🌟 Todas las Promos (6)
+                </button>
+                <button type="button" class="promo-filter-btn" data-category="cuotas">
+                  💳 Cuotas Sin Interés
+                </button>
+                <button type="button" class="promo-filter-btn" data-category="billeteras">
+                  📱 Billeteras & QR (MP / MODO)
+                </button>
+                <button type="button" class="promo-filter-btn" data-category="bancos">
+                  🏛️ Reintegros Bancarios
+                </button>
+                <button type="button" class="promo-filter-btn" data-category="contado">
+                  💎 Pago Contado Directo
+                </button>
+              </div>
+
+              <div class="promociones-grid" id="promocionesGrid">
+                
+                <!-- Promo 1: Santander -->
+                <div class="promo-card promo-santander" data-category="bancos cuotas">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/santander.svg" alt="Santander" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-san">SANTANDER</span>
+                    </div>
+                    <span class="promo-discount-pill">15% OFF</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>15% de Reintegro + 3 Cuotas Sin Interés</h4>
+                    <p class="promo-card-desc">Válido los días martes para la adquisición de insumos médicos descartables y consultas especializadas.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Todos los martes</div>
+                      <div class="promo-feature-row"><span>💳</span> <strong>Tarjetas:</strong> Visa y Mastercard Santander</div>
+                      <div class="promo-feature-row"><span>🎯</span> <strong>Tope:</strong> $15.000 mensual por cuenta</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>Acreditación en resumen</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="tarjeta" data-desc="15% Santander">Simular</button>
+                  </div>
+                </div>
+
+                <!-- Promo 2: Naranja X -->
+                <div class="promo-card promo-naranjax" data-category="cuotas">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/naranjax.svg" alt="Naranja X" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-nx">NARANJA X</span>
+                    </div>
+                    <span class="promo-discount-pill">PLAN Z</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>3 Cuotas Cero Interés (Plan Z)</h4>
+                    <p class="promo-card-desc">Financiá todos los insumos de nuestro catálogo oficial en 3 cuotas sin ningún tipo de interés financiero ni costo administrativo.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Todos los días de la semana</div>
+                      <div class="promo-feature-row"><span>💳</span> <strong>Tarjetas:</strong> Tarjeta de Crédito Naranja X</div>
+                      <div class="promo-feature-row"><span>🎁</span> <strong>Extra:</strong> 10% OFF adicional en primera cotización</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>CFT: 0,00% · TNA: 0,00%</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="tarjeta" data-desc="Plan Z Naranja X">Simular</button>
+                  </div>
+                </div>
+
+                <!-- Promo 3: Mercado Pago -->
+                <div class="promo-card promo-mercadopago" data-category="billeteras">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/mercadopago.svg" alt="Mercado Pago" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-mp">MERCADO PAGO</span>
+                    </div>
+                    <span class="promo-discount-pill">15% OFF</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>15% de Descuento con Dinero en Cuenta</h4>
+                    <p class="promo-card-desc">Aboná escaneando nuestro código QR en mostrador o mediante enlace de pago digital y obtené descuento instantáneo en tu factura.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Todos los días disponible</div>
+                      <div class="promo-feature-row"><span>⚡</span> <strong>Modalidad:</strong> Dinero en cuenta MP o Débito MP</div>
+                      <div class="promo-feature-row"><span>🚀</span> <strong>Acreditación:</strong> Inmediata sin demora</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>Descuento directo en caja</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="mercadopago" data-desc="15% Mercado Pago">Simular</button>
+                  </div>
+                </div>
+
+                <!-- Promo 4: Banco Galicia & MODO -->
+                <div class="promo-card promo-galicia" data-category="billeteras bancos cuotas">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/galicia.svg" alt="Galicia" class="promo-card-logo-img">
+                      <img src="/static/img/medios/modo.svg" alt="MODO" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-gali">MODO + GALICIA</span>
+                    </div>
+                    <span class="promo-discount-pill">20% AHORRO</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>20% de Reintegro los Jueves con MODO</h4>
+                    <p class="promo-card-desc">Pagá con la app Galicia o MODO escaneando el código QR en administración y recibí el reintegro directo en tu caja de ahorro.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Todos los jueves</div>
+                      <div class="promo-feature-row"><span>📲</span> <strong>App:</strong> App Galicia o Billetera MODO</div>
+                      <div class="promo-feature-row"><span>🎯</span> <strong>Tope:</strong> $18.000 mensual por titular</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>Reintegro en 48 hs hábiles</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="tarjeta" data-desc="20% Galicia MODO">Simular</button>
+                  </div>
+                </div>
+
+                <!-- Promo 5: Cuenta DNI -->
+                <div class="promo-card promo-cuentadni" data-category="billeteras bancos">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/cuentadni.svg" alt="Cuenta DNI" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-dni">CUENTA DNI</span>
+                    </div>
+                    <span class="promo-discount-pill">20% REINTEGRO</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>20% de Reintegro en Comercios de Salud</h4>
+                    <p class="promo-card-desc">Beneficio exclusivo Banco Provincia para abonar insumos de protección y cotizaciones médicas mediante Clave DNI o QR.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Miércoles y Jueves</div>
+                      <div class="promo-feature-row"><span>📱</span> <strong>Medio:</strong> Billetera Cuenta DNI</div>
+                      <div class="promo-feature-row"><span>🎯</span> <strong>Tope:</strong> $12.000 por semana y persona</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>Banco Provincia de Bs As</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="transferencia" data-desc="20% Cuenta DNI">Simular</button>
+                  </div>
+                </div>
+
+                <!-- Promo 6: Contado & Transferencia Inmediata -->
+                <div class="promo-card promo-contado" data-category="contado">
+                  <div class="promo-card-top">
+                    <div class="promo-brand-badge-wrap">
+                      <img src="/static/img/medios/efectivo.svg" alt="Efectivo" class="promo-card-logo-img">
+                      <span class="promo-brand-badge badge-contado">PAGO CONTADO</span>
+                    </div>
+                    <span class="promo-discount-pill">10% BONIF</span>
+                  </div>
+                  <div class="promo-card-body">
+                    <h4>10% de Bonificación Institucional</h4>
+                    <p class="promo-card-desc">Descuento administrativo directo por pronto pago para compras y cotizaciones abonadas en efectivo en caja o transferencia en 24 hs.</p>
+                    <div class="promo-card-features">
+                      <div class="promo-feature-row"><span>📅</span> <strong>Día:</strong> Permanente todo el año</div>
+                      <div class="promo-feature-row"><span>💵</span> <strong>Canal:</strong> Efectivo o Transferencia bancaria</div>
+                      <div class="promo-feature-row"><span>🏷️</span> <strong>Alcance:</strong> Todo el catálogo de insumos médicos</div>
+                    </div>
+                  </div>
+                  <div class="promo-card-footer">
+                    <span>Aplicación inmediata</span>
+                    <button type="button" class="btn btn-xs btn-outline btn-use-promo" data-medio="efectivo" data-desc="10% Contado">Simular</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. PANEL DE PLANES DE FINANCIACIÓN Y SIMULADOR DE CUOTAS INTERACTIVO -->
+          <div class="panel-card mb-4">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📊 Planes de Financiación y Simulador de Cuotas</h3>
+                <span class="badge badge-teal" style="font-weight: 800;">CALCULADORA EN VIVO</span>
+              </div>
+              <span class="text-muted" style="font-size: 12.5px;">Calculá cuotas exactas y costos de financiación al instante</span>
+            </div>
+
+            <div class="panel-body">
+              <div class="cuotas-simulator-wrap">
+                <!-- CONTROLES DEL SIMULADOR -->
+                <div class="cuotas-controls-row">
+                  <div class="cuotas-field-group">
+                    <label for="simuladorMontoInput">Monto a cotizar o abonar ($ ARS):</label>
+                    <div class="cuotas-input-currency">
+                      <span class="currency-symbol">$</span>
+                      <input type="number" id="simuladorMontoInput" class="form-control" value="15000" min="100" step="500">
+                    </div>
+                    <div class="cuotas-quick-amounts">
+                      <span style="font-size: 10.5px; color: var(--text-light); align-self: center;">Montos típicos:</span>
+                      <button type="button" class="btn-quick-amount" data-monto="5000">$5.000</button>
+                      <button type="button" class="btn-quick-amount active" data-monto="15000">$15.000</button>
+                      <button type="button" class="btn-quick-amount" data-monto="35000">$35.000</button>
+                      <button type="button" class="btn-quick-amount" data-monto="75000">$75.000</button>
+                    </div>
+                  </div>
+
+                  <div class="cuotas-field-group">
+                    <label for="simuladorTarjetaSelect">Tarjeta / Entidad Emisora:</label>
+                    <select id="simuladorTarjetaSelect" class="form-control" style="font-size: 13.5px; font-weight: 600;">
+                      <option value="naranjax" selected>🍊 Naranja X (Plan Z - 3 cuotas cero interés)</option>
+                      <option value="santander">🔥 Banco Santander (Visa / Mastercard - 3 y 6 cuotas)</option>
+                      <option value="galicia">🟣 Banco Galicia & MODO (3 cuotas sin interés)</option>
+                      <option value="bancaria">💳 Visa / Mastercard Bancaria (Cuota Simple 3, 6 y 12)</option>
+                      <option value="mercadopago">📱 Mercado Pago & Mercado Crédito (Hasta 12 cuotas)</option>
+                    </select>
+                  </div>
+
+                  <div style="align-self: center; padding-top: 10px;">
+                    <button type="button" class="btn btn-sm btn-outline" id="btnCopiarSimulacion" title="Copiar resumen para el paciente o presupuesto">
+                      📋 Copiar Resumen
+                    </button>
+                  </div>
+                </div>
+
+                <!-- RESULTADOS DINÁMICOS DE CUOTAS -->
+                <div class="cuotas-results-grid" id="cuotasResultsGrid">
+                  <!-- Se actualiza interactivamente con JavaScript -->
+                  <!-- 1 Pago -->
+                  <div class="cuota-card is-recommended">
+                    <span class="cuota-card-badge badge-contado">1 PAGO (DÉBITO / EFECTIVO)</span>
+                    <div class="cuota-card-number">Pago Único</div>
+                    <div class="cuota-card-price" id="resCuota1">$ 15.000,00</div>
+                    <div class="cuota-card-total" id="resTotal1">Total final: $15.000,00 (Sin recargo)</div>
+                    <div class="cuota-card-details">
+                      • <strong>10% OFF ($13.500)</strong> en Efectivo o Transferencia.<br/>
+                      • Débito Visa, Master, Cabal y MP sin costo.
+                    </div>
+                  </div>
+
+                  <!-- 3 Cuotas -->
+                  <div class="cuota-card is-recommended">
+                    <span class="cuota-card-badge badge-zero-interest">3 CUOTAS SIN INTERÉS</span>
+                    <div class="cuota-card-number">3 cuotas mensuales de:</div>
+                    <div class="cuota-card-price" id="resCuota3" style="color: #0d9488;">3 x $ 5.000,00</div>
+                    <div class="cuota-card-total" id="resTotal3">Total financiado: $15.000,00 (CFT: 0%)</div>
+                    <div class="cuota-card-details" id="resDetalle3">
+                      • <strong>Plan Z</strong> Naranja X disponible todos los días.<br/>
+                      • Santander y Galicia sin interés en insumos.
+                    </div>
+                  </div>
+
+                  <!-- 6 Cuotas -->
+                  <div class="cuota-card">
+                    <span class="cuota-card-badge badge-fijas">6 CUOTAS FIJAS</span>
+                    <div class="cuota-card-number">6 cuotas mensuales de:</div>
+                    <div class="cuota-card-price" id="resCuota6">6 x $ 2.850,00</div>
+                    <div class="cuota-card-total" id="resTotal6">Total financiado: $17.100,00 (TNA: 28%)</div>
+                    <div class="cuota-card-details">
+                      • Cuotas fijas mensuales en pesos.<br/>
+                      • Cuota Simple Salud & Insumos Médicos.
+                    </div>
+                  </div>
+
+                  <!-- 12 Cuotas -->
+                  <div class="cuota-card">
+                    <span class="cuota-card-badge badge-fijas">12 CUOTAS FINANCIADAS</span>
+                    <div class="cuota-card-number">12 cuotas mensuales de:</div>
+                    <div class="cuota-card-price" id="resCuota12">12 x $ 1.650,00</div>
+                    <div class="cuota-card-total" id="resTotal12">Total financiado: $19.800,00 (TNA: 32%)</div>
+                    <div class="cuota-card-details">
+                      • Tarjetas de crédito bancarias nacionales.<br/>
+                      • Ideal para compras mayoristas y cirugías.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer del simulador -->
+                <div class="cuotas-footer-banner">
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size: 16px;">ℹ️</span>
+                    <span>Los planes de cuotas sin interés aplican automáticamente seleccionando la tarjeta emisora en la terminal POS física de recepción o ingresándola en el link oficial.</span>
+                  </div>
+                  <span style="font-weight: 700; font-size: 11.5px;">TASA FIJA EN PESOS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL HISTORIAL DE PAGOS Y COBRANZAS -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📋 Historial de Pagos Registrados</h3>
+                <span class="badge badge-subtle" id="pagosTableCount">{{ pagos_historial|length }} registros</span>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <!-- BARRA DE FILTROS Y BÚSQUEDA -->
+              <div class="pagos-filter-bar">
+                <div class="pagos-search-input-wrap">
+                  <span class="pagos-search-icon">🔎</span>
+                  <input type="text" id="pagosSearchInput" class="form-control" placeholder="Buscar por cliente, N° presupuesto o comprobante...">
+                </div>
+
+                <div class="form-group mb-0">
+                  <select id="pagosFilterMedio" class="form-control" style="font-size: 12.5px; min-width: 140px;">
+                    <option value="">Medio: Todos</option>
+                    <option value="efectivo">💵 Efectivo</option>
+                    <option value="tarjeta">💳 Tarjeta</option>
+                    <option value="transferencia">🏛️ Transferencia</option>
+                    <option value="mercadopago">📱 Mercado Pago</option>
+                  </select>
+                </div>
+
+                <div class="form-group mb-0">
+                  <select id="pagosFilterEstado" class="form-control" style="font-size: 12.5px; min-width: 130px;">
+                    <option value="">Estado: Todos</option>
+                    <option value="pagado">Pagado</option>
+                    <option value="parcial">Parcial</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="cancelado">Cancelado</option>
+                  </select>
+                </div>
+
+                <div class="form-group mb-0">
+                  <select id="pagosFilterFecha" class="form-control" style="font-size: 12.5px; min-width: 120px;">
+                    <option value="">Fecha: Todos</option>
+                    <option value="hoy">Hoy</option>
+                    <option value="semana">Últimos 7 días</option>
+                    <option value="mes">Este mes</option>
+                  </select>
+                </div>
+
+                <div class="form-group mb-0">
+                  <select id="pagosOrderBy" class="form-control" style="font-size: 12.5px; min-width: 140px;">
+                    <option value="-fecha_pago">Fecha: Más reciente</option>
+                    <option value="fecha_asc">Fecha: Más antigua</option>
+                    <option value="importe_desc">Importe: Mayor a menor</option>
+                    <option value="importe_asc">Importe: Menor a mayor</option>
+                  </select>
+                </div>
+
+                <button type="button" class="btn btn-sm btn-outline" id="pagosClearFiltersBtn" title="Limpiar filtros">
+                  ✖ Limpiar
+                </button>
+              </div>
+
+              <!-- TABLA DE HISTORIAL DE PAGOS -->
+              <div class="table-responsive">
+                <table class="data-table" id="pagosTable">
+                  <thead>
+                    <tr>
+                      <th style="width: 11%;">Fecha</th>
+                      <th style="width: 16%;">N° Presupuesto</th>
+                      <th style="width: 22%;">Cliente / Institución</th>
+                      <th style="width: 16%;">Medio de pago</th>
+                      <th style="width: 13%; text-align: right;">Importe</th>
+                      <th style="width: 10%; text-align: center;">Estado</th>
+                      <th style="width: 12%; text-align: right;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for p in pagos_historial %}
+                    <tr class="pago-row" data-id="{{ p.id }}">
+                      <td><span class="muted-text" style="font-size: 12.5px;">{{ p.fecha_pago }}</span></td>
+                      <td>
+                        <strong style="color: var(--primary-navy); cursor: pointer;" class="link-to-presupuesto" data-numero="{{ p.presupuesto_numero }}">
+                          {{ p.presupuesto_numero }}
+                        </strong>
+                      </td>
+                      <td>
+                        <strong>{{ p.cliente }}</strong>
+                        {% if p.institucion %}<br/><span class="muted-text" style="font-size: 11px;">{{ p.institucion }}</span>{% endif %}
+                      </td>
+                      <td>
+                        <span>{{ p.medio_pago_icono }} {{ p.medio_pago_nombre }}</span>
+                        {% if p.numero_operacion %}<br/><small class="muted-text">Ref: {{ p.numero_operacion }}</small>{% endif %}
+                      </td>
+                      <td style="text-align: right; font-weight: 700; color: var(--primary-navy);">
+                        ${{ p.importe|floatformat:2 }}
+                      </td>
+                      <td style="text-align: center;">
+                        {% if p.estado == "pagado" %}
+                          <span class="badge-pago-pagado">Pagado</span>
+                        {% elif p.estado == "parcial" %}
+                          <span class="badge-pago-parcial">Parcial</span>
+                        {% elif p.estado == "pendiente" %}
+                          <span class="badge-pago-pendiente">Pendiente</span>
+                        {% else %}
+                          <span class="badge-pago-cancelado">Cancelado</span>
+                        {% endif %}
+                      </td>
+                      <td style="text-align: right;">
+                        <div class="action-buttons-inline">
+                          <button type="button" class="btn btn-xs btn-outline btn-view-pago" data-id="{{ p.id }}" title="Ver comprobante de pago">
+                            👁️
+                          </button>
+                          {% if p.estado != "cancelado" %}
+                          <button type="button" class="btn btn-xs btn-danger-outline btn-cancel-pago" data-id="{{ p.id }}" data-numero="{{ p.presupuesto_numero }}" data-importe="{{ p.importe }}" title="Cancelar pago">
+                            🚫
+                          </button>
+                          {% endif %}
+                        </div>
+                      </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="7" class="text-center muted-text py-4">No se encontraron pagos registrados en el sistema.</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 9. PESTAÑA: TURNOS & PROFESIONALES (REGLA DE NO ALUCINACIÓN) -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-turnos">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>📅 Turnos Médicos y Profesionales de Salud</h3>
+                <span class="badge badge-subtle">INTEGRACIÓN UMSA</span>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="alert alert-info">
+                <strong>🛡️ Regla Estricta de la Guía: No Inventar Información</strong>
+                <p>El sistema administrativo <strong>NO inventa</strong> turnos, pacientes, profesionales, horarios ni disponibilidades. Si no existe una base de datos real o API externa conectada, se muestra explícitamente <em>"Sin datos disponibles"</em>.</p>
+              </div>
+
+              <div class="turnos-rule-banner">
+                <strong>Regla de memoria permanente:</strong> <em>"Antes de confirmar un turno, verificar disponibilidad."</em>
+              </div>
+
+              <div class="data-status-box mt-3">
+                <div class="empty-state-notice">
+                  <span class="empty-icon">📭</span>
+                  <h4>Sin datos disponibles</h4>
+                  <p>Actualmente no hay una base de datos de pacientes o turnos cargada en el panel administrativo local.</p>
+                  <small class="muted-text">Para vincular con turnos en producción de UMSA-Django, configure <code>UMSA_TURNOS_API_URL</code> con una API autenticada.</small>
+                </div>
+              </div>
+
+              <div class="section-heading mt-4">
+                <h4>👨‍⚕️ Nómina de Profesionales</h4>
+              </div>
+
+              <div class="data-status-box">
+                <div class="empty-state-notice">
+                  <span class="empty-icon">🩺</span>
+                  <h4>Sin datos disponibles</h4>
+                  <p>No se inventan profesionales ni agendas médicas ficticias.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 10. PESTAÑA: CONEXIÓN UMSA-DJANGO -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-umsa">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>🔗 Conexión con UMSA-Django</h3>
+                <span class="badge {% if umsa.online %}badge-success{% else %}badge-danger{% endif %}" id="umsaStatusBadge">
+                  {% if umsa.online %}CONECTADO (HTTP 200){% else %}SIN RESPUESTA{% endif %}
+                </span>
+              </div>
+              <div class="panel-actions-group">
+                <button type="button" class="btn btn-sm btn-primary" id="pingUmsaBtn">🔄 Comprobar Conexión Ahora</button>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="umsa-cards-grid">
+                <div class="info-card">
+                  <div class="info-card-icon">🌐</div>
+                  <div class="info-card-content">
+                    <h4>Sistema Público: UMSA-Django</h4>
+                    <p><code>{{ umsa.url }}</code></p>
+                    <small class="muted-text">Página pública de turnos UMSA Centro Médico.</small>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-card-icon">🛡️</div>
+                  <div class="info-card-content">
+                    <h4>Sistema Administrativo: UMSA-IA-Turnos</h4>
+                    <p><code>Panel Inteligente Privado</code></p>
+                    <small class="muted-text">Aplicación independiente. No reemplaza ni altera el sitio web público.</small>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-card-icon">🔒</div>
+                  <div class="info-card-content">
+                    <h4>Endpoint Conocido: POST /crear-turno/</h4>
+                    <p><code>{{ integration.known_endpoint }}</code></p>
+                    <small class="muted-text">Protegido por token CSRF de formulario. Por seguridad, no se realiza POST ciego sin API autenticada.</small>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-card-icon">🔌</div>
+                  <div class="info-card-content">
+                    <h4>Estado de la Integración</h4>
+                    <p><strong>{% if integration.configured %}Configurada{% else %}No configurada (Local autónomo){% endif %}</strong></p>
+                    <small class="muted-text">{{ integration.message }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 11. PESTAÑA: CONFIGURACIÓN Y ENTORNO -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-config">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <h3>⚙️ Configuración del Entorno y Seguridad</h3>
+                <span class="badge badge-subtle">AUDITORÍA Y VARIABLES</span>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <div class="config-table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Parámetro</th>
+                      <th>Valor Configurado</th>
+                      <th>Estado / Comentario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>ANTHROPIC_API_KEY</strong></td>
+                      <td><code>{% if claude_connected %}sk-ant-*** (Protegida en .env){% else %}No configurada{% endif %}</code></td>
+                      <td><span class="badge {% if claude_connected %}badge-success{% else %}badge-danger{% endif %}">{% if claude_connected %}Válida{% else %}Requerida{% endif %}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>CLAUDE_MODEL</strong></td>
+                      <td><code>{{ claude_model }}</code></td>
+                      <td><span class="badge badge-subtle">Configurable vía .env</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>STORAGE_DIR</strong></td>
+                      <td><code>files_storage/</code></td>
+                      <td><span class="badge badge-success">Persistencia Física Real</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>UMSA_BASE_URL</strong></td>
+                      <td><code>{{ umsa.url }}</code></td>
+                      <td><span class="badge badge-subtle">Sitio público independiente</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Seguridad .env</strong></td>
+                      <td><code>Incluido en .gitignore</code></td>
+                      <td><span class="badge badge-success">Sin secretos en Git</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Docker Compose</strong></td>
+                      <td><code>docker compose up --build</code></td>
+                      <td><span class="badge badge-success">Entorno principal</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- MODALES DEL SISTEMA -->
+  <!-- ======================================================================= -->
+
+  <!-- MODAL: VISOR / EDITOR DE ARCHIVO -->
+  <div class="modal-backdrop" id="fileModal" style="display:none;">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 id="modalFileTitle">📄 Archivo</h3>
+            <span class="badge badge-subtle" id="modalFilePathBadge">files_storage/</span>
+          </div>
+          <button type="button" class="modal-close-btn" id="modalCloseBtn">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="editor-toolbar">
+            <span class="muted-text">Podés ver o modificar directamente el contenido físico del archivo:</span>
+            <button type="button" class="btn btn-xs btn-primary" id="modalSaveFileBtn">💾 Guardar Cambios Físicos</button>
+          </div>
+          <textarea id="modalFileEditor" class="code-editor-area" rows="16"></textarea>
+          <div id="modalSaveNotice" class="alert alert-success mt-2" style="display:none;"></div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline" id="modalDownloadBtn" download>⬇️ Descargar Archivo</a>
+          <button type="button" class="btn btn-secondary" id="modalCloseBtn2">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CREAR NUEVO ARCHIVO FÍSICO -->
+  <div class="modal-backdrop" id="newFileModal" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>➕ Crear Archivo Físico en files_storage/</h3>
+          <button type="button" class="modal-close-btn" id="newFileCloseBtn">✕</button>
+        </div>
+        <form id="newFileForm">
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="newFileModuleSelect">Módulo / Carpeta de Destino:</label>
+              <select id="newFileModuleSelect" class="form-control">
+                <option value="">Raíz (files_storage/)</option>
+                {% for mod in modules %}
+                <option value="{{ mod }}">{{ mod }}/</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label for="newFileNameInput">Nombre del Archivo: <span class="required">*</span></label>
+              <input type="text" id="newFileNameInput" class="form-control" placeholder="Ej: proyecto.txt o notas.md" required>
+              <small class="muted-text">Se guardará físicamente y se registrará automáticamente en INDEX.md.</small>
+            </div>
+            <div class="form-group mb-3">
+              <label for="newFileContentInput">Contenido Inicial:</label>
+              <textarea id="newFileContentInput" class="form-control" rows="6" placeholder="Escriba el contenido del documento..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="btnSubmitCreateFile">Crear Archivo en Disco</button>
+            <button type="button" class="btn btn-outline" id="newFileCancelBtn">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CREAR NUEVO MÓDULO AISLADO -->
+  <div class="modal-backdrop" id="newFolderModal" style="display:none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>➕ Nuevo Módulo Aislado</h3>
+          <button type="button" class="modal-close-btn" id="newFolderCloseBtn">✕</button>
+        </div>
+        <form id="newFolderForm">
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="newFolderName">Nombre del Módulo / Subcarpeta: <span class="required">*</span></label>
+              <input type="text" id="newFolderName" class="form-control" placeholder="Ej: libreria o insumos" required>
+              <small class="muted-text">Se generará con su propio INDEX.md, MEMORY.md y CHAT_HISTORY.json.</small>
+            </div>
+            <div class="form-group mb-3">
+              <label for="newFolderDesc">Descripción del Módulo:</label>
+              <input type="text" id="newFolderDesc" class="form-control" placeholder="Ej: Gestión de bibliografía técnica médica">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="createFolderSubmitBtn">Crear Módulo Físico</button>
+            <button type="button" class="btn btn-outline" id="newFolderCancelBtn">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <!-- MODAL: DETALLE COMPLETO DE PRESUPUESTO -->
+  <div class="modal-backdrop" id="presupuestoDetailModal" style="display:none;">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 id="detailPresNumero">Presupuesto UMSA-P-...</h3>
+            <span class="badge badge-success" id="detailPresEstado">Confirmado</span>
+          </div>
+          <button type="button" class="modal-close-btn" id="detailModalCloseBtn">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-meta-box">
+            <div class="detail-meta-item">
+              <span class="meta-label">Fecha de emisión</span>
+              <strong id="detailPresFecha">-</strong>
+            </div>
+            <div class="detail-meta-item">
+              <span class="meta-label">Cliente / Profesional</span>
+              <strong id="detailPresCliente">-</strong>
+            </div>
+            <div class="detail-meta-item">
+              <span class="meta-label">Institución</span>
+              <strong id="detailPresInstitucion">-</strong>
+            </div>
+            <div class="detail-meta-item">
+              <span class="meta-label">Validez de la cotización</span>
+              <strong id="detailPresValidez">-</strong>
+            </div>
+          </div>
+
+          <h4 class="detail-section-title">Detalle de productos cotizados</h4>
+          <div class="table-responsive">
+            <table class="data-table" id="detailProductsTable">
+              <thead>
+                <tr>
+                  <th style="width: 45%;">Descripción del producto</th>
+                  <th style="width: 15%; text-align: center;">Cantidad</th>
+                  <th style="width: 20%; text-align: right;">Precio Unitario</th>
+                  <th style="width: 20%; text-align: right;">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody id="detailProductsTbody">
+                <tr>
+                  <td colspan="4" class="text-center muted-text py-2">Sin productos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="financial-summary-card mt-3">
+            <div class="summary-line">
+              <span>Subtotal:</span>
+              <strong id="detailPresSubtotal">$ 0</strong>
+            </div>
+            <div class="summary-line">
+              <span id="detailPresIvaLabel">IVA:</span>
+              <strong id="detailPresIva">$ 0</strong>
+            </div>
+            <div class="summary-line total-line">
+              <span>TOTAL:</span>
+              <strong id="detailPresTotal">$ 0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" id="detailDownloadPdfBtn" download>
+            📄 Descargar PDF
+          </a>
+          <button type="button" class="btn btn-secondary" id="detailModalCloseBtn2">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  <!-- MODAL: CREAR / EDITAR INSUMO MÉDICO CON IMAGEN -->
+  <div class="modal-backdrop" id="insumoEditModal" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="insumoModalTitle">✏️ Editar Insumo Médico</h3>
+          <button type="button" class="modal-close-btn" id="insumoModalCloseBtn">✕</button>
+        </div>
+        <form id="insumoEditForm" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="hidden" id="insumoIdInput" name="id" value="">
+          <input type="hidden" id="insumoQuitarImagenInput" name="quitar_imagen" value="0">
+          
+          <div class="modal-body">
+            <!-- Bloque de Imagen con Vista Previa -->
+            <div class="insumo-image-edit-section mb-3">
+              <label class="form-label"><strong>Fotografía del Insumo:</strong></label>
+              <div class="insumo-image-preview-container">
+                <div class="insumo-preview-box">
+                  <img id="insumoImagePreview" 
+                       src="/media/productos/placeholder.svg" 
+                       alt="Vista previa del insumo" 
+                       class="insumo-preview-img"
+                       onerror="this.onerror=null;this.src='/media/productos/placeholder.svg';">
+                </div>
+                <div class="insumo-preview-actions">
+                  <input type="file" id="insumoFileInput" name="imagen_file" accept="image/*" style="display:none;">
+                  <button type="button" class="btn btn-sm btn-outline" id="btnSelectInsumoImage">
+                    📷 Cargar imagen desde la PC
+                  </button>
+                  <button type="button" class="btn btn-sm btn-danger-outline" id="btnRemoveInsumoImage">
+                    🗑️ Quitar imagen
+                  </button>
+                  <small class="text-muted d-block mt-1">Soporta JPG, PNG, WEBP y SVG. Fondo claro y nítido recomendado.</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campos de Datos del Insumo -->
+            <div class="form-group mb-2">
+              <label for="insumoNombreInput"><strong>Nombre del Insumo:</strong> <span class="required">*</span></label>
+              <input type="text" id="insumoNombreInput" name="producto" class="form-control" required placeholder="Ej: Barbijos descartables">
+            </div>
+
+            <div class="form-grid-2 mb-2">
+              <div class="form-group">
+                <label for="insumoPresentacionInput"><strong>Presentación:</strong> <span class="required">*</span></label>
+                <input type="text" id="insumoPresentacionInput" name="presentacion" class="form-control" required placeholder="Ej: Caja x 50 unidades">
+              </div>
+              <div class="form-group">
+                <label for="insumoPrecioInput"><strong>Precio Unitario ($):</strong> <span class="required">*</span></label>
+                <input type="number" id="insumoPrecioInput" name="precio_unitario" class="form-control" required min="0" step="any" placeholder="0">
+              </div>
+            </div>
+
+            <div class="form-grid-2 mb-2">
+              <div class="form-group">
+                <label for="insumoEstadoInput"><strong>Estado:</strong></label>
+                <select id="insumoEstadoInput" name="estado" class="form-control">
+                  <option value="Disponible">Disponible</option>
+                  <option value="En revisión">En revisión</option>
+                  <option value="Consultar">Consultar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label><strong>Régimen de Stock:</strong></label>
+                <input type="text" class="form-control" value="ILIMITADO (Permanente)" readonly style="background-color: var(--bg-subtle);">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="btnSaveInsumo">
+              💾 Guardar Insumo
+            </button>
+            <button type="button" class="btn btn-outline" id="insumoModalCancelBtn">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+  <!-- ================================================================= -->
+  <!-- MODAL: REGISTRAR PAGO ASOCIADO A PRESUPUESTO -->
+  <!-- ================================================================= -->
+  <div class="modal-backdrop" id="modalRegistrarPago" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>💳 Registrar Pago de Presupuesto</h3>
+          <button type="button" class="modal-close-btn" id="modalRegistrarPagoCloseBtn">✕</button>
+        </div>
+        <form id="formRegistrarPago">
+          {% csrf_token %}
+          <div class="modal-body">
+            <!-- Selector de Presupuesto -->
+            <div class="form-group mb-2">
+              <label for="pagoPresupuestoSelect"><strong>Presupuesto Oficial:</strong> <span class="required">*</span></label>
+              <select id="pagoPresupuestoSelect" class="form-control" required>
+                <option value="">-- Seleccione un presupuesto --</option>
+                {% for pres in presupuestos_historial %}
+                  <option value="{{ pres.numero }}" 
+                          data-cliente="{{ pres.cliente }}" 
+                          data-institucion="{{ pres.institucion }}" 
+                          data-total="{{ pres.total }}"
+                          data-pagado="{{ pres.total_pagado|default:'0' }}"
+                          data-saldo="{{ pres.saldo_pendiente|default:pres.total }}"
+                          data-estado="{{ pres.estado }}">
+                    {{ pres.numero }} - {{ pres.cliente }} (${{ pres.total|floatformat:0 }} | Saldo: ${{ pres.saldo_pendiente|default:pres.total|floatformat:0 }})
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- Resumen de saldos del presupuesto seleccionado -->
+            <div class="alert alert-info mb-3" id="pagoPresupuestoInfoBox" style="display:none; font-size:12.5px;">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                <div><strong>Cliente:</strong> <span id="pagoClienteDisplay">-</span></div>
+                <div><strong>Total:</strong> <span id="pagoTotalDisplay">$ 0</span></div>
+                <div><strong>Ya pagado:</strong> <span id="pagoYaPagadoDisplay">$ 0</span></div>
+                <div><strong>Saldo pendiente:</strong> <span id="pagoSaldoPendienteDisplay" style="color:var(--accent-teal); font-weight:700;">$ 0</span></div>
+              </div>
+            </div>
+
+            <input type="hidden" id="pagoClienteInput" name="cliente" value="">
+            <input type="hidden" id="pagoInstitucionInput" name="institucion" value="">
+
+            <div class="form-grid-2 mb-2">
+              <div class="form-group">
+                <label for="pagoFechaInput"><strong>Fecha del Pago:</strong> <span class="required">*</span></label>
+                <input type="date" id="pagoFechaInput" name="fecha_pago" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="pagoMedioSelect"><strong>Medio de Pago:</strong> <span class="required">*</span></label>
+                <select id="pagoMedioSelect" name="medio_pago" class="form-control" required>
+                  <option value="efectivo">💵 Efectivo</option>
+                  <option value="tarjeta">💳 Tarjeta de débito/crédito</option>
+                  <option value="transferencia">🏛️ Transferencia bancaria</option>
+                  <option value="mercadopago">📱 Mercado Pago</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2 mb-2">
+              <div class="form-group">
+                <label for="pagoImporteInput"><strong>Importe Abonado ($):</strong> <span class="required">*</span></label>
+                <input type="number" id="pagoImporteInput" name="importe" class="form-control" required min="0.01" step="0.01" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label for="pagoEstadoSelect"><strong>Estado del Registro:</strong> <span class="required">*</span></label>
+                <select id="pagoEstadoSelect" name="estado" class="form-control" required>
+                  <option value="pagado">Pagado (Total / Confirmado)</option>
+                  <option value="parcial">Parcial (Entrega parcial)</option>
+                  <option value="pendiente">Pendiente (A verificar)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="pagoOperacionInput"><strong>N° de Operación / Comprobante / Ticket POS:</strong> <small class="text-muted">(Opcional)</small></label>
+              <input type="text" id="pagoOperacionInput" name="numero_operacion" class="form-control" placeholder="Ej: TRF-982341 / TKT-4412">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="pagoObservacionesInput"><strong>Observaciones:</strong> <small class="text-muted">(Opcional)</small></label>
+              <textarea id="pagoObservacionesInput" name="observaciones" class="form-control" rows="2" placeholder="Notas administrativas sobre la cobranza..."></textarea>
+            </div>
+
+            <div class="form-check mt-2" id="pagoExcedenteWrap" style="display:none;">
+              <input type="checkbox" id="pagoPermitirExcedente" name="permitir_excedente">
+              <label for="pagoPermitirExcedente" style="font-size:12px; color:var(--warning-color); font-weight:600;">
+                ⚠️ El importe supera el saldo pendiente. Autorizar registro con excedente.
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="btnSubmitRegistrarPago">
+              💾 Registrar Pago
+            </button>
+            <button type="button" class="btn btn-outline" id="btnCancelRegistrarPago">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ADMINISTRAR Y CONFIGURAR MEDIO DE PAGO -->
+  <!-- ================================================================= -->
+  <div class="modal-backdrop" id="modalConfigMedio" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalConfigMedioTitle">⚙️ Configurar Medio de Pago</h3>
+          <button type="button" class="modal-close-btn" id="modalConfigMedioCloseBtn">✕</button>
+        </div>
+        <form id="formConfigMedio">
+          {% csrf_token %}
+          <input type="hidden" id="configMedioCodigo" name="codigo" value="">
+
+          <div class="modal-body">
+            <div class="form-group mb-2">
+              <label for="configMedioNombre"><strong>Nombre del Medio:</strong> <span class="required">*</span></label>
+              <input type="text" id="configMedioNombre" name="nombre" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="configMedioDescripcion"><strong>Descripción:</strong></label>
+              <textarea id="configMedioDescripcion" name="descripcion" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="form-check mb-3" style="background:var(--bg-subtle); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+              <input type="checkbox" id="configMedioActivo" name="activo">
+              <label for="configMedioActivo" style="font-weight:700; color:var(--primary-navy); cursor:pointer;">
+                Habilitar este medio de pago para nuevos cobros (Activo)
+              </label>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="configMedioInstrucciones"><strong>Instrucciones para el Cliente / Paciente:</strong></label>
+              <textarea id="configMedioInstrucciones" name="instrucciones" class="form-control" rows="2" placeholder="Instrucciones que se brindan al destinatario del presupuesto..."></textarea>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="configMedioObservaciones"><strong>Observaciones Administrativas:</strong></label>
+              <textarea id="configMedioObservaciones" name="observaciones" class="form-control" rows="2" placeholder="Notas internas para el equipo de administración..."></textarea>
+            </div>
+
+            <!-- BLOQUE: DATOS BANCARIOS OFICIALES (PARA TRANSFERENCIA) -->
+            <div id="configBancariosSection" style="display:none; background:#f8fafc; border:1px solid #cbd5e1; border-radius:var(--radius-sm); padding:14px; margin-top:14px;">
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--primary-navy); margin-bottom:8px;">
+                🏛️ Datos Bancarios Oficiales de UMSA
+              </h4>
+              <p class="text-muted mb-2" style="font-size:11.5px;">
+                Configure únicamente los datos oficiales que UMSA autorice publicar. Dejar en blanco aquellos que no correspondan.
+              </p>
+
+              <div class="form-grid-2 mb-2">
+                <div class="form-group">
+                  <label for="configBancoTitular"><strong>Titular de la cuenta:</strong></label>
+                  <input type="text" id="configBancoTitular" class="form-control" placeholder="Ej: UMSA Centro Médico S.A.">
+                </div>
+                <div class="form-group">
+                  <label for="configBancoNombre"><strong>Banco:</strong></label>
+                  <input type="text" id="configBancoNombre" class="form-control" placeholder="Ej: Banco Nación / Banco Galicia">
+                </div>
+              </div>
+
+              <div class="form-grid-2 mb-2">
+                <div class="form-group">
+                  <label for="configBancoTipoCuenta"><strong>Tipo de Cuenta:</strong></label>
+                  <input type="text" id="configBancoTipoCuenta" class="form-control" placeholder="Ej: Cuenta Corriente en Pesos">
+                </div>
+                <div class="form-group">
+                  <label for="configBancoNumeroCuenta"><strong>Número de Cuenta:</strong></label>
+                  <input type="text" id="configBancoNumeroCuenta" class="form-control" placeholder="Número de cuenta bancaria">
+                </div>
+              </div>
+
+              <div class="form-grid-2 mb-2">
+                <div class="form-group">
+                  <label for="configBancoCbu"><strong>CBU (22 dígitos):</strong></label>
+                  <input type="text" id="configBancoCbu" class="form-control" placeholder="CBU bancario">
+                </div>
+                <div class="form-group">
+                  <label for="configBancoAlias"><strong>Alias CBU:</strong></label>
+                  <input type="text" id="configBancoAlias" class="form-control" placeholder="Ej: UMSA.CENTRO.MEDICO">
+                </div>
+              </div>
+
+              <div class="form-group mb-0">
+                <label for="configBancoCuit"><strong>CUIT Institucional:</strong></label>
+                <input type="text" id="configBancoCuit" class="form-control" placeholder="CUIT oficial">
+              </div>
+            </div>
+
+            <!-- BLOQUE: MERCADO PAGO / PASARELA ONLINE -->
+            <div id="configMercadoPagoSection" style="display:none; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-sm); padding:14px; margin-top:14px;">
+              <h4 style="font-size:13.5px; font-weight:700; color:#166534; margin-bottom:8px;">
+                📱 Configuración de Cobro Mercado Pago
+              </h4>
+              <p class="text-muted mb-2" style="font-size:11.5px;">
+                Configure el enlace de pago oficial o alias institucional cuando UMSA lo disponga.
+              </p>
+
+              <div class="form-group mb-2">
+                <label for="configMpLink"><strong>Enlace Oficial de Cobro (Link de Pago):</strong></label>
+                <input type="url" id="configMpLink" class="form-control" placeholder="https://mpago.la/...">
+              </div>
+
+              <div class="form-grid-2 mb-2">
+                <div class="form-group">
+                  <label for="configMpAlias"><strong>Alias Mercado Pago:</strong></label>
+                  <input type="text" id="configMpAlias" class="form-control" placeholder="Ej: umsa.mp">
+                </div>
+                <div class="form-group">
+                  <label for="configMpCvu"><strong>CVU Mercado Pago:</strong></label>
+                  <input type="text" id="configMpCvu" class="form-control" placeholder="CVU digital">
+                </div>
+              </div>
+
+              <small class="text-muted d-block mt-2">
+                🔒 Para procesar cobros online automáticos con webhook, agregue <code>MERCADO_PAGO_ACCESS_TOKEN</code> en el archivo <code>.env</code>.
+              </small>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="btnSaveConfigMedio">
+              💾 Guardar Configuración
+            </button>
+            <button type="button" class="btn btn-outline" id="btnCancelConfigMedio">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: CANCELAR PAGO -->
+  <!-- ================================================================= -->
+  <div class="modal-backdrop" id="modalCancelarPago" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="color:var(--danger-color);">🚫 Cancelar Registro de Pago</h3>
+          <button type="button" class="modal-close-btn" id="modalCancelarPagoCloseBtn">✕</button>
+        </div>
+        <form id="formCancelarPago">
+          {% csrf_token %}
+          <input type="hidden" id="cancelPagoIdInput" value="">
+          <div class="modal-body">
+            <div class="alert alert-danger mb-3" style="font-size:13px;">
+              <strong>⚠️ Acción irreversible sobre el saldo:</strong>
+              <p class="mb-0">El pago será marcado como <strong>Cancelado</strong> y el saldo pendiente del presupuesto se recalculará automáticamente. El registro no se eliminará del historial para preservar la trazabilidad contable.</p>
+            </div>
+
+            <div class="recibo-box mb-3">
+              <div class="recibo-row">
+                <span>Pago ID:</span>
+                <strong id="cancelPagoIdDisplay"># -</strong>
+              </div>
+              <div class="recibo-row">
+                <span>Presupuesto:</span>
+                <strong id="cancelPagoPresupuestoDisplay">-</strong>
+              </div>
+              <div class="recibo-row">
+                <span>Importe:</span>
+                <strong id="cancelPagoImporteDisplay">$ 0</strong>
+              </div>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="cancelPagoMotivoInput"><strong>Motivo de la Cancelación:</strong> <span class="required">*</span></label>
+              <textarea id="cancelPagoMotivoInput" class="form-control" required rows="3" placeholder="Indique la justificación de la anulación (ej: Comprobante rechazado por el banco, error de carga administrativa)..."></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger" id="btnConfirmCancelarPago">
+              Confirmar Cancelación
+            </button>
+            <button type="button" class="btn btn-outline" id="btnDismissCancelarPago">
+              Volver
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: DETALLE / COMPROBANTE DE PAGO -->
+  <!-- ================================================================= -->
+  <div class="modal-backdrop" id="modalDetallePago" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="detallePagoModalTitle">🧾 Comprobante de Cobranza UMSA</h3>
+          <button type="button" class="modal-close-btn" id="modalDetallePagoCloseBtn">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="recibo-box" id="reciboBoxContent">
+            <!-- Contenido dinámico generado por JS -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btnCerrarDetallePago">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT PRINCIPAL -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

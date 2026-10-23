@@ -1,0 +1,33 @@
+# Memoria Persistente - Módulo `pagos`
+
+## Reglas y Directivas
+- [2026-10-13 20:20] Pago registrado #1: Efectivo por $500.00 para UMSA-P-2026-0038 (Hospital Central) - Estado: Parcial.
+- [2026-10-13 20:20] Pago registrado #2: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0038 (Hospital Central) - Estado: Parcial.
+- [2026-10-13 20:20] Pago #2 CANCELADO para UMSA-P-2026-0038 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 19:48] Pago registrado #3: Efectivo por $500.00 para UMSA-P-2026-0042 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 19:48] Pago registrado #4: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0042 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 19:48] Pago #4 CANCELADO para UMSA-P-2026-0042 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 20:00] Pago registrado #5: Efectivo por $500.00 para UMSA-P-2026-0045 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:00] Pago registrado #6: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0045 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:00] Pago #6 CANCELADO para UMSA-P-2026-0045 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 20:27] Pago registrado #7: Efectivo por $500.00 para UMSA-P-2026-0046 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:27] Pago registrado #8: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0046 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:27] Pago #8 CANCELADO para UMSA-P-2026-0046 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-15 08:26] Pago registrado #9: Efectivo por $500.00 para UMSA-P-2026-0047 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-15 08:26] Pago registrado #10: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0047 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-15 08:26] Pago #10 CANCELADO para UMSA-P-2026-0047 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-15 08:41] Pago registrado #11: Efectivo por $500.00 para UMSA-P-2026-0049 (Gallo Valentina) - Estado: Parcial.
+- [2026-10-15 08:41] Pago registrado #12: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0049 (Gallo Valentina) - Estado: Parcial.
+- [2026-10-15 08:41] Pago #12 CANCELADO para UMSA-P-2026-0049 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 08:03] Pago registrado #13: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:03] Pago registrado #14: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:03] Pago #14 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 08:35] Pago registrado #15: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:35] Pago registrado #16: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:35] Pago #16 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 11:08] Pago registrado #17: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 11:08] Pago registrado #18: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 11:08] Pago #18 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 11:47] Pago registrado #19: Efectivo por $500.00 para UMSA-P-2026-0061 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-22 11:47] Pago registrado #20: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0061 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-22 11:47] Pago #20 CANCELADO para UMSA-P-2026-0061 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría

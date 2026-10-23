@@ -1,9 +1,9 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">UMSA</div>
-  <p>Centro Médico Integral · San Andrés de Giles</p>
+  <p>Centro Médico Integral — San Andrés de Giles</p>
   <p>Ante una emergencia, comunicate con el servicio de emergencias local.</p>
   <div class="footer-bottom-links">
-    <button type="button" class="footer-kiosk-link" id="btn-footer-kiosk">Portal de Operador Kiosco</button>
+    <a href="{% url 'logout' %}" class="footer-kiosk-link">Cerrar sesión ({% if request.session.authenticated_user %}{{ request.session.authenticated_user }}{% elif request.user.is_authenticated %}{{ request.user.username }}{% else %}Usuario autorizado{% endif %})</a>
   </div>
 </footer>

@@ -1,0 +1,183 @@
+# Memoria Persistente Global
+
+## Reglas del proyecto
+
+- El framework base es Django.
+- La información de turnos debe mantenerse ordenada y persistente.
+- No inventar pacientes, profesionales, horarios ni disponibilidad.
+- La información de pacientes debe tratarse como privada.
+- UMSA-Django existente: `https://umsa-django.onrender.com`.
+- El endpoint actualmente conocido para crear turnos es `POST /crear-turno/`.
+- No modificar ni reemplazar el proyecto UMSA-Django existente desde este proyecto.
+- Las operaciones automáticas sobre UMSA deben utilizar una API autenticada explícita; no se debe hacer POST ciego.
+- [2026-10-05 10:51] Regla permanente de prueba: Verificar disponibilidad antes de confirmar turnos.
+- [2026-10-05 10:52] Registradas 3 tareas técnicas futuras en tareasfuturas.md
+- [2026-10-06 08:24] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-06 08:24] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-06 10:51] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-06 10:51] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-06 11:54] Catálogo de Inventario oficial: 1. Guantes látex ($2500, Caja x 100 U), 2. Jeringas descartables ($3500, Caja x 50 U), 3. Rollo de gasa ($1200, 90 cm x 100 m), 4. Paquete algodón ($1000, 200 g), 5. Alcohol antiséptico ($3000, 100 ml), 6. Agua oxigenada ($3000, 100 ml). Todos los 6 productos tienen STOCK ILIMITADO permanente; no descontar stock ni mostrar sin stock.
+- [2026-10-06 20:14] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-06 20:14] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-06 20:30] [presupuestos] Presupuesto UMSA-P-2026-0007 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 20:30] Presupuesto UMSA-P-2026-0007 generado para Juan Pérez: Total $15500.
+- [2026-10-06 20:30] [presupuestos] Presupuesto UMSA-P-2026-0008 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 20:30] Presupuesto UMSA-P-2026-0008 generado para Juan Pérez: Total $15500.
+- [2026-10-06 21:52] [presupuestos] Presupuesto UMSA-P-2026-0009 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 21:52] Presupuesto UMSA-P-2026-0009 generado para Juan Pérez: Total $15500.
+- [2026-10-06 21:53] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-06 21:53] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-06 21:56] [presupuestos] Presupuesto UMSA-P-2026-0011 generado para gallo valentina: Total $50000 (1 ítems).
+- [2026-10-06 21:56] Presupuesto UMSA-P-2026-0011 generado para gallo valentina: Total $50000.
+- [2026-10-07 12:52] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-07 12:52] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-07 16:38] [presupuestos] Presupuesto UMSA-P-2026-0013 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-07 16:38] Presupuesto UMSA-P-2026-0013 generado para Juan Pérez: Total $15500.
+- [2026-10-07 16:48] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-07 16:48] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-07 17:05] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-07 17:05] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-07 17:10] [presupuestos] Presupuesto UMSA-P-2026-0016 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:10] Presupuesto UMSA-P-2026-0016 generado para María González: Total $18500.
+- [2026-10-07 17:11] [presupuestos] Presupuesto UMSA-P-2026-0017 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:11] Presupuesto UMSA-P-2026-0017 generado para María González: Total $18500.
+- [2026-10-07 17:12] [presupuestos] Presupuesto UMSA-P-2026-0018 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:12] Presupuesto UMSA-P-2026-0018 generado para María González: Total $18500.
+- [2026-10-07 17:12] [presupuestos] Presupuesto UMSA-P-2026-0019 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:12] Presupuesto UMSA-P-2026-0019 generado para María González: Total $18500.
+- [2026-10-07 17:16] [presupuestos] Presupuesto UMSA-P-2026-0020 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:16] Presupuesto UMSA-P-2026-0020 generado para María González: Total $18500.
+- [2026-10-07 17:17] [presupuestos] Presupuesto UMSA-P-2026-0021 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:17] Presupuesto UMSA-P-2026-0021 generado para María González: Total $18500.
+- [2026-10-07 17:17] [presupuestos] Presupuesto UMSA-P-2026-0022 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-07 17:17] Presupuesto UMSA-P-2026-0022 generado para Juan Pérez: Total $14500.
+- [2026-10-07 17:23] [presupuestos] Presupuesto UMSA-P-2026-0023 generado para Dos Solamente: Total $17000 (2 ítems).
+- [2026-10-07 17:23] Presupuesto UMSA-P-2026-0023 generado para Dos Solamente: Total $17000.
+- [2026-10-13 08:27] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 08:27] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 08:48] [presupuestos] Presupuesto UMSA-P-2026-0026 generado para María González: Total $18500 (3 ítems).
+- [2026-10-13 08:48] Presupuesto UMSA-P-2026-0026 generado para María González: Total $18500.
+- [2026-10-13 08:48] [presupuestos] Presupuesto UMSA-P-2026-0027 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-13 08:48] Presupuesto UMSA-P-2026-0027 generado para Juan Pérez: Total $14500.
+- [2026-10-13 09:15] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 09:15] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 09:37] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 09:37] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 10:23] [presupuestos] Presupuesto UMSA-P-2026-0030 generado para Dr. Gomez: Total $21500 (2 ítems).
+- [2026-10-13 10:23] Presupuesto UMSA-P-2026-0030 generado para Dr. Gomez: Total $21500.
+- [2026-10-13 10:30] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 10:30] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 10:42] [presupuestos] Presupuesto UMSA-P-2026-0032 generado para Gallo: Total $4800 (1 ítems).
+- [2026-10-13 10:42] Presupuesto UMSA-P-2026-0032 generado para Gallo: Total $4800.
+- [2026-10-13 17:50] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 17:50] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 19:34] [presupuestos] Presupuesto UMSA-P-2026-0034 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 19:34] Presupuesto UMSA-P-2026-0034 generado para Hospital Central: Total $65000.
+- [2026-10-13 19:35] [presupuestos] Presupuesto UMSA-P-2026-0035 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 19:35] Presupuesto UMSA-P-2026-0035 generado para Hospital Central: Total $65000.
+- [2026-10-13 19:35] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 19:35] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 20:03] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 20:03] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 20:10] [presupuestos] Presupuesto UMSA-P-2026-0038 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 20:10] Presupuesto UMSA-P-2026-0038 generado para Hospital Central: Total $65000.
+- [2026-10-13 20:20] [pagos] Pago registrado #1: Efectivo por $500.00 para UMSA-P-2026-0038 (Hospital Central) - Estado: Parcial.
+- [2026-10-13 20:20] Cobranza UMSA-P-2026-0038: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-13 20:20] [pagos] Pago registrado #2: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0038 (Hospital Central) - Estado: Parcial.
+- [2026-10-13 20:20] Cobranza UMSA-P-2026-0038: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-13 20:20] [pagos] Pago #2 CANCELADO para UMSA-P-2026-0038 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-13 20:20] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-13 20:20] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-13 20:20] [presupuestos] Presupuesto UMSA-P-2026-0040 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 20:20] Presupuesto UMSA-P-2026-0040 generado para Hospital Central: Total $65000.
+- [2026-10-14 19:44] [presupuestos] Presupuesto UMSA-P-2026-0041 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 19:44] Presupuesto UMSA-P-2026-0041 generado para Dr. Gómez: Total $5000.
+- [2026-10-14 19:46] [presupuestos] Presupuesto UMSA-P-2026-0042 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 19:46] Presupuesto UMSA-P-2026-0042 generado para Dr. Gómez: Total $5000.
+- [2026-10-14 19:48] [pagos] Pago registrado #3: Efectivo por $500.00 para UMSA-P-2026-0042 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 19:48] Cobranza UMSA-P-2026-0042: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-14 19:48] [pagos] Pago registrado #4: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0042 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 19:48] Cobranza UMSA-P-2026-0042: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-14 19:48] [pagos] Pago #4 CANCELADO para UMSA-P-2026-0042 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 19:49] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-14 19:49] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-14 19:50] [presupuestos] Presupuesto UMSA-P-2026-0044 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-14 19:50] Presupuesto UMSA-P-2026-0044 generado para Hospital Central: Total $65000.
+- [2026-10-14 19:59] [presupuestos] Presupuesto UMSA-P-2026-0045 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 19:59] Presupuesto UMSA-P-2026-0045 generado para Dr. Gómez: Total $5000.
+- [2026-10-14 20:00] [pagos] Pago registrado #5: Efectivo por $500.00 para UMSA-P-2026-0045 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:00] Cobranza UMSA-P-2026-0045: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-14 20:00] [pagos] Pago registrado #6: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0045 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:00] Cobranza UMSA-P-2026-0045: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-14 20:00] [pagos] Pago #6 CANCELADO para UMSA-P-2026-0045 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 20:20] [presupuestos] Presupuesto UMSA-P-2026-0046 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 20:20] Presupuesto UMSA-P-2026-0046 generado para Dr. Gómez: Total $5000.
+- [2026-10-14 20:27] [pagos] Pago registrado #7: Efectivo por $500.00 para UMSA-P-2026-0046 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:27] Cobranza UMSA-P-2026-0046: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-14 20:27] [pagos] Pago registrado #8: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0046 (Dr. Gómez) - Estado: Parcial.
+- [2026-10-14 20:27] Cobranza UMSA-P-2026-0046: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-14 20:27] [pagos] Pago #8 CANCELADO para UMSA-P-2026-0046 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-14 20:30] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-14 20:30] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-15 08:26] [pagos] Pago registrado #9: Efectivo por $500.00 para UMSA-P-2026-0047 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-15 08:26] Cobranza UMSA-P-2026-0047: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-15 08:26] [pagos] Pago registrado #10: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0047 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-15 08:26] Cobranza UMSA-P-2026-0047: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-15 08:26] [pagos] Pago #10 CANCELADO para UMSA-P-2026-0047 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-15 08:26] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-15 08:26] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-15 08:28] [presupuestos] Presupuesto UMSA-P-2026-0049 generado para Gallo Valentina: Total $7500 (1 ítems).
+- [2026-10-15 08:28] Presupuesto UMSA-P-2026-0049 generado para Gallo Valentina: Total $7500.
+- [2026-10-15 08:41] [pagos] Pago registrado #11: Efectivo por $500.00 para UMSA-P-2026-0049 (Gallo Valentina) - Estado: Parcial.
+- [2026-10-15 08:41] Cobranza UMSA-P-2026-0049: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-15 08:41] [pagos] Pago registrado #12: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0049 (Gallo Valentina) - Estado: Parcial.
+- [2026-10-15 08:41] Cobranza UMSA-P-2026-0049: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-15 08:41] [pagos] Pago #12 CANCELADO para UMSA-P-2026-0049 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-17 11:34] [presupuestos] Presupuesto UMSA-P-2026-0050 generado para Gallo Valentina: Total $7500 (1 ítems).
+- [2026-10-17 11:34] Presupuesto UMSA-P-2026-0050 generado para Gallo Valentina: Total $7500.
+- [2026-10-19 17:59] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-19 17:59] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-19 18:00] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-19 18:00] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-19 18:28] [presupuestos] Presupuesto UMSA-P-2026-0052 generado para María González: Total $18500 (3 ítems).
+- [2026-10-19 18:28] Presupuesto UMSA-P-2026-0052 generado para María González: Total $18500.
+- [2026-10-19 18:28] [presupuestos] Presupuesto UMSA-P-2026-0053 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-19 18:28] Presupuesto UMSA-P-2026-0053 generado para Juan Pérez: Total $14500.
+- [2026-10-19 18:31] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-19 18:31] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-19 18:49] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-19 18:49] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-19 18:53] [presupuestos] Presupuesto UMSA-P-2026-0056 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 18:53] Presupuesto UMSA-P-2026-0056 generado para Juan Pérez: Total $15500.
+- [2026-10-19 18:53] [presupuestos] Presupuesto UMSA-P-2026-0057 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 18:53] Presupuesto UMSA-P-2026-0057 generado para Juan Pérez: Total $15500.
+- [2026-10-19 22:23] [presupuestos] Presupuesto UMSA-P-2026-0058 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 22:23] Presupuesto UMSA-P-2026-0058 generado para Juan Pérez: Total $15500.
+- [2026-10-19 22:24] [presupuestos] Presupuesto UMSA-P-2026-0059 generado para María González: Total $18500 (3 ítems).
+- [2026-10-19 22:24] Presupuesto UMSA-P-2026-0059 generado para María González: Total $18500.
+- [2026-10-19 22:24] [presupuestos] Presupuesto UMSA-P-2026-0060 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-19 22:24] Presupuesto UMSA-P-2026-0060 generado para Juan Pérez: Total $14500.
+- [2026-10-22 08:03] [pagos] Pago registrado #13: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:03] Cobranza UMSA-P-2026-0060: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-22 08:03] [pagos] Pago registrado #14: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:03] Cobranza UMSA-P-2026-0060: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-22 08:03] [pagos] Pago #14 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 08:35] [pagos] Pago registrado #15: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:35] Cobranza UMSA-P-2026-0060: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-22 08:35] [pagos] Pago registrado #16: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 08:35] Cobranza UMSA-P-2026-0060: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-22 08:35] [pagos] Pago #16 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 11:08] [pagos] Pago registrado #17: Efectivo por $500.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 11:08] Cobranza UMSA-P-2026-0060: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-22 11:08] [pagos] Pago registrado #18: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0060 (Juan Pérez) - Estado: Parcial.
+- [2026-10-22 11:08] Cobranza UMSA-P-2026-0060: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-22 11:08] [pagos] Pago #18 CANCELADO para UMSA-P-2026-0060 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 11:21] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-22 11:21] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.
+- [2026-10-22 11:47] [pagos] Pago registrado #19: Efectivo por $500.00 para UMSA-P-2026-0061 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-22 11:47] Cobranza UMSA-P-2026-0061: Pago de $500.00 (Efectivo) - Estado: Parcial.
+- [2026-10-22 11:47] [pagos] Pago registrado #20: Transferencia bancaria por $1,000.00 para UMSA-P-2026-0061 (Dr. Juan Perez) - Estado: Parcial.
+- [2026-10-22 11:47] Cobranza UMSA-P-2026-0061: Pago de $1,000.00 (Transferencia bancaria) - Estado: Parcial.
+- [2026-10-22 11:47] [pagos] Pago #20 CANCELADO para UMSA-P-2026-0061 (Importe: $1,000.00). Motivo: Prueba de anulación y auditoría
+- [2026-10-22 18:44] Registradas 3 tareas tecnicas futuras en tareasfuturas.md
+- [2026-10-22 18:44] Todos los documentos nuevos deben tener una seccion de Criterios de Aceptacion y nuestro framework base es Django.

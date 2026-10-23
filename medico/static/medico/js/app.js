@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
           estado: "Solicitud recibida"
         };
 
+        guardarTurnoLocal(apptConfirmado);
         mostrarConfirmacion(apptConfirmado);
 
         turnoPanel.hidden = true;

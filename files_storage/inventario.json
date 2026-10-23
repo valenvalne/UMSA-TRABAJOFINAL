@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "producto": "Guantes látex descartables",
+    "presentacion": "Caja x 100 U",
+    "precio_unitario": 2500,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/1_guantes_latex.jpg"
+  },
+  {
+    "id": 2,
+    "producto": "Jeringas descartables",
+    "presentacion": "Caja x 50 U",
+    "precio_unitario": 3500,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/2_jeringas.jpg"
+  },
+  {
+    "id": 3,
+    "producto": "Rollo de gasa",
+    "presentacion": "90 cm x 100 m",
+    "precio_unitario": 1200,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/3_rollo_gasa.jpg"
+  },
+  {
+    "id": 4,
+    "producto": "Paquete algodón",
+    "presentacion": "200 g",
+    "precio_unitario": 1000,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/4_paquete_algodon.jpg"
+  },
+  {
+    "id": 5,
+    "producto": "Alcohol antiséptico",
+    "presentacion": "100 ml",
+    "precio_unitario": 3000,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/5_alcohol_antiseptico.jpg"
+  },
+  {
+    "id": 6,
+    "producto": "Agua oxigenada",
+    "presentacion": "100 ml",
+    "precio_unitario": 3000,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/6_agua_oxigenada.jpg"
+  },
+  {
+    "id": 7,
+    "producto": "Barbijos descartables",
+    "presentacion": "Caja x 50 unidades",
+    "precio_unitario": 2500.0,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/7_barbijos_descartables.jpg"
+  },
+  {
+    "id": 8,
+    "producto": "Cinta adhesiva hipoalergénica",
+    "presentacion": "Rollo x 1 unidad",
+    "precio_unitario": 1500,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/8_cinta_adhesiva.svg"
+  },
+  {
+    "id": 9,
+    "producto": "Cofias descartables",
+    "presentacion": "Paquete x 100 unidades",
+    "precio_unitario": 3000,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/9_cofias_descartables.svg"
+  },
+  {
+    "id": 10,
+    "producto": "Camisolines descartables",
+    "presentacion": "Paquete x 10 unidades",
+    "precio_unitario": 8000,
+    "stock": "ILIMITADO",
+    "estado": "Disponible",
+    "imagen": "/media/productos/10_camisolines_descartables.svg"
+  }
+]

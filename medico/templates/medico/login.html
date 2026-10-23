@@ -1,0 +1,404 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso al Sistema · UMSA Centro Médico</title>
+  <meta name="description" content="Portal de inicio de sesión de UMSA Centro Médico">
+  <link rel="icon" type="image/svg+xml" href="{% static 'medico/img/favicon.svg' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Franklin:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --red: #c92332;
+      --red-dark: #9e1825;
+      --red-glow: rgba(201, 35, 50, 0.28);
+      --ink: #181d22;
+      --ink-soft: #4b5563;
+      --muted: #6b7280;
+      --paper: #ffffff;
+      --dark-card: #1f2429;
+      --dark-bg: #111417;
+      --border-dark: rgba(255, 255, 255, 0.12);
+      --border-focus: #c92332;
+      --shadow-card: 0 25px 60px -15px rgba(0, 0, 0, 0.55), 0 0 45px rgba(201, 35, 50, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d1013;
+      background-image: 
+        radial-gradient(circle at 18% 20%, rgba(201, 35, 50, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 82% 80%, rgba(23, 107, 77, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #15191e 0%, #0d1013 100%);
+      color: #f3f4f6;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Patrón de cruces médicas sutiles en el fondo */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 2;
+      animation: fadeInScale 380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .login-card {
+      background: rgba(27, 32, 38, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-dark);
+      border-radius: 18px;
+      padding: 2.5rem 2.25rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #c92332, #e53935, #c92332);
+    }
+
+    .brand-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .brand-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, #c92332 0%, #9e1825 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.85rem;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(201, 35, 50, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-title {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e53935;
+      margin-bottom: 0.35rem;
+    }
+
+    .brand-location {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .login-heading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+      text-align: center;
+    }
+
+    .login-description {
+      font-size: 0.86rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 1.75rem;
+      line-height: 1.45;
+    }
+
+    /* Mensaje de Error */
+    .alert-error {
+      background: rgba(201, 35, 50, 0.14);
+      border: 1px solid rgba(201, 35, 50, 0.45);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      color: #fca5a5;
+      font-size: 0.875rem;
+      line-height: 1.4;
+      animation: shake 300ms ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .alert-icon {
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* Formulario */
+    .form-group {
+      margin-bottom: 1.35rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #d1d5db;
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.02em;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(16, 20, 24, 0.75);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      color: #ffffff;
+      transition: all 180ms ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      border-color: #c92332;
+      background: rgba(20, 25, 30, 0.95);
+      box-shadow: 0 0 0 3px rgba(201, 35, 50, 0.22);
+    }
+
+    .form-input::placeholder {
+      color: #6b7280;
+    }
+
+    .input-password-toggle {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 0.35rem;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: color 150ms ease;
+    }
+
+    .input-password-toggle:hover {
+      color: #ffffff;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #c92332 0%, #ad1d2a 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.95rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 180ms ease;
+      box-shadow: 0 8px 22px rgba(201, 35, 50, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #d32737 0%, #bd202e 100%);
+      box-shadow: 0 12px 28px rgba(201, 35, 50, 0.48);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 12px rgba(201, 35, 50, 0.28);
+    }
+
+    .card-footer {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .card-footer strong {
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      
+      <!-- Encabezado Institucional UMSA -->
+      <div class="brand-section">
+        <div class="brand-icon" aria-hidden="true">✚</div>
+        <h1 class="brand-title">UMSA</h1>
+        <div class="brand-subtitle">Centro Médico Integral</div>
+        <div class="brand-location">San Andrés de Giles · Apostá a la vida</div>
+      </div>
+
+      <div class="login-heading">Acceso al Sistema</div>
+      <p class="login-description">
+        Ingresá tus credenciales autorizadas para acceder a la plataforma médica y panel de gestión.
+      </p>
+
+      {% if error %}
+      <div class="alert-error" role="alert" id="loginErrorMessage">
+        <span class="alert-icon" aria-hidden="true">⚠️</span>
+        <div>{{ error }}</div>
+      </div>
+      {% endif %}
+
+      <form method="POST" action="{% url 'login' %}" id="loginForm" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next|default:'' }}">
+
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Correo Electrónico</label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              name="email" 
+              id="loginEmail" 
+              class="form-input" 
+              placeholder="correo@gmail.com" 
+              value="{{ email|default:'' }}"
+              required 
+              autocomplete="username"
+              autofocus
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Contraseña</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              name="password" 
+              id="loginPassword" 
+              class="form-input" 
+              placeholder="••••" 
+              required 
+              autocomplete="current-password"
+            >
+            <button 
+              type="button" 
+              class="input-password-toggle" 
+              id="togglePasswordBtn" 
+              aria-label="Mostrar u ocultar contraseña"
+              title="Mostrar/Ocultar"
+            >👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSubmitLogin">
+          <span>Ingresar al Sistema</span>
+          <span aria-hidden="true">➔</span>
+        </button>
+      </form>
+
+      <div class="card-footer">
+        <strong>UMSA Centro Médico</strong> · Portal Seguro de Acceso Privado
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Mostrar u ocultar contraseña
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    const pwdInput = document.getElementById('loginPassword');
+    if (toggleBtn && pwdInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = pwdInput.type === 'password';
+        pwdInput.type = isPassword ? 'text' : 'password';
+        toggleBtn.textContent = isPassword ? '🙈' : '👁️';
+      });
+    }
+
+    // Efecto de carga en botón al enviar
+    const form = document.getElementById('loginForm');
+    const btnSubmit = document.getElementById('btnSubmitLogin');
+    if (form && btnSubmit) {
+      form.addEventListener('submit', () => {
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span>Verificando...</span>';
+      });
+    }
+  </script>
+</body>
+</html>

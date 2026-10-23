@@ -1,0 +1,38 @@
+# Memoria persistente
+
+## Reglas
+- [2026-10-06 20:30] Presupuesto UMSA-P-2026-0007 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 20:30] Presupuesto UMSA-P-2026-0008 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 21:52] Presupuesto UMSA-P-2026-0009 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-06 21:56] Presupuesto UMSA-P-2026-0011 generado para gallo valentina: Total $50000 (1 ítems).
+- [2026-10-07 16:38] Presupuesto UMSA-P-2026-0013 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-07 17:10] Presupuesto UMSA-P-2026-0016 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:11] Presupuesto UMSA-P-2026-0017 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:12] Presupuesto UMSA-P-2026-0018 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:12] Presupuesto UMSA-P-2026-0019 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:16] Presupuesto UMSA-P-2026-0020 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:17] Presupuesto UMSA-P-2026-0021 generado para María González: Total $18500 (3 ítems).
+- [2026-10-07 17:17] Presupuesto UMSA-P-2026-0022 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-07 17:23] Presupuesto UMSA-P-2026-0023 generado para Dos Solamente: Total $17000 (2 ítems).
+- [2026-10-13 08:48] Presupuesto UMSA-P-2026-0026 generado para María González: Total $18500 (3 ítems).
+- [2026-10-13 08:48] Presupuesto UMSA-P-2026-0027 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-13 10:23] Presupuesto UMSA-P-2026-0030 generado para Dr. Gomez: Total $21500 (2 ítems).
+- [2026-10-13 10:42] Presupuesto UMSA-P-2026-0032 generado para Gallo: Total $4800 (1 ítems).
+- [2026-10-13 19:34] Presupuesto UMSA-P-2026-0034 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 19:35] Presupuesto UMSA-P-2026-0035 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 20:10] Presupuesto UMSA-P-2026-0038 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-13 20:20] Presupuesto UMSA-P-2026-0040 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-14 19:44] Presupuesto UMSA-P-2026-0041 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 19:46] Presupuesto UMSA-P-2026-0042 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 19:50] Presupuesto UMSA-P-2026-0044 generado para Hospital Central: Total $65000 (2 ítems).
+- [2026-10-14 19:59] Presupuesto UMSA-P-2026-0045 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-14 20:20] Presupuesto UMSA-P-2026-0046 generado para Dr. Gómez: Total $5000 (1 ítems).
+- [2026-10-15 08:28] Presupuesto UMSA-P-2026-0049 generado para Gallo Valentina: Total $7500 (1 ítems).
+- [2026-10-17 11:34] Presupuesto UMSA-P-2026-0050 generado para Gallo Valentina: Total $7500 (1 ítems).
+- [2026-10-19 18:28] Presupuesto UMSA-P-2026-0052 generado para María González: Total $18500 (3 ítems).
+- [2026-10-19 18:28] Presupuesto UMSA-P-2026-0053 generado para Juan Pérez: Total $14500 (2 ítems).
+- [2026-10-19 18:53] Presupuesto UMSA-P-2026-0056 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 18:53] Presupuesto UMSA-P-2026-0057 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 22:23] Presupuesto UMSA-P-2026-0058 generado para Juan Pérez: Total $15500 (2 ítems).
+- [2026-10-19 22:24] Presupuesto UMSA-P-2026-0059 generado para María González: Total $18500 (3 ítems).
+- [2026-10-19 22:24] Presupuesto UMSA-P-2026-0060 generado para Juan Pérez: Total $14500 (2 ítems).
