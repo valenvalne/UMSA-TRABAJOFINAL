@@ -2,7 +2,7 @@ import os
 import requests
 
 def umsa_base_url():
-    return os.getenv("UMSA_BASE_URL", "https://umsa-django.onrender.com").rstrip("/")
+    return os.getenv("UMSA_BASE_URL", "https://umsa-trabajofinal.onrender.com").rstrip("/")
 
 def known_create_turno_url():
     return umsa_base_url() + os.getenv("UMSA_CREAR_TURNO_PATH", "/crear-turno/")
