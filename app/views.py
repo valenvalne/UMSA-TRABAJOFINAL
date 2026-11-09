@@ -808,3 +808,19 @@ def mercadopago_webhook_api(request):
         return JsonResponse({"ok": False, "error": str(exc)}, status=400)
 
 
+def umsa_web_view(request):
+    """
+    Página web oficial de UMSA Centro Médico ('Apostá a la vida')
+    con sistema de solicitud y consulta de turnos médicos, opiniones y enlace integrado al Panel IA.
+    """
+    return render(request, "umsa_web/index.html")
+
+
+def umsa_kiosco_view(request):
+    """
+    Terminal de acceso y portal de atención Kiosco de UMSA Centro Médico.
+    """
+    return render(request, "umsa_web/kiosco.html")
+
+
+

@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "tab-presupuestos": "Presupuestos Oficiales",
     "tab-historial-presupuestos": "Historial de Presupuestos",
     "tab-pagos": "Medios de Pago y Cobranzas",
+    "tab-web-umsa": "Sitio Web & Turnos UMSA",
     "tab-chat": "Asistente UMSA",
     "tab-archivos": "Archivos",
     "tab-memoria": "Memoria",

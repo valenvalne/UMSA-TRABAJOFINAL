@@ -74,6 +74,19 @@
           <span class="link-label">Asistente</span>
         </button>
 
+        <div class="nav-group-label" style="margin-top: 14px; font-size: 0.68rem; letter-spacing: 0.05em; color: var(--text-muted, #64748b);">PÁGINA WEB UMSA</div>
+
+        <button type="button" class="sidebar-link" data-tab="tab-web-umsa" id="navBtnWebUmsa">
+          <span class="link-icon">🌐</span>
+          <span class="link-label">Sitio Web & Turnos</span>
+          <span class="badge badge-success" style="font-size:0.65rem; padding: 2px 6px; margin-left:auto; border-radius: 9999px;">Online</span>
+        </button>
+
+        <a href="/sitio/" target="_blank" class="sidebar-link" id="navLinkSitioFull" style="text-decoration:none;">
+          <span class="link-icon">↗️</span>
+          <span class="link-label">Abrir en pestaña</span>
+        </a>
+
         <!-- Elementos técnicos preservados internamente para tests y backend (ocultos del usuario) -->
         <div id="technicalNavSection" style="display:none;" aria-hidden="true">
           <button type="button" class="sidebar-link" data-tab="tab-archivos" id="navBtnArchivos">
@@ -154,6 +167,11 @@
             <div id="topClaudeChip"></div>
             <div id="topUmsaChip"></div>
           </div>
+
+          <a href="/sitio/" target="_blank" class="btn btn-sm btn-outline" style="display:inline-flex; align-items:center; gap:6px; font-weight:600; text-decoration:none; border-radius:9999px; padding:6px 14px;" title="Ver la página web oficial de UMSA con turnos">
+            <span>🌐</span>
+            <span>Ver Sitio Web</span>
+          </a>
 
           <div class="top-institutional-badge">
             <span class="status-dot dot-online"></span>
@@ -923,6 +941,36 @@
                 </table>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- PESTAÑA: SITIO WEB & TURNOS UMSA INTEGRADO -->
+        <!-- ================================================================= -->
+        <section class="view-pane" id="tab-web-umsa">
+          <div class="panel-card" style="height: calc(100vh - 120px); display: flex; flex-direction: column; overflow: hidden;">
+            <div class="panel-header" style="flex-shrink: 0; padding: 14px 20px; border-bottom: 1px solid var(--border-color, #e2e8f0); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div class="panel-title-group" style="display: flex; align-items: center; gap: 10px;">
+                <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700;">🌐 Página Web Oficial UMSA Turnos ("Apostá a la Vida")</h3>
+                <span class="badge badge-success" style="font-size: 0.75rem; padding: 4px 8px;">INTEGRADA EN VIVO</span>
+              </div>
+              <div class="panel-actions-group" style="display: flex; gap: 8px;">
+                <a href="/sitio/" target="_blank" class="btn btn-sm btn-primary" style="display: inline-flex; align-items: center; gap: 5px;">
+                  <span>↗️</span>
+                  <span>Abrir Pantalla Completa</span>
+                </a>
+                <a href="/kiosco/" target="_blank" class="btn btn-sm btn-secondary" style="display: inline-flex; align-items: center; gap: 5px;">
+                  <span>🔑</span>
+                  <span>Terminal Kiosco</span>
+                </a>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="const f = document.getElementById('umsaWebIframe'); if (f) f.src = '/sitio/?t=' + Date.now();" title="Recargar vista previa">
+                  🔄 Recargar
+                </button>
+              </div>
+            </div>
+            <div class="panel-body" style="flex: 1; padding: 0; margin: 0; overflow: hidden; background: #ffffff;">
+              <iframe id="umsaWebIframe" src="/sitio/" style="width: 100%; height: 100%; border: none; display: block;" title="Página Web UMSA Centro Médico y Turnos"></iframe>
             </div>
           </div>
         </section>

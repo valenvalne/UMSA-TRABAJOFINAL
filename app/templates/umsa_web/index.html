@@ -1,0 +1,627 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UMSA Centro Médico - Apostá a la vida. San Andrés de Giles. Solicitud y consulta de turnos médicos."
+    />
+    <title>UMSA - Centro Médico | Apostá a la vida</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'umsa_web/assets/favicon.svg' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'umsa_web/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'umsa_web/opiniones.css' %}" />
+    <script src="{% static 'umsa_web/app.js' %}" defer></script>
+    <script src="{% static 'umsa_web/opiniones.js' %}" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="UMSA, ir al inicio">
+        <span class="brand-mark" aria-hidden="true">UMSA</span>
+        <span class="brand-copy">
+          <strong>Centro Médico</strong>
+          <small>San Andrés de Giles</small>
+        </span>
+      </a>
+      <div class="header-right">
+        <a class="header-phone" href="tel:+542325442727" aria-label="Llamar al teléfono 2325 442727">
+          <span aria-hidden="true">☎</span>
+          <span><small>Teléfono</small><strong>2325 442727</strong></span>
+        </a>
+        <button type="button" class="kiosk-nav-btn" id="btn-kiosk-trigger" onclick="window.location.href='/kiosco/'" aria-label="Acceso Kiosco de atención">
+          <span aria-hidden="true">🔑</span>
+          <span>Acceso Kiosco</span>
+        </button>
+        <a href="/panel/" class="kiosk-nav-btn admin-portal-btn" style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; padding: 10px 18px; border-radius: 9999px; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4); border: 1px solid rgba(255,255,255,0.25); font-size: 0.88rem;" aria-label="Ir al Panel Administrativo e IA">
+          <span aria-hidden="true">🤖</span>
+          <span>Panel IA / Admin</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <!-- HERO PRINCIPAL -->
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">ATENCIÓN MÉDICA CERCANA</p>
+          <h1>UMSA - Centro Médico</h1>
+          <p class="hero-subtitle">"APOSTÁ A LA VIDA"</p>
+          <p class="hero-description">
+            Reservá y consultá tus turnos de forma simple. Atención profesional en el centro de San Andrés de Giles.
+          </p>
+        </div>
+        <div class="hero-logo" aria-label="Logo UMSA Centro Médico">
+          <span>UMSA</span>
+          <small>CENTRO MÉDICO</small>
+        </div>
+      </section>
+
+      <!-- MENÚ DE ACCIONES PRINCIPALES -->
+      <nav class="action-grid" aria-label="Acciones principales">
+        <button class="action-button action-primary" type="button" data-panel="turno-panel">
+          <span class="action-icon" aria-hidden="true">📅</span>
+          <span><strong>Solicitar turno</strong><small>Reservá una consulta</small></span>
+        </button>
+        <button class="action-button" type="button" data-panel="consulta-panel">
+          <span class="action-icon" aria-hidden="true">🔎</span>
+          <span><strong>Consultar turno</strong><small>Buscá por DNI</small></span>
+        </button>
+        <button class="action-button" type="button" data-scroll="especialidades">
+          <span class="action-icon" aria-hidden="true">🩺</span>
+          <span><strong>Especialidades</strong><small>Conocé la atención</small></span>
+        </button>
+        <button class="action-button" type="button" data-scroll="profesionales">
+          <span class="action-icon" aria-hidden="true">👩‍⚕️</span>
+          <span><strong>Profesionales</strong><small>Nuestro equipo médico</small></span>
+        </button>
+        <button class="action-button" type="button" data-scroll="faq">
+          <span class="action-icon" aria-hidden="true">❓</span>
+          <span><strong>Preguntas frecuentes</strong><small>Resolvé tus dudas</small></span>
+        </button>
+      </nav>
+
+      <!-- ÁREA INTERACTIVA (PANELES DINÁMICOS) -->
+      <section class="interactive-area" aria-live="polite">
+        <!-- PANEL DE SOLICITUD DE TURNO -->
+        <div class="panel" id="turno-panel" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">RESERVA ONLINE</p>
+              <h2>Solicitar turno</h2>
+            </div>
+            <button class="close-panel" type="button" aria-label="Cerrar formulario" data-close-panel>×</button>
+          </div>
+
+          <form id="turno-form" novalidate>
+            <div class="form-grid">
+              <label class="field field-wide" for="turno-nombre">
+                <span>Nombre y apellido</span>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="turno-nombre"
+                  autocomplete="name"
+                  required
+                  minlength="3"
+                  placeholder="Ej.: Ana García"
+                />
+              </label>
+              <label class="field" for="turno-dni">
+                <span>DNI</span>
+                <input
+                  type="text"
+                  name="dni"
+                  id="turno-dni"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  required
+                  pattern="[0-9]{7,8}"
+                  placeholder="Sin puntos"
+                />
+              </label>
+              <label class="field" for="turno-telefono">
+                <span>Teléfono</span>
+                <input
+                  type="tel"
+                  name="telefono"
+                  id="turno-telefono"
+                  autocomplete="tel"
+                  required
+                  placeholder="Ej.: 2325 400000"
+                />
+              </label>
+              <label class="field" for="especialidad">
+                <span>Especialidad</span>
+                <select name="especialidad" id="especialidad" required>
+                  <option value="">Seleccionar</option>
+                  <option value="Clínica Médica">Clínica Médica</option>
+                  <option value="Odontología">Odontología</option>
+                  <option value="Reumatología">Reumatología</option>
+                  <option value="Neurología">Neurología</option>
+                </select>
+              </label>
+              <label class="field" for="profesional">
+                <span>Profesional</span>
+                <input
+                  type="text"
+                  name="profesional"
+                  id="profesional"
+                  required
+                  readonly
+                  placeholder="Se completa automáticamente"
+                />
+              </label>
+              <label class="field" for="fecha">
+                <span>Fecha</span>
+                <input type="date" name="fecha" id="fecha" required />
+              </label>
+              <label class="field" for="hora">
+                <span>Horario</span>
+                <select name="hora" id="hora" required>
+                  <option value="">Seleccionar</option>
+                  <option value="08:00">08:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                </select>
+              </label>
+            </div>
+            <p class="form-note">Todos los campos son obligatorios.</p>
+            <div id="turno-error" class="form-message error-message" role="alert" hidden></div>
+            <button class="submit-button" type="submit" id="btn-confirmar-turno">CONFIRMAR TURNO</button>
+          </form>
+        </div>
+
+        <!-- PANEL DE CONSULTA DE TURNO -->
+        <div class="panel" id="consulta-panel" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">ESTADO DEL TURNO</p>
+              <h2>Consultar turno</h2>
+            </div>
+            <button class="close-panel" type="button" aria-label="Cerrar consulta" data-close-panel>×</button>
+          </div>
+          <form id="consulta-form" class="search-form" novalidate>
+            <label class="field" for="consulta-dni">
+              <span>DNI del paciente</span>
+              <input
+                type="text"
+                name="dni"
+                id="consulta-dni"
+                inputmode="numeric"
+                required
+                pattern="[0-9]{7,8}"
+                placeholder="Ingresá el DNI sin puntos"
+              />
+            </label>
+            <button class="submit-button" type="submit" id="btn-buscar-turno">BUSCAR TURNO</button>
+          </form>
+          <div id="consulta-error" class="form-message error-message" role="alert" hidden></div>
+          <div id="consulta-resultado" class="result-area" aria-live="polite"></div>
+        </div>
+
+        <!-- CONFIRMACIÓN DE TURNO -->
+        <div id="confirmacion" class="confirmation" hidden tabindex="-1">
+          <div class="confirmation-icon" aria-hidden="true">✓</div>
+          <div>
+            <p class="eyebrow">ESTADO DEL TURNO</p>
+            <h2>Turno solicitado correctamente</h2>
+            <p>Recibimos la solicitud. La secretaría podrá comunicarse para validar la disponibilidad.</p>
+            <dl id="confirmacion-detalle" class="appointment-detail"></dl>
+            <button class="text-button" type="button" data-new-appointment>Solicitar otro turno</button>
+          </div>
+        </div>
+
+        <!-- MODAL DE INICIO DE SESIÓN KIOSCO -->
+        <div class="panel" id="kiosk-login-panel" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">AUTENTICACIÓN DE OPERADOR</p>
+              <h2>Acceso Kiosco</h2>
+            </div>
+            <button class="close-panel" type="button" aria-label="Cerrar login" data-close-panel>×</button>
+          </div>
+          <p class="panel-description">
+            Ingresá las credenciales asignadas para acceder al panel protegido de recepción de pacientes.
+          </p>
+          <form id="kiosk-login-form" class="kiosk-login-form" novalidate>
+            <label class="field" for="kiosk-email">
+              <span>Correo electrónico</span>
+              <input
+                type="email"
+                name="email"
+                id="kiosk-email"
+                autocomplete="username"
+                required
+                placeholder="usuario@umsa.com"
+              />
+            </label>
+            <label class="field" for="kiosk-password">
+              <span>Contraseña</span>
+              <input
+                type="password"
+                name="password"
+                id="kiosk-password"
+                autocomplete="current-password"
+                required
+                placeholder="••••••••"
+              />
+            </label>
+            <div id="kiosk-login-error" class="form-message error-message" role="alert" hidden></div>
+            <button class="submit-button" type="submit" id="btn-login-submit">INICIAR SESIÓN</button>
+          </form>
+        </div>
+
+        <!-- PANEL PRIVADO DE KIOSCO (PROTEGIDO) -->
+        <div class="panel kiosk-private-panel" id="kiosk-private-panel" hidden>
+          <div class="kiosk-header-bar">
+            <div class="kiosk-user-info">
+              <span class="kiosk-user-icon" aria-hidden="true">👤</span>
+              <div>
+                <strong id="kiosk-user-email">operador@kiosco</strong>
+                <span class="badge-role">ROL: KIOSCO</span>
+              </div>
+            </div>
+            <div class="kiosk-actions-bar">
+              <button class="logout-button" type="button" id="btn-kiosk-logout">Cerrar sesión</button>
+              <button class="close-panel" type="button" aria-label="Ocultar panel" data-close-panel>×</button>
+            </div>
+          </div>
+
+          <div class="kiosk-body">
+            <div class="kiosk-section-heading">
+              <p class="eyebrow">TERMINAL DE ATENCIÓN</p>
+              <h2>Panel Privado Kiosco</h2>
+              <p class="hero-description">
+                Validación de recepción de pacientes y actualización de estado en tiempo real.
+              </p>
+            </div>
+
+            <div class="kiosk-grid">
+              <!-- Herramienta 1: Búsqueda y Validación rápida de paciente en sala -->
+              <div class="kiosk-card">
+                <h3>🔎 Búsqueda y Registro en Sala</h3>
+                <p>Ingresá el DNI del paciente para consultar su turno y registrar su llegada.</p>
+                <form id="kiosk-lookup-form" class="kiosk-quick-form" novalidate>
+                  <div class="kiosk-inline-input">
+                    <input
+                      type="text"
+                      name="dni"
+                      id="kiosk-search-dni"
+                      inputmode="numeric"
+                      required
+                      pattern="[0-9]{7,8}"
+                      placeholder="DNI del paciente (sin puntos)"
+                    />
+                    <button class="submit-button" type="submit" id="btn-kiosk-search">Consultar</button>
+                  </div>
+                </form>
+                <div id="kiosk-search-error" class="form-message error-message" role="alert" hidden></div>
+                <div id="kiosk-search-result" class="kiosk-search-result" aria-live="polite"></div>
+              </div>
+
+              <!-- Herramienta 2: Crear nuevo turno inmediato en modo Kiosco -->
+              <div class="kiosk-card">
+                <h3>📅 Asignar Turno Inmediato</h3>
+                <p>Asigná un turno para un paciente que se presenta presencialmente en el centro.</p>
+                <button class="action-button action-primary kiosk-open-turno-btn" type="button" id="btn-kiosk-crear-turno">
+                  <span class="action-icon" aria-hidden="true">➕</span>
+                  <span><strong>Nuevo Turno Kiosco</strong><small>Abrir formulario de turno</small></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN ESPECIALIDADES -->
+      <section class="content-section" id="especialidades">
+        <div class="section-intro">
+          <p class="eyebrow">ATENCIÓN INTEGRAL</p>
+          <h2>Especialidades</h2>
+          <p>Cuatro áreas de atención para acompañar tu salud con seguimiento profesional.</p>
+        </div>
+        <div class="simple-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Clínica Médica</h3>
+              <p>Consultas generales, controles y seguimiento de la salud adulta.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Odontología</h3>
+              <p>Prevención, diagnóstico y tratamiento para el cuidado bucal.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Reumatología</h3>
+              <p>Atención de articulaciones, músculos y enfermedades reumáticas.</p>
+            </div>
+          </article>
+          <article>
+            <span>04</span>
+            <div>
+              <h3>Neurología</h3>
+              <p>Evaluación y seguimiento de afecciones del sistema nervioso.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECCIÓN PROFESIONALES -->
+      <section class="content-section muted-section" id="profesionales">
+        <div class="section-intro">
+          <p class="eyebrow">EQUIPO UMSA</p>
+          <h2>Profesionales</h2>
+          <p>Un equipo médico cercano, comprometido con una atención clara y responsable.</p>
+        </div>
+        <div class="professionals-list">
+          <article>
+            <div class="initials" aria-hidden="true">LC</div>
+            <div>
+              <h3>Dr. Lecouna</h3>
+              <p>Clínica Médica</p>
+            </div>
+          </article>
+          <article>
+            <div class="initials" aria-hidden="true">OR</div>
+            <div>
+              <h3>Dr. Ortega</h3>
+              <p>Odontología</p>
+            </div>
+          </article>
+          <article>
+            <div class="initials" aria-hidden="true">FU</div>
+            <div>
+              <h3>Dr. Fullop</h3>
+              <p>Reumatología</p>
+            </div>
+          </article>
+          <article>
+            <div class="initials" aria-hidden="true">DE</div>
+            <div>
+              <h3>Dr. Devechi</h3>
+              <p>Neurología</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- SECCIÓN VACUNACIÓN -->
+      <section class="content-section" id="vacunacion">
+        <div class="section-intro">
+          <p class="eyebrow">PREVENCIÓN Y SALUD</p>
+          <h2>Vacunación contra la gripe</h2>
+          <p>
+            Prevenir también es cuidar tu salud. La vacunación antigripal
+            ayuda a reducir el riesgo de complicaciones por influenza.
+          </p>
+        </div>
+
+        <div class="simple-list">
+          <article>
+            <span>💉</span>
+            <div>
+              <h3>¿Por qué vacunarse?</h3>
+              <p>
+                La vacunación es una de las principales medidas de prevención
+                frente a la gripe, especialmente para las personas que forman
+                parte de grupos de riesgo.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <span>🩺</span>
+            <div>
+              <h3>Consultá con un profesional</h3>
+              <p>
+                Mantené tus vacunas al día y consultá con un profesional de
+                salud para saber si la vacuna antigripal corresponde en tu caso.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- SECCIÓN PREGUNTAS FRECUENTES -->
+      <section class="content-section muted-section" id="faq">
+        <div class="section-intro">
+          <p class="eyebrow">AYUDA Y ORIENTACIÓN</p>
+          <h2>Preguntas frecuentes</h2>
+          <p>Encontrá respuestas a las consultas más habituales sobre nuestros turnos y servicios.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>¿Cómo solicito un turno?</summary>
+            <p>
+              Ingresá en "Solicitar turno", completá tus datos, elegí la especialidad,
+              el profesional, la fecha y el horario disponible. Luego confirmá la solicitud.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Cómo consulto mi turno?</summary>
+            <p>
+              Seleccioná "Consultar turno" e ingresá tu DNI para consultar la información
+              registrada de tu turno.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Qué debo llevar a la consulta?</summary>
+            <p>
+              Se recomienda llevar tu DNI y, si corresponde, estudios médicos o documentación
+              relacionada con la consulta.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Cómo cancelo un turno?</summary>
+            <p>
+              Para cancelar un turno, comunicate con la secretaría del Centro Médico
+              al teléfono 2325 442727.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Qué hago si no encuentro una especialidad?</summary>
+            <p>
+              Si la especialidad que buscás no aparece entre las disponibles, comunicate
+              con secretaría para consultar sobre otras opciones de atención.
+            </p>
+          </details>
+        </div>
+      </section>
+      <!-- SECCIÓN CONTACTO -->
+      <section class="contact-section" id="contacto">
+        <div>
+          <p class="eyebrow">INFORMACIÓN DEL CENTRO</p>
+          <h2>Estamos para atenderte</h2>
+          <p>Acercate o comunicate con secretaría para resolver cualquier consulta.</p>
+        </div>
+        <address class="contact-details">
+          <p>
+            <span aria-hidden="true">⌖</span>
+            <span><strong>Dirección</strong>San Martín 711, San Andrés de Giles</span>
+          </p>
+          <p>
+            <span aria-hidden="true">☎</span>
+            <span><strong>Teléfono</strong><a href="tel:+542325442727">2325 442727</a></span>
+          </p>
+          <p>
+            <span aria-hidden="true">◷</span>
+            <span><strong>Secretaría</strong>Lunes a viernes de 7:00 a 20:00 hs.</span>
+          </p>
+          <p>
+            <span aria-hidden="true">✚</span>
+            <span><strong>Emergencias</strong>24 hs.</span>
+          </p>
+        </address>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">UMSA</div>
+      <p>Centro Médico Integral · San Andrés de Giles</p>
+      <p>Ante una emergencia, comunicate con el servicio de emergencias local.</p>
+      <div class="footer-bottom-links">
+        <button type="button" class="footer-kiosk-link" id="btn-footer-kiosk" onclick="window.location.href='kiosco.html'">Portal de Operador Kiosco</button>
+      </div>
+    </footer>
+
+    <!-- WIDGET FLOTANTE: ¡TU OPINIÓN NOS IMPORTA! -->
+    <div class="opiniones-widget" id="opiniones-widget">
+      <button
+        type="button"
+        class="opiniones-toggle"
+        id="opiniones-toggle"
+        aria-expanded="false"
+        aria-controls="opiniones-window"
+        aria-label="Abrir formulario de opiniones"
+      >
+        <span class="opiniones-icon" aria-hidden="true">⭐</span>
+        <span>¡Tu opinión nos importa!</span>
+      </button>
+
+      <div class="opiniones-window" id="opiniones-window" hidden>
+        <div class="opiniones-header">
+          <div class="opiniones-header-text">
+            <strong>¡Tu opinión nos importa!</strong>
+            <small>Queremos conocer tu experiencia</small>
+          </div>
+          <button
+            type="button"
+            class="opiniones-close"
+            id="opiniones-close"
+            aria-label="Cerrar ventana de opinión"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="opiniones-body">
+          <form class="opiniones-form" id="opiniones-form" novalidate>
+            <label class="opiniones-field" for="opinion-nombre">
+              <span class="field-label">Nombre y apellido<abbr title="Obligatorio">*</abbr></span>
+              <input
+                type="text"
+                id="opinion-nombre"
+                name="nombre"
+                required
+                placeholder="Ingresá tu nombre"
+                autocomplete="name"
+              />
+            </label>
+
+            <div class="opiniones-field">
+              <span class="field-label">Clasificación<abbr title="Obligatorio">*</abbr></span>
+              <div class="rating-container">
+                <div
+                  class="rating-stars"
+                  id="rating-stars"
+                  role="radiogroup"
+                  aria-label="Calificación de 1 a 5 estrellas"
+                >
+                  <button type="button" class="star-btn" data-value="1" aria-label="1 estrella" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas" role="radio" aria-checked="false">★</button>
+                </div>
+                <input type="hidden" name="clasificacion" id="opinion-clasificacion" value="" required />
+                <span class="rating-hint" id="rating-hint">Tocá las estrellas para calificar</span>
+              </div>
+            </div>
+
+            <label class="opiniones-field" for="opinion-comentario">
+              <span class="field-label">Comentario<abbr title="Obligatorio">*</abbr></span>
+              <textarea
+                id="opinion-comentario"
+                name="comentario"
+                rows="4"
+                required
+                placeholder="Contanos tu experiencia..."
+              ></textarea>
+            </label>
+
+            <div class="opiniones-error" id="opiniones-error" role="alert" hidden></div>
+
+            <button type="submit" class="opiniones-submit-btn" id="btn-enviar-opinion">
+              ENVIAR OPINIÓN
+            </button>
+          </form>
+
+          <div class="opiniones-success" id="opiniones-success" hidden>
+            <div class="opiniones-success-icon" aria-hidden="true">✓</div>
+            <h3>¡Gracias por tu opinión!</h3>
+            <p>Tus comentarios nos ayudan a seguir mejorando la atención médica en UMSA.</p>
+            <button type="button" class="opiniones-reset-btn" id="btn-nueva-opinion">
+              Dejar otro comentario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

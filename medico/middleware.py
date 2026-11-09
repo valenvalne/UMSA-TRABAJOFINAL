@@ -21,7 +21,8 @@ class AuthRequiredMiddleware:
             path.startswith('/login/') or
             path.startswith('/static/') or
             path.startswith('/media/') or
-            path.startswith('/admin/')
+            path.startswith('/admin/') or
+            path.startswith('/api/')
         ):
             return self.get_response(request)
 

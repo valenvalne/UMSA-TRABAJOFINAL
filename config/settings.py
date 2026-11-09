@@ -153,3 +153,7 @@ GOOGLE_SHEETS_URL = os.environ.get(
     'GOOGLE_SHEETS_URL',
     'https://docs.google.com/spreadsheets/d/e/2PACX-1vS24UmpDwnUUlUG927SQRjJlffIj5rtPB9ytlEBgnV9EoTxFTEJMAhLEJ4l9KNTSBNKKVAAbp08RRJ3/pubhtml'
 )
+
+# Permitir embeber vistas del mismo origen (ej: previsualización del sitio web dentro del panel)
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+

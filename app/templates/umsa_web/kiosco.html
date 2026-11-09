@@ -1,0 +1,174 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UMSA Centro Médico - Terminal de acceso y panel de atención Kiosco."
+    />
+    <title>UMSA Centro Médico | Acceso Kiosco</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'umsa_web/assets/favicon.svg' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'umsa_web/kiosco.css' %}" />
+    <script src="{% static 'umsa_web/kiosco.js' %}" defer></script>
+  </head>
+  <body>
+    <header class="kiosco-site-header">
+      <div class="kiosco-header-brand">
+        <span class="kiosco-brand-mark" aria-hidden="true">UMSA</span>
+        <span class="kiosco-brand-copy">
+          <strong>Centro Médico</strong>
+          <small>San Andrés de Giles</small>
+        </span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="/" class="kiosco-header-back-link">
+          <span aria-hidden="true">←</span>
+          <span>Volver a la página pública</span>
+        </a>
+        <a href="/panel/" class="kiosco-header-back-link" style="background: rgba(2, 132, 199, 0.1); color: #0284c7; border-color: rgba(2, 132, 199, 0.25);">
+          <span aria-hidden="true">🤖</span>
+          <span>Panel IA</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="kiosco-main" id="kiosco-main">
+      <!-- ESTADO 1: PANTALLA DE LOGIN KIOSCO -->
+      <section class="kiosco-card" id="kiosco-login-section" aria-labelledby="kiosco-login-title">
+        <div class="kiosco-card-header">
+          <div class="kiosco-badge-portal">PORTAL DE ATENCIÓN</div>
+          <h1 id="kiosco-login-title">UMSA (centro médico)</h1>
+          <p class="kiosco-subtitle">Ingrese sus credenciales para acceder.</p>
+        </div>
+
+        <form id="kiosco-login-form" class="kiosco-form" novalidate>
+          <div class="kiosco-field-group">
+            <label class="kiosco-field" for="kiosk-email">
+              <span>Email</span>
+              <input
+                type="email"
+                name="email"
+                id="kiosk-email"
+                autocomplete="username"
+                required
+                placeholder="valentinagalo12@gmail.com"
+              />
+            </label>
+
+            <label class="kiosco-field" for="kiosk-password">
+              <span>Contraseña</span>
+              <div class="kiosco-password-wrapper">
+                <input
+                  type="password"
+                  name="password"
+                  id="kiosk-password"
+                  autocomplete="current-password"
+                  required
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  class="kiosco-toggle-pwd"
+                  id="btn-toggle-password"
+                  aria-label="Mostrar u ocultar contraseña"
+                  title="Mostrar contraseña"
+                >
+                  <span class="pwd-icon" aria-hidden="true">👁</span>
+                </button>
+              </div>
+            </label>
+          </div>
+
+          <div id="kiosk-login-error" class="kiosco-message error-message" role="alert" hidden></div>
+
+          <button class="kiosco-submit-btn" type="submit" id="btn-login-submit">
+            INGRESAR
+          </button>
+        </form>
+
+        <div class="kiosco-card-footer">
+          <a href="index.html" class="kiosco-back-link">
+            ← Volver a la página pública
+          </a>
+        </div>
+      </section>
+
+      <!-- ESTADO 2: PANEL PRIVADO KIOSCO (PROTEGIDO) -->
+      <section class="kiosco-card kiosco-private-card" id="kiosco-private-section" aria-labelledby="kiosco-panel-title" hidden>
+        <div class="kiosco-panel-header">
+          <div>
+            <div class="kiosco-badge-portal">OPERADOR AUTORIZADO</div>
+            <h2 id="kiosco-panel-title">Panel Kiosco</h2>
+          </div>
+          <button class="kiosco-logout-btn" type="button" id="btn-kiosk-logout">
+            Cerrar sesión
+          </button>
+        </div>
+
+        <div class="kiosco-user-banner">
+          <div class="kiosco-user-meta">
+            <span class="kiosco-avatar" aria-hidden="true">👤</span>
+            <div class="kiosco-meta-text">
+              <span class="kiosco-meta-label">Usuario</span>
+              <strong id="kiosk-user-email">valentinagalo12@gmail.com</strong>
+            </div>
+          </div>
+          <div class="kiosco-role-badge-wrapper">
+            <span class="kiosco-meta-label">Rol</span>
+            <span class="badge-role" id="kiosk-user-role">Kiosco</span>
+          </div>
+        </div>
+
+        <!-- ÁREA PRIVADA: CONSULTA DE TURNOS -->
+        <div class="kiosco-private-body">
+          <div class="kiosco-section-title">
+            <h3>Consulta de turnos</h3>
+            <p>Ingresá el DNI del paciente para consultar la información del turno registrado.</p>
+          </div>
+
+          <form id="kiosk-lookup-form" class="kiosco-search-form" novalidate>
+            <div class="kiosco-search-bar">
+              <label for="kiosk-search-dni" class="kiosco-sr-only">DNI del paciente</label>
+              <input
+                type="text"
+                name="dni"
+                id="kiosk-search-dni"
+                inputmode="numeric"
+                required
+                pattern="[0-9]{7,8}"
+                placeholder="Ingresá el DNI sin puntos (ej.: 35123456)"
+                autocomplete="off"
+              />
+              <button class="kiosco-submit-btn" type="submit" id="btn-kiosk-search">
+                Consultar
+              </button>
+            </div>
+          </form>
+
+          <div id="kiosk-search-error" class="kiosco-message error-message" role="alert" hidden></div>
+          <div id="kiosk-search-result" class="kiosco-search-result" aria-live="polite"></div>
+        </div>
+
+        <div class="kiosco-panel-footer">
+          <a href="index.html" class="kiosco-back-link">
+            ← Ir a la página pública
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="kiosco-site-footer">
+      <div class="kiosco-footer-logo">UMSA</div>
+      <p>Centro Médico Integral · San Andrés de Giles</p>
+      <p class="kiosco-footer-muted">Terminal de Atención y Consulta Kiosco</p>
+    </footer>
+  </body>
+</html>
