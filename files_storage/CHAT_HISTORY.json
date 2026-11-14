@@ -1,38 +1,6 @@
 [
   {
     "role": "user",
-    "content": "Dejá el presupuesto en pausa. ¿Qué medios de pago aceptan?"
-  },
-  {
-    "role": "assistant",
-    "content": "💳 **Medios de Pago Oficiales de UMSA Centro Médico:**\n\nEn UMSA aceptamos cuatro medios de pago oficiales, con control administrativo y vinculación directa a presupuestos:\n\n• **💵 Efectivo** (✅ Habilitado)\n  Cobro presencial en efectivo en ventanilla de administración y caja de UMSA Centro Médico.\n  *Instrucciones:* Presentarse en la administración central de UMSA Centro Médico de lunes a viernes de 08:00 a 20:00 hs para abonar y retirar el recibo oficial.\n\n• **💳 Tarjeta de débito/crédito** (✅ Habilitado)\n  Cobro presencial mediante tarjeta de débito o crédito a través de terminal POS institucional.\n  *Instrucciones:* Abono presencial en terminal POS en ventanilla de UMSA Centro Médico con tarjeta Visa, Mastercard o Cabal.\n\n• **🏛️ Transferencia bancaria** (✅ Habilitado)\n  Transferencia electrónica directa a la cuenta bancaria institucional de UMSA Centro Médico.\n  *Instrucciones:* Realizar la transferencia bancaria y presentar o enviar el comprobante con número de operación para su verificación administrativa.\n  *Datos bancarios:* Banco: A configurar | Titular: Centro Médico UMSA | CBU: Pendiente de configuración | Alias: Pendiente de configuración\n\n• **📱 Mercado Pago** (✅ Habilitado)\n  Cobro electrónico mediante link de pago oficial, QR o transferencia vía Mercado Pago.\n  *Instrucciones:* Escanee el código QR o acceda al enlace de pago oficial provisto por UMSA.\n\n📌 **Gestión de Cobranzas y Presupuestos:**\nCada pago se registra de forma manual o verificada vinculándolo al número de presupuesto oficial, lo que permite calcular automáticamente el importe pagado, el saldo pendiente y los estados (Pendiente, Parcial, Pagado o Cancelado) en la sección **Medios de pago** del panel.\n\n*(Tu borrador de presupuesto sigue pausado en segundo plano. Cuando quieras retomarlo, solo decime 'volver al presupuesto')*."
-  },
-  {
-    "role": "user",
-    "content": "Volvamos al presupuesto de antes"
-  },
-  {
-    "role": "assistant",
-    "content": "Retomamos el presupuesto en curso:\n\n• 6 unidad(es) de Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U) a $2500 c/u: $15000\n\nTotal: **$15000**.\n\n¿A nombre de qué cliente o profesional lo preparamos?"
-  },
-  {
-    "role": "user",
-    "content": "Quiero cuatro cajas de guantes"
-  },
-  {
-    "role": "assistant",
-    "content": "Agregué 4 caja(s) de Guantes látex descartables al borrador, a $2500 cada una, con un subtotal de **$10000**. ¿A nombre de qué cliente o profesional lo preparo?"
-  },
-  {
-    "role": "user",
-    "content": "Quiero saber cuánto cuestan cuatro cajas de guantes, pero todavía no hagas un presupuesto"
-  },
-  {
-    "role": "assistant",
-    "content": "• **Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U)**: **$10000** por las 4 unidades ($2500 c/u). Stock: **ILIMITADO**.\n\nQueda registrado como consulta informativa sin generar presupuesto."
-  },
-  {
-    "role": "user",
     "content": "¿Cuánto cuesta un tensiómetro digital?"
   },
   {
@@ -118,5 +86,37 @@
   {
     "role": "assistant",
     "content": "¡Con gusto! Para armar el presupuesto oficial, indicame el nombre y apellido del profesional o cliente y los insumos que necesitás cotizar."
+  },
+  {
+    "role": "user",
+    "content": "hola\nquiero hacer un presupuesto"
+  },
+  {
+    "role": "assistant",
+    "content": "¡Hola! Claro, preparemos el presupuesto. ¡Con gusto! Para armar el presupuesto oficial, indicame el nombre y apellido del profesional o cliente y los insumos que necesitás cotizar."
+  },
+  {
+    "role": "user",
+    "content": "gallo valentina, 4 cajas de guantes"
+  },
+  {
+    "role": "assistant",
+    "content": "Inicié el borrador con los insumos solicitados:\n\n• 4 unidad(es) de Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U) a $2500 c/u: $10000\n\nTotal: **$10000** (Stock ILIMITADO).\n\n¿A nombre de qué cliente o profesional lo preparo?"
+  },
+  {
+    "role": "user",
+    "content": "gallo"
+  },
+  {
+    "role": "assistant",
+    "content": "Comprendo lo que me planteás. En este momento el servicio externo de conocimiento general no está disponible o la consulta excede el marco del sistema; sin embargo, como asistente administrativo del Centro Médico UMSA puedo orientarte con precisión sobre insumos descartables con stock permanente, armar presupuestos en PDF, consultar medios de pago habilitados o gestionar archivos del centro médico. ¿Sobre cuál de estos temas preferís que avancemos?"
+  },
+  {
+    "role": "user",
+    "content": "Gallo valentina es el profesional"
+  },
+  {
+    "role": "assistant",
+    "content": "Excelente. El presupuesto para **Gallo Valentina Es El Profesional** queda así:\n\n• 4 unidad(es) de Guantes látex descartables (GUANTES LATEX DESCARTABLES - Caja x 100 U) a $2500 c/u: $10000\n\nTotal: **$10000**.\n\n¿Confirmás el presupuesto? Puedo emitir el PDF oficial en este momento."
   }
 ]

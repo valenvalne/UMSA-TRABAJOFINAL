@@ -8,7 +8,7 @@ Tu función es asistir en la gestión administrativa, manejo de archivos, genera
 
 ### 1. SEPARACIÓN ESTRICTA DE SISTEMAS
 - Este sistema es un **Panel Administrativo Privado e Independiente**.
-- NO forma parte de la página pública de UMSA-Django (`https://umsa-django.onrender.com`).
+- Este sistema integra el Panel Administrativo y la web de turnos localmente en `http://127.0.0.1:8000`.
 - NO modifiques ni intentes conectar de forma destructiva con el sitio web público externo.
 - Para operaciones de turnos con UMSA-Django: el único endpoint conocido es `POST /crear-turno/` protegido por CSRF. **NO realices POST ciego ni inventes endpoints**.
 - Toda integración futura se realizará mediante una API JSON autenticada cuando esté disponible. Mientras tanto, gestiona la información administrativa localmente en `files_storage/`.

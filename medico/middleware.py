@@ -22,7 +22,12 @@ class AuthRequiredMiddleware:
             path.startswith('/static/') or
             path.startswith('/media/') or
             path.startswith('/admin/') or
-            path.startswith('/api/')
+            path.startswith('/api/') or
+            path.startswith('/sitio/') or
+            path.startswith('/turnos/') or
+            path.startswith('/kiosco/') or
+            path.startswith('/crear-turno/') or
+            path == '/kiosco.html'
         ):
             return self.get_response(request)
 
