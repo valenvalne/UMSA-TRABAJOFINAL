@@ -6,7 +6,7 @@
 - La información de turnos debe mantenerse ordenada y persistente.
 - No inventar pacientes, profesionales, horarios ni disponibilidad.
 - La información de pacientes debe tratarse como privada.
-- UMSA-Django existente: `https://umsa-django.onrender.com`.
+- UMSA-Django local: `http://127.0.0.1:8000`.
 - El endpoint actualmente conocido para crear turnos es `POST /crear-turno/`.
 - No modificar ni reemplazar el proyecto UMSA-Django existente desde este proyecto.
 - Las operaciones automáticas sobre UMSA deben utilizar una API autenticada explícita; no se debe hacer POST ciego.

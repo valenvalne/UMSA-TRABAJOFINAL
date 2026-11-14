@@ -7,18 +7,12 @@ Sistema integral de **UMSA Centro Médico ("Apostá a la vida")** que integra en
 
 ---
 
-## 🌐 Enlaces de Acceso
+## 🌐 Enlaces de Acceso Local
 
-### En Producción (Render):
-- **Sitio Web Público UMSA Turnos:** `https://umsa-trabajofinal.onrender.com/`
-- **Panel Administrativo con IA:** `https://umsa-trabajofinal.onrender.com/panel/`
-- **Terminal Kiosco:** `https://umsa-trabajofinal.onrender.com/kiosco/`
-
-### En Desarrollo Local:
-- **Sitio Web Principal:** `http://localhost:8000/`
+- **Sitio Web Principal (Acceso / Login):** `http://localhost:8000/` o `http://127.0.0.1:8000/`
 - **Panel Administrativo con IA:** `http://localhost:8000/panel/`
-- **Página Web Completa (Directa):** `http://localhost:8000/sitio/`
-- **Terminal Kiosco:** `http://localhost:8000/kiosco/`
+- **Página Web Completa de Turnos (Directa):** `http://localhost:8000/sitio/`
+- **Terminal Kiosco de Pacientes:** `http://localhost:8000/kiosco/`
 
 ---
 
@@ -58,7 +52,7 @@ docker compose up --build
 
 ## 🏗️ Arquitectura y Tecnologías
 - **Backend:** Django 5 + Python 3.13 + Gunicorn + WhiteNoise.
-- **Base de Datos:** SQLite (Local) / PostgreSQL con `dj_database_url` (Producción Render).
+- **Base de Datos:** SQLite 3 (Base de datos local `db.sqlite3`) con soporte opcional para PostgreSQL vía variables de entorno.
 - **Frontend:** HTML5 semántico, CSS3 moderno responsivo, JavaScript ES6+.
 - **Inteligencia Artificial:** Soporte Multi-Proveedor (Anthropic Claude, Google Gemini, Groq LLaMA 3.3, OpenAI).
 - **Almacenamiento y Auditoría:** Persistencia física real en `files_storage/`, `INDEX.md`, `MEMORY.md` y `pagos_historial.json`.

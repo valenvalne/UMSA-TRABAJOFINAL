@@ -1,8 +1,11 @@
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
+load_dotenv(BASE_DIR / 'app' / '.env')
 
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
@@ -12,10 +15,12 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 't', 'yes')
 
 allowed_hosts_env = os.environ.get('ALLOWED_HOSTS')
-if allowed_hosts_env:
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+elif allowed_hosts_env:
     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',') if host.strip()]
 else:
-    ALLOWED_HOSTS = ['*'] if DEBUG else ['localhost', '127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 csrf_trusted_origins_env = os.environ.get('CSRF_TRUSTED_ORIGINS')
 if csrf_trusted_origins_env:
@@ -65,8 +70,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-db_engine = os.environ.get('DB_ENGINE', 'django.db.backends.postgresql')
-if db_engine == 'django.db.backends.sqlite3' or os.environ.get('USE_SQLITE', 'False').lower() in ('true', '1', 'yes'):
+db_engine = os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3')
+use_sqlite = os.environ.get('USE_SQLITE', 'True').lower() in ('true', '1', 'yes')
+
+if use_sqlite or db_engine == 'django.db.backends.sqlite3':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -80,7 +87,7 @@ else:
             'NAME': os.environ.get('DB_NAME', 'umsa_db'),
             'USER': os.environ.get('DB_USER', 'postgres'),
             'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
-            'HOST': os.environ.get('DB_HOST', 'db'),
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
             'PORT': os.environ.get('DB_PORT', '5432'),
         }
     }
@@ -129,7 +136,7 @@ STORAGES = {
         'BACKEND': 'django.core.files.storage.FileSystemStorage',
     },
     'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage' if DEBUG else 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },
 }
 
